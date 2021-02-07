@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8">
+    <title>Luminate! Dashboard</title>
+    <link rel="shortcut icon" href="src/luminate-icon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/dash.css">
+    <link rel="stylesheet" href="css/view-quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
+                Luminate
+            </a>
+    </nav>
+
+    <div class="sideBar">
+        <div class="sideBar-links">
+            <a href="profile.html"><i class="fa fa-user fa-lg"></i> Profile</a>
+            <a class="active" href="#take-quiz"><i class="fa fa-pencil-square fa-lg"></i>Take Quiz</a>
+            <a href="my-quiz.html"><i class="fa fa-folder fa-lg"></i>My Quizzes</a>
+            <a href=""><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
+        </div>
+    </div>
+    <div class="scroll-div">
+        <div>
+            <div class="container">
+                <input type="text" placeholder="Enter URL of quiz">
+                <button><i class="fa fa-search" id="search-btn"></i></button>
+            </div>
+
+            <section class="main-section" id="quiz-area" style="display: none;">
+
+            </section>
+        </div>
+        <div id="loading-icon" style="margin-top: 100px;"
+            class="loading-icon d-flex flex-column justify-content-center align-items-center">
+            <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+
+            <h5>Retrieving Quizzes</h5>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Take Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/view-quiz.js"></script>
+
+</body>
+
+</html>

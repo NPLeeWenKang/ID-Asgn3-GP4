@@ -1,0 +1,91 @@
+button:focus { outline: none; }
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+button{
+    outline:none;
+    border:none;
+    background-color: transparent;
+}
+span{
+    display: inline-block;
+    height: 5px;
+    width: 50px;
+    background: #FF3434;
+    margin-bottom: 30px;
+}
+.scroll-div{
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+#my-quizzes{
+    margin-top:70px;
+    
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:65%;
+    margin:auto;
+    position: relative;
+}
+.container{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:5px;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.text-container{
+    margin: 60px;
+}
+
+.add-icon-btn{
+    width:150px;
+    height: 150px;
+    border-style: dashed;
+    outline: none;
+    transition: 0.3s;
+    background-color: rgb(238, 238, 238);
+}
+
+.add-icon-btn:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+#remove-btn{
+    position:absolute;
+    bottom:20px;
+    right:30px;
+    padding:5px;
+    height:35px;
+    background-color:white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgb(236, 236, 236);
+}
+
+@media screen and (min-width: 800px){
+    .container{
+        width: 100%;
+        flex-direction: row;
+    }
+}
+@media screen and (min-width: 1024px){
+    .container{
+        max-width: 1200px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .sideBar {
+     display: none;
+    }
+  }

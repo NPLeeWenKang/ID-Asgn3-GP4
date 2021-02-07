@@ -3,11 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Luminate! Creator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/create-quiz.css">
+    <link rel="shortcut icon" href="src/luminate-icon.png" type="image/x-icon">
 </head>
 
-<body>
+<body style="background-color: #eee;">
+    <nav class="navbar navbar-light" style="background-color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
+                Luminate
+            </a>
+            <div id="nav-btn">
+                <a href="my-quiz.html">
+                    <span id="" class="exit-btn">
+                        Exit
+                    </span>
+                </a>
+
+                <span id="done-btn" class="done-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Done
+                </span>
+            </div>
+    </nav>
+    <div id="scroll-wrapper">
+        <div id="area-wrapper">
+            <div id="create-quiz-area">
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <div id="add-qn-btnGroup" class="d-flex justify-content-center align-items-center">
+                <div id="add-question">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg>
+                </div>
+                <div id="qn-bank-btn" data-bs-toggle="modal" data-bs-target="#q-bank">Question bank</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="display: block;">
+                    <div class="d-flex  align-items-center">
+                        <h5 class="modal-title" id="staticBackdropLabel" style="display: inline;">Quiz Validation</h5>
+                        <span style="margin-left: 10px;" id="checkmark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-patch-check" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                <path
+                                    d="M10.273 2.513l-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div id="comment">Please wait while our system validates the quiz!</div>
+                </div>
+                <div class="modal-body" id="modal-body-validate">
+                    <div id="validation-loading-icon"
+                        class="d-flex flex-column justify-content-center align-items-center">
+                        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_jvkbug4h.json"
+                            background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                        </lottie-player>
+                        <div style="bottom: 50px;position: absolute; font-size: 17px;font-weight: bold;">Validating...
+                        </div>
+                    </div>
+                    <div id="after-validation-pass" style="display: none;">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="quiz-name" placeholder="Password">
+                            <label for="quiz-name">Quiz name</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="public" class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault1" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Public (Default)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input id="private" class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Private
+                            </label>
+                        </div>
+                    </div>
+                    <div id="after-validation-fail" style="display: none;">
+                        <div id="wrapper">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center align-items-center"
+                    style="padding-top: 25px; padding-bottom: 25px;">
+                    <div>
+                        <span class="exit-btn" data-bs-dismiss="modal" aria-label="Close">
+                            Back
+                        </span>
+                        <span id="modal-submit" class="done-btn modal-submit" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Done
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="q-bank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="display: block;">
+                    <div class="d-flex  align-items-center">
+                        <h5 class="modal-title" id="staticBackdropLabel" style="display: inline;">Question Bank</h5>
+                        <span style="margin-left: 10px;" id="checkmark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey"
+                                class="bi bi-archive" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div>Can't think of questions? Try our Question Bank!</div>
+                </div>
+                <div class="modal-body">
+                    <label for="number-qns" class="form-label" id="number-qns-label">Number of Questions: 1</label>
+                    <input type="range" class="form-range" id="number-qns" min="1" max="10" step="1" value="1">
+                    <div class="q-bank-opt">
+                        <label for="category">Select Category</label>
+                        <select class="form-select" aria-label="Default select example" id="category">
+                        </select>
+                    </div>
+
+                    <div class="q-bank-opt">
+                        <label for="difficulty" class="form-label">Select Difficulty</label>
+                        <select class="form-select" aria-label="Default select example" id="difficulty">
+                            <option selected>Any Diffculty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="q-bank-opt">
+                        <label for="type" class="form-label">Select Type</label>
+                        <select class="form-select" aria-label="Default select example" id="type">
+                            <option selected>Any Type</option>
+                            <option value="Multiple Choice">Muliple Choice</option>
+                            <option value="True / False">True / False</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center align-items-center"
+                    style="padding-top: 25px; padding-bottom: 25px;">
+                    <div>
+                        <span class="exit-btn" data-bs-dismiss="modal" aria-label="Close">
+                            Back
+                        </span>
+                        <span id="q-bank-submit" class="done-btn-qBank modal-submit" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            Done
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" id="alert" style="display: none;" role="alert">
+        Question Bank returned an invalid question! Question(s) have been removed!
+    </div>
 
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/create-quiz.js"></script>
 
 </html>

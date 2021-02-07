@@ -1,0 +1,40 @@
+nav {
+    -webkit-box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33); 
+    box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33);
+    z-index: 100;
+}
+.navbar-brand{
+    cursor: pointer;
+}
+.sideBar {
+    width: 250px;
+    background-color: #f1f1f1;
+    position: relative;
+    height: calc(100vh - 56px);
+    font-size:18px;
+    float: left;
+}
+.fa {
+    margin: 13px;
+}
+
+.sideBar-links{
+    margin-top: 70px;
+}
+
+.sideBar a {
+    display: block;
+    color: rgb(121, 121, 121);
+    padding: 13px;
+    text-decoration: none;
+    width:80%;
+    margin:auto;
+}
+ 
+.sideBar a:hover {
+    color: rgb(9, 0, 68);
+}
+
+.sideBar-links .active{
+    color:rgb(9, 0, 68);
+}

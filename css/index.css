@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.luminate-intro{
+    margin:auto;
+    text-align: center;
+    width:50%;
+    margin-bottom: 100px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+nav {
+    -webkit-box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33); 
+    box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33);
+    z-index: 100;
+}
+.second-row{
+    margin-top:100px;
+    padding:80px;
+    background-color: rgb(243, 243, 243);
+}
+.title {
+    color: #0c5783;
+    font-size: 80px;
+    letter-spacing: 2px;
+    margin-bottom: 48px;
+    text-shadow: 
+    4px 4px 0px #faf38c, 
+    7px 7px 0px rgba(0, 0, 0, 0.2);
+}
+.col-sm lottie-player{
+    margin: auto;
+}
+.banner-right{
+    margin-top:80px;
+}
+.text-message {
+    color: #9fb5cc;
+    font-size: 1.1em;
+    letter-spacing: 0.7px;
+    line-height: 32px;
+    margin-bottom: 48px;
+}
+
+.dash-btn {
+    border:none;
+    outline: none;
+    background-color: #0c5783;
+    color: rgb(255, 255, 255);
+    padding: 18px 32px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1),
+    0 15px 12px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: opacity 0.9;
+    transition: 0.3s;
+}
+
+.dash-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+.flex-card-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;/*center all the card to the center of the page*/
+} 
+/*styling the first row of cards*/
+.card {
+    text-align: center;
+    padding:20px;
+    margin:50px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+    position: relative;
+    height:auto;
+    width:400px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.logo {
+    width: 110px;
+    position: absolute;
+    top:-60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card h3{
+    font-weight: bolder;
+}
+.card-text{
+    margin-top: 50px;
+}
+
+.description{
+    text-align: center;
+    color: rgb(37, 37, 37);
+}
+
+.third-row{
+    margin-top:100px;
+    padding:80px;
+}
+.forth-row{
+    padding:80px;
+    padding-top: 0px;
+}
+.image-feature{
+    max-width: 300px;
+    width: 100%;
+    min-width: 250px;
+}
+img{
+    display: block;
+    margin:auto;
+}
+@media (max-width: 768px){
+    .luminate-intro{
+        width:90%;
+    }
+    .card {
+        width: 100%;
+        margin-left:10px;
+        margin-right: 10px;
+    }
+    .second-row{
+        padding-left:10px;
+        padding-right: 10px;
+    }
+    .title {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    .text-message {
+        text-align: center;
+        font-size: 1.1em;
+    }
+    .banner-right{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .third-row{
+        text-align: center;
+    }
+    .forth-row{
+        text-align: center;
+    }
+}
+@media (max-width: 350px){
+    .title {
+        font-size: 50px;
+    }
+    .text-message {
+        font-size: 1em;
+    }
+}
