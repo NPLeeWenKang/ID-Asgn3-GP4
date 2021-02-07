@@ -1,4 +1,4 @@
-# Personal Portfolio
+# Luminate (Assignment 3)
 Name: Lee Wen Kang, Keerthana<br />
 Class: P03<br />
 ID: S10203100, S10194171<br />
