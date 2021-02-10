@@ -45,6 +45,9 @@ span{
   color:#929292;
   margin-bottom: 20px;
 }
+#login-btn{
+  cursor: pointer;
+}
 
 @media (max-width:767px){
   .wrapper{
