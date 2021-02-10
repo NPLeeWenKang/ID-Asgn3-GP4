@@ -25,6 +25,16 @@
                 <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
                 Luminate
             </a>
+            <div id="nav-btn">
+                <div style="display: inline;"
+                    onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
+                    <span id="" class="exit-btn">
+                        Sign out
+                    </span>
+                </div>
+
+            </div>
+        </div>
     </nav>
 
 
@@ -84,9 +94,21 @@
             </div>
         </div>
     </div>
-    <script>
-    </script>
 
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
+        authDomain: "id-assign3.firebaseapp.com",
+        projectId: "id-assign3",
+        storageBucket: "id-assign3.appspot.com",
+        messagingSenderId: "193413395450",
+        appId: "1:193413395450:web:df43638dcdb414967aea43"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
 
 </html>

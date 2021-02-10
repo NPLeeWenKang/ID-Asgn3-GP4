@@ -9,7 +9,7 @@ button{
     border:none;
     background-color: transparent;
 }
-span{
+.container span{
     display: inline-block;
     height: 5px;
     width: 50px;
