@@ -69,6 +69,16 @@ button{
   width:50%;
 }
 
+.avatar-img{
+  height:150px;
+  overflow: hidden;
+  overflow-y: scroll;
+  cursor: pointer;
+}
+.avatar-img img{
+  margin:5px;
+}
+
 @media screen and (min-width: 800px){
   .container{
       width: 100%;
