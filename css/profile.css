@@ -85,5 +85,8 @@ button{
     .sideBar {
      display: none;
     }
+    .split-information{
+      flex-direction: column;
+    }
   }
 
