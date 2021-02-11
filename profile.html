@@ -49,41 +49,43 @@
 
     <div class="main">
         <div class="container">
-            <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
-                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div id="profile-text">
-                    + Add Avatar
-                </div>
-
-                <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
-            </button>
-            <div class="text-container">
-                <h3 id="username">User Name</h3>
-
-                <div class="split-information">
-                    <div style="margin-bottom: 10px;">
-                        <span>Email: </span>
-                        <span id="email"></span>
-                        <!--<p>EMAIL SHOULD BE HERE<p>-->
+            <div class="avatar-wrapper">
+                <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div id="profile-text">
+                        + Add Avatar
                     </div>
 
-                    <div>
-                        <span>Education Institute: </span>
-                        <span id="edu-inst"></span>
+                    <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
+                </button>
+            </div>
+            <div class="text-container">
+                <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
+
+                <div class="split-information">
+                    <div style="margin-bottom: 10px;" class="email-div">
+                        <h3>Email</h3>
+                        <p id="email"></p>
+                        <!--<p>EMAIL SHOULD BE HERE<p>-->
+                    </div> 
+
+                    <div class="edu-div">
+                        <h3>Education Institute</h3>
+                        <p id="edu-inst"></p>
                         <!--<p>Education SHOULD BE HERE<p>-->
                     </div>
                 </div>
 
                 <div class="split-information">
-                    <div style="margin-bottom: 10px;">
-                        <span>Grade: </span>
-                        <span id="grade"></span>
+                    <div style="margin-bottom: 10px;" class="grade-div">
+                        <h3>Grade</h3>
+                        <p id="grade"></p>
                     </div>
 
                     <!--<p>Grade SHOULD BE HERE<p>-->
-                    <div>
-                        <span>Birthday: </span>
-                        <span id="birthday"></span>
+                    <div class="bday-div">
+                        <h3>Birthday</h3>
+                        <p id="birthday"></p>
                     </div>
 
                     <!--<p>Birthday SHOULD BE HERE<p>-->
