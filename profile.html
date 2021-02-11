@@ -49,26 +49,43 @@
 
     <div class="main">
         <div class="container">
-            <div id="add-img">
-                <!--image goes here-->
-            </div>
-            <button class="add-avatar-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add Avatar</button>
+            <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div id="profile-text">
+                    + Add Avatar
+                </div>
+
+                <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
+            </button>
             <div class="text-container">
-                <h3>User Name</h3>
+                <h3 id="username">User Name</h3>
 
                 <div class="split-information">
-                    <p>Email</p>
-                    <!--<p>EMAIL SHOULD BE HERE<p>-->
+                    <div style="margin-bottom: 10px;">
+                        <span>Email: </span>
+                        <span id="email"></span>
+                        <!--<p>EMAIL SHOULD BE HERE<p>-->
+                    </div>
 
-                    <p>Education Institute</p>
-                    <!--<p>Education SHOULD BE HERE<p>-->
+                    <div>
+                        <span>Education Institute: </span>
+                        <span id="edu-inst"></span>
+                        <!--<p>Education SHOULD BE HERE<p>-->
+                    </div>
                 </div>
 
                 <div class="split-information">
-                    <p>Grade</p>
-                    <!--<p>Grade SHOULD BE HERE<p>-->
+                    <div style="margin-bottom: 10px;">
+                        <span>Grade: </span>
+                        <span id="grade"></span>
+                    </div>
 
-                    <p>Birthday</p>
+                    <!--<p>Grade SHOULD BE HERE<p>-->
+                    <div>
+                        <span>Birthday: </span>
+                        <span id="birthday"></span>
+                    </div>
+
                     <!--<p>Birthday SHOULD BE HERE<p>-->
                 </div>
 
@@ -87,41 +104,50 @@
                 </div>
                 <div class="modal-body">
                     <div class="avatar-img" style="margin-bottom: 50px;">
-                        <img src="src/Avatar-images/woman-1.png" width="120px">
-                        <img src="src/Avatar-images/woman-6.png" width="120px">
-                        <img src="src/Avatar-images/man-2.png" width="120px">
-                        <img src="src/Avatar-images/woman-3.png" width="120px">
-                        <img src="src/Avatar-images/woman-4.png" width="120px">
-                        <img src="src/Avatar-images/man-4.png" width="120px">
-                        <img src="src/Avatar-images/woman-5.png" width="120px">
-                        <img src="src/Avatar-images/man-5.png" width="120px">
-                        <img src="src/Avatar-images/woman-2.png" width="120px">
-                        <img src="src/Avatar-images/man-1.png" width="120px">
-                        <img src="src/Avatar-images/man-3.png" width="120px">
-                        <img src="src/Avatar-images/man-6.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-2.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-3.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-4.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-4.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-5.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-5.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/woman-2.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-1.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-3.png" width="120px">
+                        <img class="choose-ava" src="src/Avatar-images/man-6.png" width="120px">
                     </div>
-                    <form>
+                    <form autocomplete="off">
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <label for="modal-username" class="form-label">User name</label>
+                            <input maxlength="15" type="text" class="form-control" id="modal-username"
+                                aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Education Institute</label>
-                          <input type="password" class="form-control" id="exampleInputEducation">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Grade</label>
-                            <input type="password" class="form-control" id="exampleInputGrade">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Birthday</label>
-                            <input type="date" class="form-control" id="exampleInputBirthday">
-                        </div>
-                      </form>
+                            <div class="mb-3">
+                                <label for="modal-email" class="form-label">Email address</label>
+                                <input maxlength="50" type="email" class="form-control" id="modal-email"
+                                    aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-edu-inst" class="form-label">Education Institute</label>
+                                <input maxlength="25" type="text" class="form-control" id="modal-edu-inst">
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-grade" class="form-label">Grade</label>
+                                <input maxlength="15" type="text" class="form-control" id="modal-grade">
+                            </div>
+                            <div class="mb-3">
+                                <label for="modal-birthday" class="form-label">Birthday</label>
+                                <input type="date" class="form-control" id="modal-birthday">
+                            </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update Profile</button>
+                    <button id="update" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update
+                        Profile</button>
                 </div>
             </div>
         </div>
@@ -130,6 +156,8 @@
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+
 <script>
     var firebaseConfig = {
         apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
@@ -142,5 +170,6 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 </script>
+<script src="js/profile.js"></script>
 
 </html>

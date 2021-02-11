@@ -45,7 +45,9 @@ button{
   transform: scale(1.1);
   transition: 0.3s;
 }
-
+#profile-pic{
+  object-fit: cover;
+}
 #edit-btn{
   position:absolute;
   bottom:20px;
@@ -60,13 +62,6 @@ button{
 
 .split-information{
   margin-top:40px;
-  display:flex;
-  flex-wrap:wrap;
-  flex-direction:row;
-}
-
-.split-information p{
-  width:50%;
 }
 
 .avatar-img{
@@ -78,7 +73,13 @@ button{
 .avatar-img img{
   margin:5px;
 }
-
+.choose-ava{
+  border-radius: 50%;
+  padding: 5px;
+}
+.choose-ava:hover{
+  background-color: indianred;
+}
 @media screen and (min-width: 800px){
   .container{
       width: 100%;
@@ -95,8 +96,15 @@ button{
     .sideBar {
      display: none;
     }
+    h3{
+      font-size: 20;
+    }
     .split-information{
-      flex-direction: column;
+      margin-top: 10px;
+    }
+    .text-container{
+      margin-top: 50px;
+      width:95%;
     }
   }
 
