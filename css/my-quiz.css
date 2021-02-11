@@ -24,22 +24,17 @@ button{
     margin-top:70px;
     
 }
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:65%;
-    margin:auto;
-    position: relative;
-}
 .container{
     background: white;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin:5px;
     box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    margin:auto;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .text-container{
@@ -72,20 +67,27 @@ button{
     border: 1px solid rgb(236, 236, 236);
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 501px){
     .container{
-        width: 100%;
-        flex-direction: row;
-    }
-}
-@media screen and (min-width: 1024px){
-    .container{
-        max-width: 1200px;
+        width: 70%;
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 800px) {
     .sideBar {
      display: none;
     }
-  }
+}
+
+@media only screen and (min-width:250px) and (max-width:500px){
+    .add-icon-btn{
+    width:120px;
+    height: 120px;
+    }
+    .text-container{
+        margin: 40px;
+    }
+    .container{
+        width:90%;
+    }
+}
