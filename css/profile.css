@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
 button:focus { outline: none; }
 button{
   outline:none;
@@ -20,50 +23,42 @@ button{
 .container{
   background: white;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin:5px;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  padding:20px;
 }
 
 .text-container{
-  margin: 60px;
-  width:70%;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:40px;
 }
 
 .add-avatar-btn{
-  width:150px;
-  height: 150px;
+  width:160px;
+  height: 160px;
   border-style: dashed;
   outline: none;
   transition: 0.3s;
   background-color: rgb(238, 238, 238);
+  padding:0;
+  border-radius: 50%;
 }
 
 .add-avatar-btn:hover{
   transform: scale(1.1);
   transition: 0.3s;
 }
-#profile-pic{
-  object-fit: cover;
-}
-#edit-btn{
-  position:absolute;
-  bottom:20px;
-  right:30px;
-  padding:5px;
-  height:35px;
-  background-color:white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  border: 1px solid rgb(236, 236, 236);
-}
 
-.split-information{
-  margin-top:40px;
+.avatar-wrapper{
+  display: flex;
+  justify-content: center;
 }
-
 .avatar-img{
   height:150px;
   overflow: hidden;
@@ -80,10 +75,52 @@ button{
 .choose-ava:hover{
   background-color: indianred;
 }
+
+#edit-btn{
+  position:absolute;
+  bottom:20px;
+  right:30px;
+  padding:5px;
+  height:35px;
+  background-color:white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgb(236, 236, 236);
+}
+
+.split-information{
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+}
+
+h2{
+  font-size:38px;
+}
+h3{
+  font-family: 'Muli', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#email,#edu-inst,#grade,#birthday{
+  font-family: 'Open Sans', sans-serif;
+  color:rgb(93, 93, 93);
+  font-size:20px;
+}
+
+.email-div,.edu-div,.grade-div,.bday-div{
+  width:380px;
+}
+
 @media screen and (min-width: 800px){
   .container{
       width: 100%;
       flex-direction: row;
+  }
+  .sideBar{
+    height: 120%;
   }
 }
 @media screen and (min-width: 1024px){
@@ -96,15 +133,51 @@ button{
     .sideBar {
      display: none;
     }
+
     h3{
       font-size: 20;
     }
     .split-information{
       margin-top: 10px;
     }
+
     .text-container{
-      margin-top: 50px;
+      margin-top: 30px;
       width:95%;
+      padding:25px;
     }
+    .main{
+      width: 80%;
+    }
+}
+
+@media only screen and (min-width:250px) and (max-width:500px){
+  .avatar-img{
+    width:120px;
+    height: 120px;
   }
+  .add-avatar-btn{
+    width:130px;
+    height: 130px;
+  }
+  .text-container{
+    padding:0px;
+  }
+  #email,#edu-inst,#grade,#birthday{
+    font-family: 'Open Sans', sans-serif;
+    color:rgb(93, 93, 93);
+    font-size:15px;
+  }
+  h2{
+    font-size:30px;
+  }
+  #edit-btn{
+    position:absolute;
+    bottom:10px;
+    right:20px;
+  }
+  .main{
+    width: 90%;
+  }
+}
 
