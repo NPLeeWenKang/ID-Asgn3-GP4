@@ -114,13 +114,16 @@ h3{
   width:380px;
 }
 
+@media screen and (min-width:800px) and (max-width:1030px){
+  .sideBar{
+    height: 120%;
+  }
+}
+
 @media screen and (min-width: 800px){
   .container{
       width: 100%;
       flex-direction: row;
-  }
-  .sideBar{
-    height: 120%;
   }
 }
 @media screen and (min-width: 1024px){
@@ -147,7 +150,7 @@ h3{
       padding:25px;
     }
     .main{
-      width: 80%;
+      width: 75%;
     }
 }
 
