@@ -77,17 +77,22 @@ button{
 
 
 
+
 /*MEDIA QUERY*/
 @media only screen and (max-width: 1077px) {
-    .sideBar {
-     display: none;
-    }
     .container{
         width:50%;
     }
     input{
         width: 100%;
     }
+}
+
+@media only screen and (max-width: 800px) {
+    .sideBar {
+     display: none;
+    }
+    
 }
 
 @media only screen and (min-width: 250px) and (max-width:360px) {
