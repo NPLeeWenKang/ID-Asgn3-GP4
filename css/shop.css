@@ -1,0 +1,56 @@
+
+/*Section of the quiz cards*/
+.main-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top:50px;
+}
+
+#card {
+    width: 220px;
+    height: 220px;
+    margin: 50px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid rgb(197, 197, 197);
+    box-sizing: border-box;
+    cursor:pointer;
+}
+.coin-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    width:60%;
+}
+.coin-div img{
+    width:30px;
+    height:30px;
+    margin:5px;
+}
+.coin-div p{
+    margin: auto;
+}
+#card:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.404);
+    transition: 0.2s;
+}
+
+.quiz-img{
+    width:130px;
+    height:130px;
+    display: block;
+    margin: auto;
+}
+
+.text-div{
+    padding:10px;
+    text-align: center;
+}
+@media only screen and (max-width: 800px) {
+    .sideBar {
+     display: none;
+    }
+    
+}
