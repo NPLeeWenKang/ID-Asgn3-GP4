@@ -150,6 +150,16 @@ img{
     .forth-row{
         text-align: center;
     }
+    .third-row,.forth-row{
+        margin-top: 40px;
+        padding:15px;
+    }
+}
+@media screen and (min-width:576px) and (max-width:767px){
+    .third-row,.forth-row{
+        margin-top: 40px;
+        padding:15px;
+    }
 }
 @media (max-width: 350px){
     .title {
@@ -157,5 +167,20 @@ img{
     }
     .text-message {
         font-size: 1em;
+    }
+    .sub-title{
+        font-size: 23px;
+    }
+    .explanation p{
+        font-size:14px;
+    }
+    .third-row,.forth-row{
+        margin-top: 40px;
+        padding:15px;
+    }
+    .image-feature{
+        max-width: 180px;
+        width: 100%;
+        min-width: 130px;
     }
 }
