@@ -48,59 +48,20 @@
     <div class="scroll-div">
         <div id="my-quizzes">
             <a href="create-quiz.html" id="create-new-btn"><i class="fa fa-plus-circle fa-lg"></i>Create New</a>
-                <div class="container">
-                    <div id="add-img">
-                        <!--image goes here-->
-                    </div>
-                    <button class="add-icon-btn">+ Add icon</button>
-                    <div class="text-container">
-                        <span></span>
-                        <h3>Mathematics</h3>
-                        <p>Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum
-                        </p>
-                        <button id="remove-btn">x Remove</button>
-                    </div>
+            <div class="container">
+                <div id="add-img">
+
                 </div>
-                <div class="container">
-                    <div id="add-img">
-                        <!--image goes here-->
-                    </div>
-                    <button class="add-icon-btn">+ Add icon</button>
-                    <div class="text-container">
-                        <span></span>
-                        <h3>English</h3>
-                        <p>Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum
-                        </p>
-                        <button id="remove-btn">x Remove</button>
-                    </div>
+                <button class="add-icon-btn">+ Add icon</button>
+                <div class="text-container">
+                    <span></span>
+                    <h3>Mathematics</h3>
+                    <p>Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum
+                    </p>
+                    <button id="remove-btn">x Remove</button>
                 </div>
-                <div class="container">
-                    <div id="add-img">
-                        <!--image goes here-->
-                    </div>
-                    <button class="add-icon-btn">+ Add icon</button>
-                    <div class="text-container">
-                        <span></span>
-                        <h3>English</h3>
-                        <p>Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum
-                        </p>
-                        <button id="remove-btn">x Remove</button>
-                    </div>
-                </div>
-           
-                <div class="container">
-                    <div id="add-img">
-                        <!--image goes here-->
-                    </div>
-                    <button class="add-icon-btn">+ Add icon</button>
-                    <div class="text-container">
-                        <span></span>
-                        <h3>English</h3>
-                        <p>Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum Loren Ipsum
-                        </p>
-                        <button id="remove-btn">x Remove</button>
-                    </div>
-                </div>
+            </div>
+
         </div>
     </div>
 
@@ -109,6 +70,8 @@
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+
 <script>
     var firebaseConfig = {
         apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
@@ -120,6 +83,8 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    const database = firebase.database()
 </script>
+<script src="js/my-quiz.js"></script>
 
 </html>

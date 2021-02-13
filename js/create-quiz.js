@@ -71,7 +71,7 @@ function convertTimeToVal(point) {
         return 6;
     }
 }
-function submitDatabase(arr, qnArr) {
+function submitDatabase(arr, qnArr, userQnList) {
     database.ref("quiz/" + arr.quizId).set(arr, (error) => {
         if (error) {
             console.alert(error);
@@ -89,7 +89,8 @@ function submitDatabase(arr, qnArr) {
                             }
                         })
                 }
-            })
+            });
+            database.ref("user/" + user_id).update({ quizCreated: userQnList });
         }
     })
 
@@ -118,10 +119,17 @@ function validateQuiz(questionArr) {
                 const arr = {
                     quizId: Date.now(),
                     name: $("#quiz-name").val(),
-                    ownerId: "lol1234",
+                    description: $("#quiz-desc").val(),
+                    ownerId: user_id,
                     type: type,
                 }
-                submitDatabase(arr, questionArr)
+                if (user_details.quizCreated == null) {
+                    user_details.quizCreated = [arr.quizId]
+                } else {
+                    user_details.quizCreated.push(arr.quizId)
+                }
+
+                submitDatabase(arr, questionArr, user_details.quizCreated)
             })
         } else {
             $("#wrapper").empty();
@@ -682,3 +690,17 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+var user_details;
+var user_id
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        database.ref("user/" + user.uid).once("value").then((snapshot) => {
+            if (snapshot.exists()) {
+                user_id = user.uid;
+                user_details = snapshot.val();
+            }
+        })
+    } else {
+        window.location = "login.html"
+    }
+});

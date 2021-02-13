@@ -48,8 +48,6 @@ database.ref("/pubQuiz/").once("value").then((snapshot) => {
     const quiz_area = document.getElementById("quiz-area")
     for (const [key, value] of Object.entries(state)) {
         createQuizBox(key, value, quiz_area)
-        createQuizBox(key, value, quiz_area)
-        createQuizBox(key, value, quiz_area)
     }
     $("#quiz-area").css("display", "")
     $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")

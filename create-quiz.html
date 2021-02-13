@@ -82,9 +82,17 @@
                     </div>
                     <div id="after-validation-pass" style="display: none;">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="quiz-name" placeholder="Password">
+                            <input type="text" class="form-control" id="quiz-name" maxlength="50">
                             <label for="quiz-name">Quiz name</label>
                         </div>
+                        <div style="margin-top: 10px;" class="form-floating">
+
+                            <textarea style="resize: none; height: 150px;" class="form-control" id="quiz-desc"
+                                maxlength="200" rows="5"></textarea>
+                            <label for="quiz-desc">Description</label>
+
+                        </div>
+
                         <div class="form-check">
                             <input id="public" class="form-check-input" type="radio" name="flexRadioDefault"
                                 id="flexRadioDefault1" checked>
@@ -139,7 +147,6 @@
                             </svg>
                         </span>
                     </div>
-
                     <div>Can't think of questions? Try our Question Bank!</div>
                 </div>
                 <div class="modal-body">
