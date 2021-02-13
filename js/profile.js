@@ -67,6 +67,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                 noUserData(user, snapshot)
             }
         })
+    } else {
+        window.location = "login.html"
     }
 });
 $("#update").on("click", function () {
