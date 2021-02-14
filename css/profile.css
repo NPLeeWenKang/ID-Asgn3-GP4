@@ -56,15 +56,41 @@ button{
 }
 
 .avatar-wrapper{
+  height:300px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
+
 .avatar-img{
   height:150px;
   overflow: hidden;
   overflow-y: scroll;
   cursor: pointer;
 }
+
+.player-coin{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width:80%;
+  background-color: rgb(238, 238, 238);
+  height: 50px;
+  border-radius: 30px;
+}
+
+.player-coin img{
+  width:30px;
+  height:30px;
+  display: block;
+  margin: auto;
+}
+
+.player-coin p{
+  margin: auto;
+}
+
 .avatar-img img{
   margin:5px;
 }
@@ -184,6 +210,9 @@ h3{
   }
   .choose-ava{
     width: 100px;
+  }
+  .avatar-wrapper{
+    height:250px;
   }
 }
 
