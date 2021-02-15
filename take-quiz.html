@@ -22,7 +22,7 @@
                 Luminate
             </a>
             <div id="nav-btn">
-                <div style="display: inline; cursor: pointer;" id="mute">
+                <div style="display: inline; cursor: pointer; display: none;" id="mute">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
                         <path
@@ -30,7 +30,7 @@
                     </svg>
 
                 </div>
-                <div style="display: inline; cursor: pointer; display: none;" id="unmute">
+                <div style="display: inline; cursor: pointer; " id="unmute">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-volume-up-fill" viewBox="0 0 16 16">
                         <path
@@ -58,8 +58,16 @@
             style="width: 100%; height: 100%; position: absolute;" loop autoplay>
         </lottie-player>
         <div id="start-div">
-            <div class="d-flex flex-column justify-content-center align-items-center"
-                style="width: 100%; height: 100%;">
+            <div id="loading" style="z-index: 100; width: 100%; height: 90%;"
+                class="d-flex flex-column justify-content-center align-items-center">
+                <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
+
+                <h5 style="z-index: 100;">Retrieving Data</h5>
+            </div>
+            <div id="start-container" class="d-flex flex-column justify-content-center align-items-center"
+                style="width: 100%; height: 100%; display: none !important;">
                 <div class="question-div" style="width: 80%;max-width: 900px; margin-left: 0px; margin-right: 0px;">
                 </div>
                 <div class="quiz-desc">
@@ -80,14 +88,34 @@
                     </div>
                 </div>
                 <div style="z-index: 100; margin-bottom: 50px;">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <div class="time d-flex justify-content-center align-items-center">
-                            <div>
-                                120
+                    <div class="tocolumn d-flex justify-content-between align-items-center"
+                        style="max-width: 800px;margin: auto;">
+                        <div>
+                            <div class="score d-flex justify-content-center align-items-center">
+                                <div>
+                                    <div>Coins earned</div>
+                                    <div id="player-coins"></div>
+                                </div>
+
+                            </div>
+                            <div class="score d-flex flex-column justify-content-center align-items-center">
+                                <div>Score</div>
+                                <div>
+                                    <span id="player-score"></span>
+                                    <span>/</span>
+                                    <span id="total-score"></span>
+                                </div>
+
                             </div>
                         </div>
+                        <div class="time d-flex justify-content-center align-items-center">
+                            <div>
+                            </div>
+                        </div>
+                        <div class="next-btn score">
+                            <div>Submit: <i class="arrow right-arrow"></i></div>
+                        </div>
                     </div>
-
                 </div>
                 <div style="margin-bottom: 10px;">
                     <div class="row row-cols-2 g-0">

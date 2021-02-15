@@ -1,5 +1,8 @@
 
 var tf = true
+var questionNo = 0;
+var playerCoins = 0;
+var playerScore = 0;
 $("audio").prop("volume", 0.6);
 
 
@@ -9,17 +12,22 @@ $("#start").on("click", function () {
     $("#start").unbind("click")
     $("#quiz").css("display", "")
     $("audio").trigger("play");
-    loadQuestion(questions[2])
+    $("#total-score").text(questions.length)
+    loadQuestion(questions[questionNo])
 })
 $("#mute").on("click", function () {
-    $("audio").trigger("play")
+    console.log("false")
+    $("audio").prop("muted", false);
     $("#mute").css("display", "none")
     $("#unmute").css("display", "inline")
+    localStorage.setItem("mute", "false")
 })
 $("#unmute").on("click", function () {
-    $("audio").trigger("pause")
+    console.log("true")
+    $("audio").prop("muted", true);
     $("#mute").css("display", "inline")
     $("#unmute").css("display", "none")
+    localStorage.setItem("mute", "true")
 })
 function calEstimatedTime(quizQuestion) {
     var estTime = 0;
@@ -36,11 +44,37 @@ function shuffleArray(array) {
         array[j] = temp;
     }
 }
-
+function findMute() {
+    const tf = localStorage.getItem("mute") === 'true'
+    console.log(tf)
+    if (tf) {
+        $("audio").prop("muted", true);
+        $("#mute").css("display", "inline")
+        $("#unmute").css("display", "none")
+    } else {
+        $("audio").prop("muted", false);
+        $("#mute").css("display", "none")
+        $("#unmute").css("display", "inline")
+    }
+}
 function loadQuestion(question) {
+    $(`.answer1`).val("")
+    $(`.answer2`).val("")
+    $(`.answer3`).val("")
+    $(`.answer4`).val("")
+    $(`.answer1`).css("background-color", "")
+    $(`.answer1`).parent().parent().css("background-color", "")
+    $(`.answer2`).css("background-color", "")
+    $(`.answer2`).parent().parent().css("background-color", "")
+    $(`.answer3`).css("background-color", "")
+    $(`.answer3`).parent().parent().css("background-color", "")
+    $(`.answer4`).css("background-color", "")
+    $(`.answer4`).parent().parent().css("background-color", "")
+
     $("audio").trigger("play")
     var ans = 0
     var div;
+    questionNo += 1
     $(".innerDiv").on("click", function () {
         $(".quizInput").css("background-color", "")
         $(".quizInput").parent().parent().css("background-color", "")
@@ -50,14 +84,19 @@ function loadQuestion(question) {
         div = this
     })
     console.log(question)
-    const arr = [question.correctAns, question.wrongAns[0], question.wrongAns[1], question.wrongAns[2]]
+    var arr = [question.correctAns]
+    question.wrongAns.forEach(element => {
+        if (element != "") {
+            arr.push(element)
+        }
+
+    })
+
     $(".question-div").text(question.question)
     console.log(arr)
     shuffleArray(arr)
     console.log(arr)
     arr.forEach((element) => {
-        console.log(arr.indexOf(element) + 1)
-        console.log(element)
         $(`.answer${arr.indexOf(element) + 1}`).val(element)
     })
     $(".time").text(question.timeNeeded)
@@ -70,6 +109,10 @@ function loadQuestion(question) {
             clearInterval(timer)
             $(".innerDiv").unbind("click")
             if (ans == question.correctAns) {
+                playerCoins += question.points
+                $("#player-coins").text(playerCoins)
+                playerScore += 1
+                $("#player-score").text(playerScore)
                 var audio = new Audio('../src/correct-effect.wav');
                 audio.play();
             } else {
@@ -98,8 +141,9 @@ function loadQuestion(question) {
                 $(`.answer4`).css("background-color", "#1ae56e")
                 $(`.answer4`).parent().parent().css("background-color", "#1ae56e")
             }
+            loadQuestion(questions[questionNo])
         }
-    }, 200);
+    }, 1000);
 }
 
 var firebaseConfig = {
@@ -113,15 +157,39 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-
+findMute()
 const queryString = window.location.search;
 const key = new URLSearchParams(queryString).get("key")
 var questions = {}
 database.ref("/quiz/" + key).once("value").then((snapshot) => {
-    var state = snapshot.val() || 'Anonymous';
-    console.log($(".question-div").first())
-    $(".question-div").first().text(state.name)
-    $("#made-by").text(`Made By: ${state.ownerName}`)
-    $("#est-time").text(`Estimated quiz duration: ${calEstimatedTime(state.quizQuestion)}s`)
-    questions = state.quizQuestion
+    if (snapshot.exists()) {
+        $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
+        $("#start-container").css("display", "")
+        var state = snapshot.val() || 'Anonymous';
+        console.log($(".question-div").first())
+        $(".question-div").first().text(state.name)
+        $("#made-by").text(`Made By: ${state.ownerName}`)
+        $("#est-time").text(`Estimated quiz duration: ${calEstimatedTime(state.quizQuestion)}s`)
+        $("#start").css("background-color", "#43bc4f")
+        $("#start").css("border-bottom", "6px solid #006717")
+        $("#start").hover(function () {
+            console.log($("#start").css("background-color"))
+            if ($("#start").css("background-color") == "rgb(67, 188, 79)") {
+                $("#start").css("background-color", "#00881e")
+                $("#start").css("border-top", "2px solid #00881e")
+                $("#start").css("border-bottom", "4px solid  #003a0d")
+            } else {
+                $("#start").css("background-color", "#43bc4f")
+                $("#start").css("border-bottom", "6px solid #006717")
+                $("#start").css("border-top", "none")
+            }
+
+        })
+        questions = state.quizQuestion
+    } else {
+        $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
+        $("#start-container").css("display", "")
+        $(".question-div").first().text("Invalid quiz link")
+    }
+
 })
