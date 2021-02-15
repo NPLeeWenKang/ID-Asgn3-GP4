@@ -59,6 +59,10 @@ button{
 .card p{
     font-style: italic;
     color:rgb(83, 83, 83);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card:hover{
