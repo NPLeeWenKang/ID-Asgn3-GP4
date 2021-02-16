@@ -80,6 +80,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 $("#update").on("click", function () {
     console.log("ok")
     const snapshot = {
+        coins: $("#coins").text(),
         uid: userDetails.uid,
         profilePic: findAvatarSrc(),
         username: $("#modal-username").val(),
