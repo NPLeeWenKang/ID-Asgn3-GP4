@@ -48,77 +48,83 @@
     </div>
 
     <div class="scroll-div">
-        <div class="main">
-            <div id="loading-icon" style="margin-top: 100px;"
-                class="loading-icon d-flex flex-column justify-content-center align-items-center">
-                <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
-                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+        <div id="loading-icon" style="margin-top: 100px;"
+            class="loading-icon d-flex flex-column justify-content-center align-items-center">
+            <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+            </lottie-player>
 
-                <h5>Retrieving Quizzes</h5>
-            </div>
-            <div class="container" id="main-content" style="display: none;">
-                <div class="avatar-wrapper">
-                    <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <div id="profile-text">
-                            + Add Avatar
+            <h5>Retrieving Quizzes</h5>
+        </div>
+        <div id="main-content" style="display: none;">
+            <div class="main">
+                <div class="container">
+                    <div class="avatar-wrapper">
+                        <button id="profile-wrapper"
+                            class="add-avatar-btn d-flex justify-content-center align-items-center"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div id="profile-text">
+                                + Add Avatar
+                            </div>
+
+                            <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
+                        </button>
+                        <div class="player-coin">
+                            <img src="src/coin.png" alt="img of coin">
+                            <p style=" vertical-align: middle;">5000
+                            <p>
+                        </div>
+                    </div>
+                    <div class="text-container">
+                        <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
+
+                        <div class="split-information">
+                            <div style="margin-bottom: 10px;" class="email-div">
+                                <h3>Email</h3>
+                                <p id="email"></p>
+                                <!--<p>EMAIL SHOULD BE HERE<p>-->
+                            </div>
+
+                            <div class="edu-div">
+                                <h3>Education Institute</h3>
+                                <p id="edu-inst"></p>
+                                <!--<p>Education SHOULD BE HERE<p>-->
+                            </div>
                         </div>
 
-                        <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
-                    </button>
-                    <div class="player-coin">
-                        <img src="src/coin.png" alt="img of coin">
-                        <p style=" vertical-align: middle;">5000
-                        <p>
+                        <div class="split-information">
+                            <div style="margin-bottom: 10px;" class="grade-div">
+                                <h3>Grade</h3>
+                                <p id="grade"></p>
+                            </div>
+
+                            <!--<p>Grade SHOULD BE HERE<p>-->
+                            <div class="bday-div">
+                                <h3>Birthday</h3>
+                                <p id="birthday"></p>
+                            </div>
+
+                            <!--<p>Birthday SHOULD BE HERE<p>-->
+                        </div>
+                        <button id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit
+                            Profile</button>
                     </div>
                 </div>
-                <div class="text-container">
-                    <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
-
-                    <div class="split-information">
-                        <div style="margin-bottom: 10px;" class="email-div">
-                            <h3>Email</h3>
-                            <p id="email"></p>
-                            <!--<p>EMAIL SHOULD BE HERE<p>-->
-                        </div>
-
-                        <div class="edu-div">
-                            <h3>Education Institute</h3>
-                            <p id="edu-inst"></p>
-                            <!--<p>Education SHOULD BE HERE<p>-->
-                        </div>
-                    </div>
-
-                    <div class="split-information">
-                        <div style="margin-bottom: 10px;" class="grade-div">
-                            <h3>Grade</h3>
-                            <p id="grade"></p>
-                        </div>
-
-                        <!--<p>Grade SHOULD BE HERE<p>-->
-                        <div class="bday-div">
-                            <h3>Birthday</h3>
-                            <p id="birthday"></p>
-                        </div>
-
-                        <!--<p>Birthday SHOULD BE HERE<p>-->
-                    </div>
-                    <button id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</button>
+            </div>
+            <div class="items-div" style="margin-top: 30px;">
+                <div class="badges-div">
+                    <h3>Badges</h3>
+                    <span></span>
+                    ...
+                </div>
+                <div class="collectibles-div">
+                    <h3>Collectibles</h3>
+                    <span></span>
+                    ...
                 </div>
             </div>
         </div>
-        <div class="items-div" style="margin-top: 30px;">
-            <div class="badges-div">
-                <h3>Badges</h3>
-                <span></span>
-                ...
-            </div>
-            <div class="collectibles-div">
-                <h3>Collectibles</h3>
-                <span></span>
-                ...
-            </div>
-        </div>
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="max-width: 950px;">

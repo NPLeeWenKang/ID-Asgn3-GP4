@@ -158,11 +158,6 @@ h3{
   background: #0c5783;
   margin-bottom: 30px;
 }
-@media screen and (min-width:800px) and (max-width:1030px){
-  .sideBar{
-    height: 120%;
-  }
-}
 
 @media screen and (min-width: 800px){
   .container{
