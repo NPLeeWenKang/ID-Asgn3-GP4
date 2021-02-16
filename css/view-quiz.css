@@ -87,8 +87,13 @@ button{
     margin: auto;
     bottom: 16px;
 }
-
-
+.sample-qns span{
+    display: inline-block;
+    height: 3px;
+    width: 100px;
+    background: #0c5783;
+    margin-bottom: 15px;
+}
 
 /*MEDIA QUERY*/
 @media only screen and (max-width: 1077px) {
