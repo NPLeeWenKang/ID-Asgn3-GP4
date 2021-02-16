@@ -158,6 +158,27 @@ h3{
   background: #0c5783;
   margin-bottom: 30px;
 }
+.badges-div,.collectibles-div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.item{
+  margin:20px;
+}
+
+.item-img{
+  display: block;
+  margin: auto;
+  width:130px;
+}
+
+.item-name{
+  margin-top: 8px;
+  color:black;
+}
 
 @media screen and (min-width: 800px){
   .container{
@@ -232,6 +253,9 @@ h3{
   }
   .avatar-wrapper{
     height:250px;
+  }
+  .item-img{
+    width:100px;
   }
 }
 
