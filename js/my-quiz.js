@@ -48,6 +48,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                         database.ref("quiz/" + element).once("value").then((snapshot) => {
                             if (snapshot.exists()) {
                                 loadQuizzes(snapshot.val())
+                                $("#my-quizzes").css("display", "")
+                                $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
                             } else {
                                 console.log("null")
                             }

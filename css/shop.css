@@ -1,5 +1,9 @@
 
 /*Section of the quiz cards*/
+.scroll-wrapper{
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+}
 .main-section {
     display: flex;
     justify-content: center;

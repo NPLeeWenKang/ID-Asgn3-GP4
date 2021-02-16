@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="scroll-div">
-        <div id="my-quizzes">
+        <div id="my-quizzes" style="display: none;">
             <a href="create-quiz.html" id="create-new-btn"><i class="fa fa-plus-circle fa-lg"></i>Create New</a>
             <div class="container">
                 <div id="add-img">
@@ -63,21 +63,29 @@
             </div>
 
         </div>
+        <div id="loading-icon" style="margin-top: 100px;"
+            class="loading-icon d-flex flex-column justify-content-center align-items-center">
+            <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+
+            <h5>Retrieving Quizzes</h5>
+        </div>
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="deleteQuizModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog"  style="max-width: 650px; margin-top:140px;">
+        <div class="modal-dialog" style="max-width: 650px; margin-top:140px;">
             <div class="modal-content">
                 <div class="modal-body" style="text-align: center;">
                     <img src="src/bin.png" width="120px;" style="margin:30px">
                     <h3>DELETE QUIZ</h3>
-                    <p style="margin-top: 15px;">Are you sure you want to delete your quiz? This process cannot be undone</p>
+                    <p style="margin-top: 15px;">Are you sure you want to delete your quiz? This process cannot be
+                        undone</p>
 
-			<div class="modal-footer justify-content-center">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-danger">Delete</button>
-			</div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
