@@ -1,3 +1,37 @@
+$("#link").on("keypress", function (event) {
+    if (event.key == "Enter") {
+        const urlLocation = $("#link").val()
+        const key = new URLSearchParams(urlLocation).get("key")
+        database.ref("/quiz/" + key).once("value").then((snapshot) => {
+            if (snapshot.exists()) {
+                window.location = urlLocation
+            } else {
+                $("#warning").css("display", "")
+                setTimeout(function () {
+                    $("#warning").css("display", "none")
+                }, 3000)
+            }
+        })
+
+    }
+})
+$("#link-btn").on("click", function () {
+
+    const urlLocation = $("#link").val()
+    const key = new URLSearchParams(urlLocation).get("key")
+    database.ref("/quiz/" + key).once("value").then((snapshot) => {
+        if (snapshot.exists()) {
+            window.location = urlLocation
+        } else {
+            $("#warning").css("display", "")
+            setTimeout(function () {
+                $("#warning").css("display", "none")
+            }, 3000)
+        }
+    })
+
+
+})
 function createQuizBox(key, value, quiz_area) {
     {/* <div id="card" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <img class="quiz-img" src="...">

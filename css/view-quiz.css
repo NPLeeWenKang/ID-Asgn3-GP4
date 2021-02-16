@@ -13,6 +13,7 @@ button:focus { outline: none; }
     /*border:1px solid navy;*/
 }
 .scroll-div{
+    position: relative;
     height: calc(100vh - 56px);
     overflow-y: auto;
 }
@@ -79,6 +80,13 @@ button{
     padding:15px;
 }
 
+.fix-warning{
+    position: sticky !important;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    bottom: 16px;
+}
 
 
 

@@ -46,8 +46,8 @@
     <div class="scroll-div">
         <div>
             <div class="container">
-                <input type="text" placeholder="Enter URL of quiz">
-                <button><i class="fa fa-search" id="search-btn"></i></button>
+                <input id="link" type="text" placeholder="Enter URL of quiz" autocomplete="off">
+                <button id="link-btn"><i class="fa fa-search" id="search-btn"></i></button>
             </div>
 
             <section class="main-section" id="quiz-area" style="display: none;">
@@ -61,6 +61,12 @@
 
             <h5>Retrieving Quizzes</h5>
         </div>
+
+        <div style="display: none;" id="warning" class="alert alert-danger fix-warning" role="alert">
+            Invalid url, Did you copy it wrongly?
+        </div>
+
+
     </div>
 
 
