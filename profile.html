@@ -47,126 +47,137 @@
         </div>
     </div>
 
-    <div class="main">
-        <div id="loading-icon" style="margin-top: 100px;"
-            class="loading-icon d-flex flex-column justify-content-center align-items-center">
-            <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
-                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <div class="scroll-div">
+        <div class="main">
+            <div id="loading-icon" style="margin-top: 100px;"
+                class="loading-icon d-flex flex-column justify-content-center align-items-center">
+                <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                    background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
 
-            <h5>Retrieving Quizzes</h5>
-        </div>
-        <div class="container" id="main-content" style="display: none;">
-            <div class="avatar-wrapper">
-                <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <div id="profile-text">
-                        + Add Avatar
-                    </div>
-
-                    <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
-                </button>
-                <div class="player-coin">
-                    <img src="src/coin.png" alt="img of coin">
-                    <p style=" vertical-align: middle;">5000
-                    <p>
-                </div>
+                <h5>Retrieving Quizzes</h5>
             </div>
-            <div class="text-container">
-                <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
-
-                <div class="split-information">
-                    <div style="margin-bottom: 10px;" class="email-div">
-                        <h3>Email</h3>
-                        <p id="email"></p>
-                        <!--<p>EMAIL SHOULD BE HERE<p>-->
-                    </div>
-
-                    <div class="edu-div">
-                        <h3>Education Institute</h3>
-                        <p id="edu-inst"></p>
-                        <!--<p>Education SHOULD BE HERE<p>-->
-                    </div>
-                </div>
-
-                <div class="split-information">
-                    <div style="margin-bottom: 10px;" class="grade-div">
-                        <h3>Grade</h3>
-                        <p id="grade"></p>
-                    </div>
-
-                    <!--<p>Grade SHOULD BE HERE<p>-->
-                    <div class="bday-div">
-                        <h3>Birthday</h3>
-                        <p id="birthday"></p>
-                    </div>
-
-                    <!--<p>Birthday SHOULD BE HERE<p>-->
-                </div>
-
-                <button id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 950px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="avatar-img" style="margin-bottom: 50px; width: 100%;">
-                        <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-2.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/woman-3.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/woman-4.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-4.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/woman-5.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-5.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/woman-2.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-1.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-3.png" width="120px">
-                        <img class="choose-ava" src="src/Avatar-images/man-6.png" width="120px">
-                    </div>
-                    <form autocomplete="off">
-                        <div class="mb-3">
-                            <label for="modal-username" class="form-label">User name</label>
-                            <input maxlength="15" type="text" class="form-control" id="modal-username"
-                                aria-describedby="emailHelp">
+            <div class="container" id="main-content" style="display: none;">
+                <div class="avatar-wrapper">
+                    <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div id="profile-text">
+                            + Add Avatar
                         </div>
-                        <div class="mb-3">
-                            <div class="mb-3">
-                                <label for="modal-email" class="form-label">Email address</label>
-                                <input maxlength="50" type="email" class="form-control" id="modal-email"
-                                    aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="modal-edu-inst" class="form-label">Education Institute</label>
-                                <input maxlength="25" type="text" class="form-control" id="modal-edu-inst">
-                            </div>
-                            <div class="mb-3">
-                                <label for="modal-grade" class="form-label">Grade</label>
-                                <input maxlength="15" type="text" class="form-control" id="modal-grade">
-                            </div>
-                            <div class="mb-3">
-                                <label for="modal-birthday" class="form-label">Birthday</label>
-                                <input type="date" class="form-control" id="modal-birthday">
-                            </div>
-                    </form>
+
+                        <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
+                    </button>
+                    <div class="player-coin">
+                        <img src="src/coin.png" alt="img of coin">
+                        <p style=" vertical-align: middle;">5000
+                        <p>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="update" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update
-                        Profile</button>
+                <div class="text-container">
+                    <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
+
+                    <div class="split-information">
+                        <div style="margin-bottom: 10px;" class="email-div">
+                            <h3>Email</h3>
+                            <p id="email"></p>
+                            <!--<p>EMAIL SHOULD BE HERE<p>-->
+                        </div>
+
+                        <div class="edu-div">
+                            <h3>Education Institute</h3>
+                            <p id="edu-inst"></p>
+                            <!--<p>Education SHOULD BE HERE<p>-->
+                        </div>
+                    </div>
+
+                    <div class="split-information">
+                        <div style="margin-bottom: 10px;" class="grade-div">
+                            <h3>Grade</h3>
+                            <p id="grade"></p>
+                        </div>
+
+                        <!--<p>Grade SHOULD BE HERE<p>-->
+                        <div class="bday-div">
+                            <h3>Birthday</h3>
+                            <p id="birthday"></p>
+                        </div>
+
+                        <!--<p>Birthday SHOULD BE HERE<p>-->
+                    </div>
+                    <button id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="items-div" style="margin-top: 30px;">
+            <div class="badges-div">
+                <h3>Badges</h3>
+                <span></span>
+                ...
+            </div>
+            <div class="collectibles-div">
+                <h3>Collectibles</h3>
+                <span></span>
+                ...
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="max-width: 950px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="avatar-img" style="margin-bottom: 50px; width: 100%;">
+                            <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-2.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-3.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-4.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-4.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-5.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-5.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-2.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-1.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-3.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/man-6.png" width="120px">
+                        </div>
+                        <form autocomplete="off">
+                            <div class="mb-3">
+                                <label for="modal-username" class="form-label">User name</label>
+                                <input maxlength="15" type="text" class="form-control" id="modal-username"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <div class="mb-3">
+                                    <label for="modal-email" class="form-label">Email address</label>
+                                    <input maxlength="50" type="email" class="form-control" id="modal-email"
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modal-edu-inst" class="form-label">Education Institute</label>
+                                    <input maxlength="25" type="text" class="form-control" id="modal-edu-inst">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modal-grade" class="form-label">Grade</label>
+                                    <input maxlength="15" type="text" class="form-control" id="modal-grade">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modal-birthday" class="form-label">Birthday</label>
+                                    <input type="date" class="form-control" id="modal-birthday">
+                                </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="update" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Update
+                            Profile</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>

@@ -11,7 +11,10 @@ button{
 #my-quizzes{
   margin-top:70px;
 }
-
+.scroll-div{
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
 .main{
   display: flex;
   align-items: center;
@@ -27,7 +30,6 @@ button{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin:5px;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
   padding:20px;
 }
@@ -139,7 +141,23 @@ h3{
 .email-div,.edu-div,.grade-div,.bday-div{
   width:380px;
 }
-
+.items-div{
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  padding:20px;
+  width:65%;
+  margin:auto;
+}
+.items-div span{
+  display: inline-block;
+  height: 5px;
+  width: 50px;
+  background: #0c5783;
+  margin-bottom: 30px;
+}
 @media screen and (min-width:800px) and (max-width:1030px){
   .sideBar{
     height: 120%;
@@ -153,7 +171,7 @@ h3{
   }
 }
 @media screen and (min-width: 1024px){
-  .container{
+  .container,.items-{
       max-width: 1200px;
   }
 }
@@ -175,7 +193,7 @@ h3{
       width:95%;
       padding:25px;
     }
-    .main{
+    .main,.items-div{
       width: 75%;
     }
 }
@@ -205,7 +223,7 @@ h3{
     bottom:10px;
     right:20px;
   }
-  .main{
+  .main,.items-div{
     width: 90%;
   }
   .choose-ava{
