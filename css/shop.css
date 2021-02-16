@@ -1,19 +1,24 @@
-
-/*Section of the quiz cards*/
 .scroll-wrapper{
     height: calc(100vh - 56px);
     overflow-y: auto;
 }
-.main-section {
+
+.badges-section,.collectibles-section{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top:50px;
 }
-
-#card {
-    width: 220px;
-    height: 220px;
+h2{
+    text-align: center;
+    background-color:rgb(170, 225, 229);
+    width:20%; 
+    margin: auto;
+    margin-top: 50px; 
+    padding:5px;
+}
+.card {
+    width: 230px;
+    height: 230px;
     margin: 50px;
     border-radius: 8px;
     background: #fff;
@@ -36,16 +41,16 @@
 .coin-div p{
     margin: auto;
 }
-#card:hover{
+.card:hover{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.404);
     transition: 0.2s;
 }
 
 .quiz-img{
-    width:130px;
-    height:130px;
+    width:120px;
+    height:120px;
     display: block;
-    margin: auto;
+    margin: 5px auto;
 }
 
 .text-div{
