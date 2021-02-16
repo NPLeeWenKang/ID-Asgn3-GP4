@@ -1,6 +1,6 @@
 var database = firebase.database();
-
-function loadUserData(snapshot) {
+var userDetails;
+function loadUserData(snapshot, user) {
     sessionStorage.setItem("user", JSON.stringify(snapshot))
     displayData()
 }
@@ -15,12 +15,11 @@ function displayData() {
         $("#profile-pic").attr("src", data.profilePic)
         $("#profile-pic").css("display", "")
     }
-
-    $("#email").text(data.email)
+    $("#email").text(userDetails.email)
     $("#edu-inst").text(data.edu)
     $("#grade").text(data.grade)
     $("#birthday").text(data.bDay)
-
+    $("#coins").text(data.coins)
 
     $("#modal-username").val(data.username)
     const ava = document.querySelectorAll(".choose-ava")
@@ -49,6 +48,7 @@ function findAvatarSrc() {
 function noUserData(user, snapshot) {
     database.ref("user/" + user.uid).set({
         username: "User Name",
+        coins: 50
     }, (error) => {
         const data = {
             username: "User Name"
@@ -58,12 +58,13 @@ function noUserData(user, snapshot) {
 }
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        userDetails = user
         database.ref("user/" + user.uid).once("value").then((snapshot) => {
             $("#main-content").css("display", "")
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (snapshot.exists()) {
                 console.log("exists")
-                loadUserData(snapshot.val())
+                loadUserData(snapshot.val(), user)
             } else {
                 console.log("null")
                 noUserData(user, snapshot)
@@ -78,10 +79,9 @@ $("#update").on("click", function () {
     const snapshot = {
         profilePic: findAvatarSrc(),
         username: $("#modal-username").val(),
-        email: $("#modal-email").val(),
         edu: $("#modal-edu-inst").val(),
         grade: $("#modal-grade").val(),
-        dDay: $("#modal-birthday").val(),
+        bDay: $("#modal-birthday").val(),
     }
     console.log(findAvatarSrc())
     console.log(snapshot)
