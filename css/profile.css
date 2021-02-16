@@ -24,6 +24,7 @@ button{
   position: relative;
 }
 .container{
+  box-sizing: initial;
   background: white;
   display: flex;
   flex-wrap: wrap;
@@ -35,8 +36,9 @@ button{
 }
 
 .text-container{
-  flex:1 0 1;
+  
   display:flex;
+  flex:1 0 1;
   flex-direction:column;
   padding:40px;
 }
@@ -142,6 +144,7 @@ h3{
   width:380px;
 }
 .items-div{
+  box-sizing: initial;
   background: white;
   display: flex;
   flex-wrap: wrap;
