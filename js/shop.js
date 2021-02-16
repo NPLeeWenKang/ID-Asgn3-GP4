@@ -16,3 +16,15 @@ $("#purchase-btn").on("click", function () {
     }
 
 })
+
+var firebaseConfig = {
+    apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
+    authDomain: "id-assign3.firebaseapp.com",
+    projectId: "id-assign3",
+    storageBucket: "id-assign3.appspot.com",
+    messagingSenderId: "193413395450",
+    appId: "1:193413395450:web:df43638dcdb414967aea43"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
