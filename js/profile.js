@@ -1,6 +1,7 @@
 var database = firebase.database();
 var userDetails;
-function loadUserData(snapshot, user) {
+var snapshotDetails;
+function loadUserData(snapshot) {
     sessionStorage.setItem("user", JSON.stringify(snapshot))
     displayData()
 }
@@ -8,6 +9,7 @@ function loadUserData(snapshot, user) {
 function displayData() {
     var dataString = sessionStorage.getItem("user")
     var data = JSON.parse(dataString)
+    snapshotDetails = data
     $("#username").text(data.username)
     if (data.profilePic != null) {
 
@@ -45,7 +47,7 @@ function findAvatarSrc() {
     }
     return src
 }
-function noUserData(user, snapshot) {
+function noUserData(user) {
     database.ref("user/" + user.uid).set({
         username: "User Name",
         coins: 50,
@@ -67,10 +69,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (snapshot.exists()) {
                 console.log("exists")
-                loadUserData(snapshot.val(), user)
+                snapshot
+                loadUserData(snapshot.val())
             } else {
                 console.log("null")
-                noUserData(user, snapshot)
+                noUserData(user)
             }
         })
     } else {
@@ -87,6 +90,7 @@ $("#update").on("click", function () {
         edu: $("#modal-edu-inst").val(),
         grade: $("#modal-grade").val(),
         bDay: $("#modal-birthday").val(),
+        items: snapshotDetails.items,
     }
     console.log(findAvatarSrc())
     console.log(snapshot)
