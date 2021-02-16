@@ -48,10 +48,13 @@ function findAvatarSrc() {
 function noUserData(user, snapshot) {
     database.ref("user/" + user.uid).set({
         username: "User Name",
-        coins: 50
+        coins: 50,
+        uid: user.uid
     }, (error) => {
         const data = {
-            username: "User Name"
+            username: "User Name",
+            coins: 50,
+            uid: user.uid
         }
         loadUserData(data)
     })
@@ -77,6 +80,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 $("#update").on("click", function () {
     console.log("ok")
     const snapshot = {
+        uid: userDetails.uid,
         profilePic: findAvatarSrc(),
         username: $("#modal-username").val(),
         edu: $("#modal-edu-inst").val(),
