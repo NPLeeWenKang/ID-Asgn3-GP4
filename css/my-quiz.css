@@ -24,6 +24,20 @@ button{
     margin-top:70px;
     
 }
+.backdrop-img{
+    height:350px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.choose-backdrop{
+    width:300px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    margin:20px;
+    border-radius:10px;
+}
+
 .container{
     background: white;
     display: flex;
@@ -43,7 +57,7 @@ button{
 }
 
 .add-icon-btn{
-    width:150px;
+    width:200px;
     height: 150px;
     border-style: dashed;
     outline: none;
@@ -90,5 +104,9 @@ button{
     }
     .container{
         width:90%;
+    }
+    .choose-backdrop{
+        width:200px;
+        height: 150px;
     }
 }
