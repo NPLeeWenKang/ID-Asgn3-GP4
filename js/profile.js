@@ -59,6 +59,8 @@ function noUserData(user, snapshot) {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         database.ref("user/" + user.uid).once("value").then((snapshot) => {
+            $("#main-content").css("display", "")
+            $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (snapshot.exists()) {
                 console.log("exists")
                 loadUserData(snapshot.val())

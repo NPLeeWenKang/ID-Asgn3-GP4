@@ -48,7 +48,14 @@
     </div>
 
     <div class="main">
-        <div class="container">
+        <div id="loading-icon" style="margin-top: 100px;"
+            class="loading-icon d-flex flex-column justify-content-center align-items-center">
+            <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+
+            <h5>Retrieving Quizzes</h5>
+        </div>
+        <div class="container" id="main-content" style="display: none;">
             <div class="avatar-wrapper">
                 <button id="profile-wrapper" class="add-avatar-btn d-flex justify-content-center align-items-center"
                     data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -60,7 +67,8 @@
                 </button>
                 <div class="player-coin">
                     <img src="src/coin.png" alt="img of coin">
-                    <p style=" vertical-align: middle;">5000<p>
+                    <p style=" vertical-align: middle;">5000
+                    <p>
                 </div>
             </div>
             <div class="text-container">
@@ -71,7 +79,7 @@
                         <h3>Email</h3>
                         <p id="email"></p>
                         <!--<p>EMAIL SHOULD BE HERE<p>-->
-                    </div> 
+                    </div>
 
                     <div class="edu-div">
                         <h3>Education Institute</h3>

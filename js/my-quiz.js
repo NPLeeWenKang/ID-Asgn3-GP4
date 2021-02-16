@@ -46,16 +46,18 @@ firebase.auth().onAuthStateChanged(function (user) {
                 if (value.quizCreated != null) {
                     value.quizCreated.forEach(element => {
                         database.ref("quiz/" + element).once("value").then((snapshot) => {
+                            $("#my-quizzes").css("display", "")
+                            $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
                             if (snapshot.exists()) {
                                 loadQuizzes(snapshot.val())
-                                $("#my-quizzes").css("display", "")
-                                $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
                             } else {
                                 console.log("null")
                             }
                         })
                     });
                 } else {
+                    $("#my-quizzes").css("display", "")
+                    $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
                     console.log("no quiz created")
                 }
 
