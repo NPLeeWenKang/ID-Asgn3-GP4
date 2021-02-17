@@ -39,17 +39,39 @@ nav {
     margin-bottom: 60px;
 }
 .forth-row{
-    height:200px;
+    height:250px;
     margin: 0;
     margin-bottom: 30px;
 }
 .forth-row-content{
-    height:200px;
+    height:250px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
+}
+.back-btn {
+    border:none;
+    outline: none;
+    background-color: #0c5783;
+    color: rgb(255, 255, 255);
+    padding: 18px 32px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 30px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1),
+    0 15px 12px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: opacity 0.9;
+    transition: 0.3s;
+    margin-top: 30px;
+}
+
+.back-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
 }
 @media screen and (min-width:250px) and (max-width:500px){
     .second-row,.third-row{
