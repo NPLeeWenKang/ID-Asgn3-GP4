@@ -29,7 +29,30 @@ $("#purchase-btn").on("click", function () {
     }
 
 })
-
+function removeItem() {
+    var dataString = sessionStorage.getItem("user")
+    var data = JSON.parse(dataString)
+    if (data.items.badges != null) {
+        const badgeDiv = document.querySelectorAll(".badges")
+        data.items.badges.forEach(badge => {
+            badgeDiv.forEach(element => {
+                if (element.firstElementChild.getAttribute("src") == badge) {
+                    element.parentNode.removeChild(element)
+                }
+            })
+        });
+    }
+    if (data.items.collectibles != null) {
+        const collectibleDiv = document.querySelectorAll(".collectible")
+        data.items.collectibles.forEach(collectible => {
+            collectibleDiv.forEach(element => {
+                if (element.firstElementChild.getAttribute("src") == collectible) {
+                    element.parentNode.removeChild(element)
+                }
+            })
+        });
+    }
+}
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
     authDomain: "id-assign3.firebaseapp.com",
@@ -48,6 +71,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         if (sessionStorage.getItem("user") == null) {
             window.location = "profile.html"
         }
+        removeItem()
     } else {
         window.location = "login.html"
     }
