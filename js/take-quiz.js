@@ -1,4 +1,3 @@
-
 var tf = true
 var questionNo = 0;
 var playerCoins = 0;
@@ -16,19 +15,29 @@ $("#start").on("click", function () {
     loadQuestion(questions[questionNo])
 })
 $("#mute").on("click", function () {
-    console.log("false")
     $("audio").prop("muted", false);
     $("#mute").css("display", "none")
     $("#unmute").css("display", "inline")
     localStorage.setItem("mute", "false")
 })
 $("#unmute").on("click", function () {
-    console.log("true")
     $("audio").prop("muted", true);
     $("#mute").css("display", "inline")
     $("#unmute").css("display", "none")
     localStorage.setItem("mute", "true")
 })
+function loadEnd() {
+    $("#quiz").css("display", "none")
+    $("#end").css("display", "")
+    $("#final-score").text(`${playerScore}/${questionNo}`)
+    $("#coins-earned").text(playerCoins)
+    var dataString = sessionStorage.getItem("user")
+    var data = JSON.parse(dataString)
+    data.coins = parseInt(data.coins) + playerCoins
+    database.ref("user/" + data.uid).update({ coins: data.coins })
+    sessionStorage.setItem("user", data)
+
+}
 function calEstimatedTime(quizQuestion) {
     var estTime = 0;
     for (const [key, value] of Object.entries(quizQuestion)) {
@@ -46,7 +55,6 @@ function shuffleArray(array) {
 }
 function findMute() {
     const tf = localStorage.getItem("mute") === 'true'
-    console.log(tf)
     if (tf) {
         $("audio").prop("muted", true);
         $("#mute").css("display", "inline")
@@ -58,10 +66,14 @@ function findMute() {
     }
 }
 function loadQuestion(question) {
-    $(`.answer1`).val("")
-    $(`.answer2`).val("")
-    $(`.answer3`).val("")
-    $(`.answer4`).val("")
+    if (question == null) {
+        loadEnd()
+        return
+    }
+    $(`.answer1>div`).text("")
+    $(`.answer2>div`).text("")
+    $(`.answer3>div`).text("")
+    $(`.answer4>div`).text("")
     $(`.answer1`).css("background-color", "")
     $(`.answer1`).parent().parent().css("background-color", "")
     $(`.answer2`).css("background-color", "")
@@ -78,12 +90,11 @@ function loadQuestion(question) {
     questionNo += 1
     $(".innerDiv").unbind("click")
     $(".innerDiv").on("click", function () {
-        console.log("ok")
         $(".quizInput").css("background-color", "")
         $(".quizInput").parent().parent().css("background-color", "")
         $(this).css("background-color", "#aaff00")
         $(this).parent().parent().css("background-color", "#aaff00")
-        ans = $(this).find("input").val()
+        ans = $(this).find("div.quizInput>div").text()
         div = this
     })
     $("#done").unbind("click")
@@ -97,7 +108,6 @@ function loadQuestion(question) {
         }
 
     })
-    console.log(question)
     var arr = [question.correctAns]
     question.wrongAns.forEach(element => {
         if (element != "") {
@@ -105,7 +115,7 @@ function loadQuestion(question) {
         }
 
     })
-
+    shuffleArray(arr)
     $(".question-div").text(question.question)
     arr.forEach((element) => {
         $(`.answer${arr.indexOf(element) + 1}>div`).text(element)
@@ -124,7 +134,7 @@ function loadQuestion(question) {
 }
 function markQuestion(ans, div, question) {
     if (ans == question.correctAns) {
-        playerCoins += question.points
+        playerCoins += question.points / 100
         $("#player-coins").text(playerCoins)
         playerScore += 1
         $("#player-score").text(playerScore)
@@ -138,21 +148,20 @@ function markQuestion(ans, div, question) {
 
 
     $("audio").trigger("pause")
-    console.log($(`.answer2`).val())
-    $(".time").css("background-color", "#d05860")
-    if ($(`.answer1`).val() == question.correctAns) {
+    $(".time").css("background-color", "#676767")
+    if ($(`.answer1>div`).text() == question.correctAns) {
         $(`.answer1`).css("background-color", "#1ae56e")
         $(`.answer1`).parent().parent().css("background-color", "#1ae56e")
     }
-    if ($(`.answer2`).val() == question.correctAns) {
+    if ($(`.answer2>div`).text() == question.correctAns) {
         $(`.answer2`).css("background-color", "#1ae56e")
         $(`.answer2`).parent().parent().css("background-color", "#1ae56e")
     }
-    if ($(`.answer3`).val() == question.correctAns) {
+    if ($(`.answer3>div`).text() == question.correctAns) {
         $(`.answer3`).css("background-color", "#1ae56e")
         $(`.answer3`).parent().parent().css("background-color", "#1ae56e")
     }
-    if ($(`.answer4`).val() == question.correctAns) {
+    if ($(`.answer4>div`).text() == question.correctAns) {
         $(`.answer4`).css("background-color", "#1ae56e")
         $(`.answer4`).parent().parent().css("background-color", "#1ae56e")
     }
@@ -177,14 +186,13 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
         $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
         $("#start-container").css("display", "")
         var state = snapshot.val() || 'Anonymous';
-        console.log($(".question-div").first())
         $(".question-div").first().text(state.name)
+        $(".end-title").text(state.name)
         $("#made-by").text(`Made By: ${state.ownerName}`)
         $("#est-time").text(`Estimated quiz duration: ${calEstimatedTime(state.quizQuestion)}s`)
         $("#start").css("background-color", "#43bc4f")
         $("#start").css("border-bottom", "6px solid #006717")
         $("#start").hover(function () {
-            console.log($("#start").css("background-color"))
             if ($("#start").css("background-color") == "rgb(67, 188, 79)") {
                 $("#start").css("background-color", "#00881e")
                 $("#start").css("border-top", "2px solid #00881e")
@@ -207,7 +215,6 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(sessionStorage.getItem("user"))
         if (sessionStorage.getItem("user") == null) {
             window.location = "profile.html"
         }
