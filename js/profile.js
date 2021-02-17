@@ -154,3 +154,29 @@ $(".choose-ava").on("click", function () {
     $(".choose-ava").css("background-color", "")
     $(this).css("background-color", "green")
 })
+
+
+// Navigation Bar
+if (window.innerWidth < 800) {
+    // On first start up
+    $("#hamburger").css("display", "")
+    $("#navbarSupportedContent").css("display", "")
+    $("#nav-btn").css("display", "none")
+} else {
+    $("#hamburger").css("display", "none")
+    $("#navbarSupportedContent").css("display", "none")
+    $("#nav-btn").css("display", "")
+}
+window.addEventListener("resize", function (event) {
+    // Only on screen size change
+    if (window.innerWidth < 800) {
+        // On first start up
+        $("#hamburger").css("display", "")
+        $("#navbarSupportedContent").css("display", "")
+        $("#nav-btn").css("display", "none")
+    } else {
+        $("#hamburger").css("display", "none")
+        $("#navbarSupportedContent").css("display", "none")
+        $("#nav-btn").css("display", "")
+    }
+})

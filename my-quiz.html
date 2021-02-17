@@ -25,6 +25,27 @@
                 <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
                 Luminate
             </a>
+            <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-bar">
+                    <li class="nav-item">
+                        <a class="active" href="profile.html"><i class="fa fa-user fa-lg"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="active" href="view-quiz.html"><i class="fa fa-pencil-square fa-lg"></i>Take Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-quiz.html"><i class="fa fa-folder fa-lg"></i>My Quizzes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html"><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
+                    </li>
+                </ul>
+            </div>
             <div id="nav-btn">
                 <div style="display: inline;"
                     onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
@@ -91,41 +112,42 @@
         </div>
     </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="addQuizIzon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" style="max-width: 1200px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Quiz Icon</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal -->
+    <div class="modal fade" id="addQuizIzon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 1200px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Quiz Icon</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="quiz-icon-imgs" style="margin-bottom: 50px; width: 100%;">
+                        <img class="choose-icon" src="src/Category-Images/Animals.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Anime.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Art.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Board-Games.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Comics.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Books.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Gadgets.jpg">
+                        <img class="choose-icon" src="src/Category-Images/General-Knowledge.png">
+                        <img class="choose-icon" src="src/Category-Images/Geography.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Cartoon.jpg">
+                        <img class="choose-icon" src="src/Category-Images/History.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Math.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Music.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Musical.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Mythology.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Politics.jpg">
                     </div>
-                    <div class="modal-body">
-                        <div class="quiz-icon-imgs" style="margin-bottom: 50px; width: 100%;">
-                            <img class="choose-icon" src="src/Category-Images/Animals.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Anime.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Art.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Board-Games.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Comics.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Books.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Gadgets.jpg">
-                            <img class="choose-icon" src="src/Category-Images/General-Knowledge.png">
-                            <img class="choose-icon" src="src/Category-Images/Geography.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Cartoon.jpg">
-                            <img class="choose-icon" src="src/Category-Images/History.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Math.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Music.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Musical.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Mythology.jpg">
-                            <img class="choose-icon" src="src/Category-Images/Politics.jpg">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="update" type="button" class="btn btn-Success" data-bs-dismiss="modal">Confirm Selection</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="update" type="button" class="btn btn-Success" data-bs-dismiss="modal">Confirm
+                        Selection</button>
                 </div>
             </div>
         </div>
-    
+    </div>
+
 
 
 </body>

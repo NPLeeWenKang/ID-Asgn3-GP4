@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
+body{
+    overflow-y: hidden;
+}
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -60,4 +62,11 @@ a{
 
 .sideBar-links .active{
     color:rgb(9, 0, 68);
+}
+
+.nav-bar a{
+    color: rgb(121, 121, 121);
+}
+.nav-bar .active{
+    color: rgb(9, 0, 68);
 }

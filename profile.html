@@ -25,6 +25,27 @@
                 <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
                 Luminate
             </a>
+            <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-bar">
+                    <li class="nav-item">
+                        <a class="active" href="profile.html"><i class="fa fa-user fa-lg"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="view-quiz.html"><i class="fa fa-pencil-square fa-lg"></i>Take Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="my-quiz.html"><i class="fa fa-folder fa-lg"></i>My Quizzes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="shop.html"><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
+                    </li>
+                </ul>
+            </div>
             <div id="nav-btn">
                 <div style="display: inline;"
                     onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
