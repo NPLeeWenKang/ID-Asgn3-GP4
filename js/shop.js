@@ -41,3 +41,14 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log(sessionStorage.getItem("user"))
+        if (sessionStorage.getItem("user") == null) {
+            window.location = "profile.html"
+        }
+    } else {
+        window.location = "login.html"
+    }
+});

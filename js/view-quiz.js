@@ -33,13 +33,6 @@ $("#link-btn").on("click", function () {
 
 })
 function createQuizBox(key, value, quiz_area) {
-    {/* <div id="card" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <img class="quiz-img" src="...">
-                <div class="text-div">
-                    <h3>Computer Science</h3>
-                    <p>Computers are just stuff science hasn't made boring yet.</p>
-                </div>
-            </div> */}
     const card = document.createElement("div")
     card.id = key
     card.className = "card"
@@ -53,7 +46,11 @@ function createQuizBox(key, value, quiz_area) {
     const h3 = document.createElement("h3")
     h3.innerHTML = value.name
     const p = document.createElement("p")
-    p.innerHTML = value.ownerId
+    if (value.description == null) {
+        p.innerHTML = ""
+    } else {
+        p.innerHTML = value.description
+    }
 
     text_div.appendChild(h3)
     text_div.appendChild(p)
@@ -80,10 +77,32 @@ const key = new URLSearchParams(queryString).get("key")
 database.ref("/pubQuiz/").once("value").then((snapshot) => {
     var state = snapshot.val() || 'Anonymous';
     const quiz_area = document.getElementById("quiz-area")
-    for (const [key, value] of Object.entries(state)) {
-        createQuizBox(key, value, quiz_area)
-    }
-    $("#quiz-area").css("display", "")
-    $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")
+    $.ajax({
+        method: "POST",
+        url: "https://opentdb.com/api_category.php",
+    }).done(function (result) {
+        for (const [key, value] of Object.entries(result.trivia_categories)) {
+            console.log(value)
+            createQuizBox(key, value, quiz_area)
+        }
+        for (const [key, value] of Object.entries(state)) {
+            createQuizBox(key, value, quiz_area)
+        }
+        $("#quiz-area").css("display", "")
+        $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")
+    })
+
+
 
 })
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log(sessionStorage.getItem("user"))
+        if (sessionStorage.getItem("user") == null) {
+            window.location = "profile.html"
+        }
+    } else {
+        window.location = "login.html"
+    }
+});

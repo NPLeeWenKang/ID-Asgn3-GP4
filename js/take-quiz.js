@@ -70,18 +70,32 @@ function loadQuestion(question) {
     $(`.answer3`).parent().parent().css("background-color", "")
     $(`.answer4`).css("background-color", "")
     $(`.answer4`).parent().parent().css("background-color", "")
+    $(".time").css("background-color", "#1ecbe1")
 
     $("audio").trigger("play")
     var ans = 0
     var div;
     questionNo += 1
+    $(".innerDiv").unbind("click")
     $(".innerDiv").on("click", function () {
+        console.log("ok")
         $(".quizInput").css("background-color", "")
         $(".quizInput").parent().parent().css("background-color", "")
         $(this).css("background-color", "#aaff00")
         $(this).parent().parent().css("background-color", "#aaff00")
         ans = $(this).find("input").val()
         div = this
+    })
+    $("#done").unbind("click")
+    $("#done").on("click", function () {
+        if (!timer) {
+            loadQuestion(questions[questionNo])
+        } else {
+            clearInterval(timer)
+            timer = false
+            markQuestion(ans, div, question)
+        }
+
     })
     console.log(question)
     var arr = [question.correctAns]
@@ -93,59 +107,56 @@ function loadQuestion(question) {
     })
 
     $(".question-div").text(question.question)
-    console.log(arr)
-    shuffleArray(arr)
-    console.log(arr)
     arr.forEach((element) => {
-        $(`.answer${arr.indexOf(element) + 1}`).val(element)
+        $(`.answer${arr.indexOf(element) + 1}>div`).text(element)
     })
     $(".time").text(question.timeNeeded)
     var time = question.timeNeeded
-    const timer = setInterval(() => {
+    var timer = setInterval(() => {
         time -= 1;
         $(".time").text(time)
 
         if (time <= 0) {
             clearInterval(timer)
-            $(".innerDiv").unbind("click")
-            if (ans == question.correctAns) {
-                playerCoins += question.points
-                $("#player-coins").text(playerCoins)
-                playerScore += 1
-                $("#player-score").text(playerScore)
-                var audio = new Audio('../src/correct-effect.wav');
-                audio.play();
-            } else {
-                var audio = new Audio('../src/wrong-effect.wav');
-                $(div).css("background-color", "#ec6b83")
-                audio.play();
-            }
-
-
-            $("audio").trigger("pause")
-            console.log($(`.answer2`).val())
-            $(".time").css("background-color", "d05860")
-            if ($(`.answer1`).val() == question.correctAns) {
-                $(`.answer1`).css("background-color", "#1ae56e")
-                $(`.answer1`).parent().parent().css("background-color", "#1ae56e")
-            }
-            if ($(`.answer2`).val() == question.correctAns) {
-                $(`.answer2`).css("background-color", "#1ae56e")
-                $(`.answer2`).parent().parent().css("background-color", "#1ae56e")
-            }
-            if ($(`.answer3`).val() == question.correctAns) {
-                $(`.answer3`).css("background-color", "#1ae56e")
-                $(`.answer3`).parent().parent().css("background-color", "#1ae56e")
-            }
-            if ($(`.answer4`).val() == question.correctAns) {
-                $(`.answer4`).css("background-color", "#1ae56e")
-                $(`.answer4`).parent().parent().css("background-color", "#1ae56e")
-            }
-            loadQuestion(questions[questionNo])
+            markQuestion(ans, div, question)
         }
     }, 1000);
 }
+function markQuestion(ans, div, question) {
+    if (ans == question.correctAns) {
+        playerCoins += question.points
+        $("#player-coins").text(playerCoins)
+        playerScore += 1
+        $("#player-score").text(playerScore)
+        var audio = new Audio('../src/correct-effect.wav');
+        audio.play();
+    } else {
+        var audio = new Audio('../src/wrong-effect.wav');
+        $(div).css("background-color", "#ec6b83")
+        audio.play();
+    }
 
+
+    $("audio").trigger("pause")
+    console.log($(`.answer2`).val())
+    $(".time").css("background-color", "#d05860")
+    if ($(`.answer1`).val() == question.correctAns) {
+        $(`.answer1`).css("background-color", "#1ae56e")
+        $(`.answer1`).parent().parent().css("background-color", "#1ae56e")
+    }
+    if ($(`.answer2`).val() == question.correctAns) {
+        $(`.answer2`).css("background-color", "#1ae56e")
+        $(`.answer2`).parent().parent().css("background-color", "#1ae56e")
+    }
+    if ($(`.answer3`).val() == question.correctAns) {
+        $(`.answer3`).css("background-color", "#1ae56e")
+        $(`.answer3`).parent().parent().css("background-color", "#1ae56e")
+    }
+    if ($(`.answer4`).val() == question.correctAns) {
+        $(`.answer4`).css("background-color", "#1ae56e")
+        $(`.answer4`).parent().parent().css("background-color", "#1ae56e")
+    }
+}
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
     authDomain: "id-assign3.firebaseapp.com",
@@ -193,3 +204,14 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
     }
 
 })
+
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log(sessionStorage.getItem("user"))
+        if (sessionStorage.getItem("user") == null) {
+            window.location = "profile.html"
+        }
+    } else {
+        window.location = "login.html"
+    }
+});

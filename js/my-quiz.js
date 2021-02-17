@@ -40,31 +40,39 @@ function loadQuizzes(state) {
 const quizBody = document.getElementById("my-quizzes")
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        database.ref("user/" + user.uid).once("value").then((snapshot) => {
-            if (snapshot.exists()) {
-                var value = snapshot.val()
-                if (value.quizCreated != null) {
-                    value.quizCreated.forEach(element => {
-                        database.ref("quiz/" + element).once("value").then((snapshot) => {
-                            $("#my-quizzes").css("display", "")
-                            $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
-                            if (snapshot.exists()) {
-                                loadQuizzes(snapshot.val())
-                            } else {
-                                console.log("null")
-                            }
-                        })
-                    });
-                } else {
-                    $("#my-quizzes").css("display", "")
-                    $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
-                    console.log("no quiz created")
-                }
-
+        if (sessionStorage.getItem("user") == null) {
+            window.location = "profile.html"
+        } else {
+            const value = JSON.parse(sessionStorage.getItem("user"))
+            if (value.quizCreated != null) {
+                value.quizCreated.forEach(element => {
+                    database.ref("quiz/" + element).once("value").then((snapshot) => {
+                        $("#my-quizzes").css("display", "")
+                        $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
+                        if (snapshot.exists()) {
+                            loadQuizzes(snapshot.val())
+                        } else {
+                            console.log("null")
+                        }
+                    })
+                });
             } else {
-                console.log("null")
+                $("#my-quizzes").css("display", "")
+                $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
+                console.log("no quiz created")
             }
-        })
+        }
+
+    } else {
+        window.location = "login.html"
+    }
+});
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        console.log(sessionStorage.getItem("user"))
+        if (sessionStorage.getItem("user") == null) {
+            window.location = "profile.html"
+        }
     } else {
         window.location = "login.html"
     }

@@ -11,6 +11,7 @@ function displayItems() {
     var data = JSON.parse(dataString)
     if (data.items.badges != null) {
         const badgesDiv = document.getElementById("badges-div")
+        badgesDiv.textContent = ""
         data.items.badges.forEach(element => {
             const div = document.createElement("div")
             div.id = "img"
@@ -33,6 +34,7 @@ function displayItems() {
 
     if (data.items.collectibles != null) {
         const collectiblesDiv = document.getElementById("collectibles-div")
+        collectiblesDiv.textContent = ""
         data.items.collectibles.forEach(element => {
             const div = document.createElement("div")
             div.id = "img"
@@ -94,6 +96,11 @@ function findAvatarSrc() {
     }
     return src
 }
+function loadUserData(snapshot) {
+    sessionStorage.setItem("user", JSON.stringify(snapshot))
+    displayData()
+    displayItems()
+}
 function noUserData(user) {
     database.ref("user/" + user.uid).set({
         username: "User Name",
@@ -130,14 +137,12 @@ firebase.auth().onAuthStateChanged(function (user) {
 $("#update").on("click", function () {
     console.log("ok")
     const snapshot = {
-        coins: $("#coins").text(),
-        uid: userDetails.uid,
+        ...snapshotDetails,
         profilePic: findAvatarSrc(),
         username: $("#modal-username").val(),
         edu: $("#modal-edu-inst").val(),
         grade: $("#modal-grade").val(),
         bDay: $("#modal-birthday").val(),
-        items: snapshotDetails.items,
     }
     console.log(findAvatarSrc())
     console.log(snapshot)
