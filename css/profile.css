@@ -178,6 +178,7 @@ h3{
 .item-name{
   margin-top: 8px;
   color:black;
+  text-align: center;
 }
 
 @media screen and (min-width: 800px){

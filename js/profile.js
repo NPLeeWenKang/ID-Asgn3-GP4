@@ -4,8 +4,55 @@ var snapshotDetails;
 function loadUserData(snapshot) {
     sessionStorage.setItem("user", JSON.stringify(snapshot))
     displayData()
+    displayItems()
 }
+function displayItems() {
+    var dataString = sessionStorage.getItem("user")
+    var data = JSON.parse(dataString)
+    if (data.items.badges != null) {
+        const badgesDiv = document.getElementById("badges-div")
+        data.items.badges.forEach(element => {
+            const div = document.createElement("div")
+            div.id = "img"
+            div.className = "item"
 
+            const img = document.createElement("img")
+            img.src = element
+            img.alt = "item-img"
+            img.className = "item-img"
+
+            const h5 = document.createElement("h5")
+            h5.className = "item-name"
+            h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
+
+            div.appendChild(img)
+            div.appendChild(h5)
+            badgesDiv.appendChild(div)
+        });
+    }
+
+    if (data.items.collectibles != null) {
+        const collectiblesDiv = document.getElementById("collectibles-div")
+        data.items.collectibles.forEach(element => {
+            const div = document.createElement("div")
+            div.id = "img"
+            div.className = "item"
+
+            const img = document.createElement("img")
+            img.src = element
+            img.alt = "item-img"
+            img.className = "item-img"
+
+            const h5 = document.createElement("h5")
+            h5.className = "item-name"
+            h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
+
+            div.appendChild(img)
+            div.appendChild(h5)
+            collectiblesDiv.appendChild(div)
+        });
+    }
+}
 function displayData() {
     var dataString = sessionStorage.getItem("user")
     var data = JSON.parse(dataString)
@@ -55,7 +102,7 @@ function noUserData(user) {
     }, (error) => {
         const data = {
             username: "User Name",
-            coins: 50,
+            coins: 100,
             uid: user.uid
         }
         loadUserData(data)
