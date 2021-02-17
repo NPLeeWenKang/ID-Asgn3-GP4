@@ -80,17 +80,29 @@ function submitDatabase(arr, qnArr, userQnList) {
                 if (error) {
                     console.alert(error);
                 } else {
-                    if (arr.type == "public")
-                        database.ref("pubQuiz/" + arr.quizId).set(arr, (error) => {
-                            if (error) {
-                                console.alert(error);
+                    database.ref("user/" + user_id).update({ quizCreated: userQnList }, (error) => {
+                        if (error) {
+                            console.alert(error);
+                        } else {
+                            if (arr.type == "public") {
+                                database.ref("pubQuiz/" + arr.quizId).set(arr, (error) => {
+                                    if (error) {
+                                        console.alert(error);
+                                    } else {
+                                        window.location = "my-quiz.html"
+                                        //console.log("done")
+                                    }
+                                })
                             } else {
-                                console.log("done")
+                                console.log("no pub")
+                                //window.location = "my-quiz.html"
                             }
-                        })
+                        }
+                    });
+
+
                 }
             });
-            database.ref("user/" + user_id).update({ quizCreated: userQnList });
         }
     })
 

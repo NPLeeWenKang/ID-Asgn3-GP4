@@ -1,10 +1,11 @@
 
+var userDetails;
 
-
-function loadQuizzes(state) {
-    console.log(state)
+function loadQuizzes(state, key) {
+    console.log(key)
     const container = document.createElement("div");
     container.className = "container"
+    container.id = key
 
     const add_img = document.createElement("div");
     add_img.className = "add-img"
@@ -23,7 +24,11 @@ function loadQuizzes(state) {
     p.textContent = state.description
     const remove_button = document.createElement("button");
     remove_button.id = "remove-btn"
+    remove_button.className = "remove-btn"
     remove_button.textContent = "x Remove"
+    remove_button.setAttribute("data-bs-toggle", "modal")
+    remove_button.setAttribute("data-bs-target", "#deleteQuizModal")
+
 
     text_container.appendChild(span)
     text_container.appendChild(h3)
@@ -34,50 +39,59 @@ function loadQuizzes(state) {
     container.appendChild(add_button)
     container.appendChild(text_container)
     quizBody.appendChild(container)
-
+    $(".remove-btn").unbind("click")
+    $(".remove-btn").on("click", function () {
+        $("#confirm-delete").attr("data-quizId", $(this).parent().parent().attr("id"))
+    })
 }
+$("#confirm-delete").on("click", function () {
+    var dataString = sessionStorage.getItem("user")
+    var data = JSON.parse(dataString)
+    var id = parseInt(this.getAttribute("data-quizId"))
+    data.quizCreated.splice(data.quizCreated.indexOf(id), 1)
+    database.ref("user/" + userDetails.uid).set(data)
+    database.ref("quiz/" + id).remove()
+    database.ref("pubQuiz/" + id).remove()
+    sessionStorage.setItem("user", JSON.stringify(data))
+    $(`#${this.getAttribute("data-quizId")}`).remove()
+})
 
 const quizBody = document.getElementById("my-quizzes")
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        if (sessionStorage.getItem("user") == null) {
-            window.location = "profile.html"
-        } else {
-            const value = JSON.parse(sessionStorage.getItem("user"))
-            if (value.quizCreated != null) {
-                value.quizCreated.forEach(element => {
-                    database.ref("quiz/" + element).once("value").then((snapshot) => {
-                        $("#my-quizzes").css("display", "")
-                        $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
-                        if (snapshot.exists()) {
-                            loadQuizzes(snapshot.val())
-                        } else {
-                            console.log("null")
-                        }
-                    })
-                });
+        userDetails = user
+        database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
+            if (userSnapshot.exists()) {
+                sessionStorage.setItem("user", JSON.stringify(userSnapshot.val()))
+                if (userSnapshot.val().quizCreated != null) {
+                    userSnapshot.val().quizCreated.forEach(element => {
+                        database.ref("quiz/" + element).once("value").then((snapshot) => {
+                            $("#my-quizzes").css("display", "")
+                            $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
+                            if (snapshot.exists()) {
+                                loadQuizzes(snapshot.val(), element)
+                            } else {
+                                console.log("null")
+                            }
+                        })
+                    });
+
+                } else {
+                    $("#my-quizzes").css("display", "")
+                    $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
+                    console.log("no quiz created")
+                }
             } else {
-                $("#my-quizzes").css("display", "")
-                $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
-                console.log("no quiz created")
+                window.location = "profile.html"
             }
-        }
+
+        })
+
 
     } else {
         window.location = "login.html"
     }
 });
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        console.log(sessionStorage.getItem("user"))
-        if (sessionStorage.getItem("user") == null) {
-            window.location = "profile.html"
-        }
-    } else {
-        window.location = "login.html"
-    }
-});
-
 
 // Navigation Bar
 if (window.innerWidth < 800) {
