@@ -128,6 +128,7 @@ function loadQuestion(question) {
 
         if (time <= 0) {
             clearInterval(timer)
+            timer = false
             markQuestion(ans, div, question)
         }
     }, 1000);
