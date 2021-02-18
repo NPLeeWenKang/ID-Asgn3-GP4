@@ -32,6 +32,17 @@ $("#link-btn").on("click", function () {
 
 
 })
+
+$(".card").on("click", function () {
+    $("#quiz-title").text($(this).find("h3").text())
+    $("#quiz-description").text($(this).find("p").text())
+    $("#quiz-img").attr("src", $(this).find("img").attr("src"))
+    $("#take-quiz").attr("data-target", $(this).attr("id"))
+})
+
+$("#take-quiz").on("click", function () {
+    window.location = `https://npleewenkang.github.io/ID-Asgn3-GP4/take-quiz.html?key=${$(this).attr("data-target")}`
+})
 function createQuizBox(key, value, quiz_area) {
     const card = document.createElement("div")
     card.id = key
@@ -86,6 +97,10 @@ database.ref("/pubQuiz/").once("value").then((snapshot) => {
 
 })
 
+
+
+
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         console.log(sessionStorage.getItem("user"))
@@ -96,6 +111,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         window.location = "login.html"
     }
 });
+
+
 
 // Navigation Bar
 if (window.innerWidth < 800) {
