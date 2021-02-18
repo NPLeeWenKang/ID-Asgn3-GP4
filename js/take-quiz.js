@@ -28,6 +28,7 @@ $("#unmute").on("click", function () {
     localStorage.setItem("mute", "true")
 })
 function loadEnd() {
+    $("audio").trigger("pause")
     $("#quiz").css("display", "none")
     $("#end").css("display", "")
     $("#final-score").text(`${playerScore}/${questionNo}`)
@@ -94,12 +95,18 @@ function loadQuestion(question) {
         $(this).parent().parent().css("background-color", "#aaff00")
         ans = $(this).find("div.quizInput>div").text()
         div = this
+        $("#done>div").text("Next")
+        clearInterval(timer)
+        timer = false
+        markQuestion(ans, div, question)
     })
     $("#done").unbind("click")
     $("#done").on("click", function () {
         if (!timer) {
+            $("#done>div").text("Skip")
             loadQuestion(questions[questionNo])
         } else {
+            $("#done>div").text("Next")
             clearInterval(timer)
             timer = false
             markQuestion(ans, div, question)
@@ -146,7 +153,6 @@ function markQuestion(ans, div, question) {
     }
 
 
-    $("audio").trigger("pause")
     $(".time").css("background-color", "#676767")
     if ($(`.answer1>div`).text() == question.correctAns) {
         $(`.answer1`).css("background-color", "#1ae56e")
@@ -175,54 +181,57 @@ function get_QBank_And_Create(key) {
         method: "POST",
         url: url,
     }).done(function (result) {
-        for (const [key, value] of Object.entries(result.results)) {
-            if (questions.length == 5) {
-                break;
-            }
-            if ($('<div>').html(`${value.question}`)[0].textContent.length > 100) {
-                continue;
-            }
-            var points = 1000
-            var time = 10
-            if (value.difficulty == "medium") {
-                time = 20
-            }
-            if (value.difficulty == "hard") {
-                points = 2000
-                time = 30
-            }
-            const wrong_list = []
-            value.incorrect_answers.forEach(element => {
-                if ($('<div>').html(`${element}`)[0].textContent == undefined) {
-                    wrong_list.push(null)
-                } else {
-                    wrong_list.push($('<div>').html(`${element}`)[0].textContent)
-                }
-
-            });
-            const newQn = {
-                question: $('<div>').html(`${value.question}`)[0].textContent,
-                wrongAns: wrong_list,
-                correctAns: $('<div>').html(`${value.correct_answer}`)[0].textContent,
-                timeNeeded: time,
-                points: points,
-            }
-            questions.push(newQn)
-        }
-
-        if (questions.length != 5) {
-            console.log("error")
-            get_QBank_And_Create(key)
+        if (result.response_code != 0) {
+            loadFailedStartScreen();
         } else {
-            const state = {
-                ownerName: "Auto Generated",
-                name: result.results[0].category,
-                quizQuestion: questions,
+            for (const [key, value] of Object.entries(result.results)) {
+
+                if (questions.length == 5) {
+                    break;
+                }
+                if ($('<div>').html(`${value.question}`)[0].textContent.length > 100) {
+                    continue;
+                }
+                var points = 1000
+                var time = 10
+                if (value.difficulty == "medium") {
+                    time = 20
+                }
+                if (value.difficulty == "hard") {
+                    points = 2000
+                    time = 30
+                }
+                const wrong_list = []
+                value.incorrect_answers.forEach(element => {
+                    if ($('<div>').html(`${element}`)[0].textContent == undefined) {
+                        wrong_list.push(null)
+                    } else {
+                        wrong_list.push($('<div>').html(`${element}`)[0].textContent)
+                    }
+
+                });
+                const newQn = {
+                    question: $('<div>').html(`${value.question}`)[0].textContent,
+                    wrongAns: wrong_list,
+                    correctAns: $('<div>').html(`${value.correct_answer}`)[0].textContent,
+                    timeNeeded: time,
+                    points: points,
+                }
+                questions.push(newQn)
             }
-            loadSuccessfulStartScreen(state)
+
+            if (questions.length != 5) {
+                console.log("error")
+                get_QBank_And_Create(key)
+            } else {
+                const state = {
+                    ownerName: "Auto Generated",
+                    name: result.results[0].category,
+                    quizQuestion: questions,
+                }
+                loadSuccessfulStartScreen(state)
+            }
         }
-
-
 
     })
 }
