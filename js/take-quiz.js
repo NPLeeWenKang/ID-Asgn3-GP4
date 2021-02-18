@@ -28,9 +28,11 @@ $("#unmute").on("click", function () {
     localStorage.setItem("mute", "true")
 })
 $(window).focus(function () {
+    $("audio").trigger("play")
+})
+$(window).blur(function () {
     $("audio").trigger("pause")
 })
-
 function loadEnd() {
     $("audio").trigger("pause")
     $("#quiz").css("display", "none")
