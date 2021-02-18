@@ -106,6 +106,7 @@ nav {
 .forth-row{
     padding:80px;
     padding-top: 0px;
+    margin-bottom: 50px;
 }
 .image-feature{
     max-width: 300px;
@@ -116,6 +117,23 @@ img{
     display: block;
     margin:auto;
 }
+.fifth-row{
+    margin-bottom: 30px;
+}
+
+.sixth-row{
+    padding:30px;
+}
+.wrapped-about{
+    background-color: white;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
 @media (max-width: 768px){
     .luminate-intro{
         width:90%;
@@ -149,10 +167,14 @@ img{
     }
     .forth-row{
         text-align: center;
+        margin-bottom: ;
     }
     .third-row,.forth-row{
         margin-top: 40px;
         padding:15px;
+    }
+    .fifth-row img,.sixth-row img{
+        margin-bottom: 50px;
     }
 }
 @media screen and (min-width:576px) and (max-width:767px){
@@ -160,7 +182,19 @@ img{
         margin-top: 40px;
         padding:15px;
     }
+    .sixth-row img{
+        display: block;
+        margin: 0 auto;
+    }
+    .wrapped-about{
+        width: 90%;
+        padding: 10px;
+    }
+    .col-sm{
+        padding: 30px;
+    }
 }
+
 @media (max-width: 350px){
     .title {
         font-size: 50px;
@@ -182,5 +216,9 @@ img{
         max-width: 180px;
         width: 100%;
         min-width: 130px;
+    }
+    .wrapped-about{
+        width: 100%;
+        padding: 10px;
     }
 }
