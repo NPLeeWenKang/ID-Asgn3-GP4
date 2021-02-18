@@ -11,6 +11,7 @@ $("#start").on("click", function () {
     $("#start").unbind("click")
     $("#quiz").css("display", "")
     $("audio").trigger("play");
+    console.log(questions.length)
     $("#total-score").text(questions.length)
     loadQuestion(questions[questionNo])
 })
@@ -167,6 +168,95 @@ function markQuestion(ans, div, question) {
         $(`.answer4`).parent().parent().css("background-color", "#1ae56e")
     }
 }
+
+function get_QBank_And_Create(key) {
+    var url = "https://opentdb.com/api.php?amount=5"
+    if (key != 0) {
+        url = `https://opentdb.com/api.php?amount=5&category=${key}`
+    }
+    $.ajax({
+        method: "POST",
+        url: url,
+    }).done(function (result) {
+        for (const [key, value] of Object.entries(result.results)) {
+            if (questions.length == 5) {
+                break;
+            }
+            if ($('<div>').html(`${value.question}`)[0].textContent.length > 100) {
+                continue;
+            }
+            var points = 1000
+            var time = 10
+            if (value.difficulty == "medium") {
+                time = 20
+            }
+            if (value.difficulty == "hard") {
+                points = 2000
+                time = 30
+            }
+            const wrong_list = []
+            value.incorrect_answers.forEach(element => {
+                if ($('<div>').html(`${element}`)[0].textContent == undefined) {
+                    wrong_list.push(null)
+                } else {
+                    wrong_list.push($('<div>').html(`${element}`)[0].textContent)
+                }
+
+            });
+            const newQn = {
+                question: $('<div>').html(`${value.question}`)[0].textContent,
+                wrongAns: wrong_list,
+                correctAns: $('<div>').html(`${value.correct_answer}`)[0].textContent,
+                timeNeeded: time,
+                points: points,
+            }
+            questions.push(newQn)
+        }
+
+        if (questions.length != 5) {
+            console.log("error")
+            get_QBank_And_Create(key)
+        } else {
+            const state = {
+                ownerName: "Auto Generated",
+                name: result.results[0].category,
+                quizQuestion: questions,
+            }
+            loadSuccessfulStartScreen(state)
+        }
+
+
+
+    })
+}
+function loadSuccessfulStartScreen(state) {
+    console.log(questions)
+    $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
+    $("#start-container").css("display", "")
+    $(".question-div").first().text(state.name)
+    $(".end-title").text(state.name)
+    $("#made-by").text(`Made By: ${state.ownerName}`)
+    $("#est-time").text(`Estimated quiz duration: ${calEstimatedTime(state.quizQuestion)}s`)
+    $("#start").css("background-color", "#43bc4f")
+    $("#start").css("border-bottom", "6px solid #006717")
+    $("#start").hover(function () {
+        if ($("#start").css("background-color") == "rgb(67, 188, 79)") {
+            $("#start").css("background-color", "#00881e")
+            $("#start").css("border-top", "2px solid #00881e")
+            $("#start").css("border-bottom", "4px solid  #003a0d")
+        } else {
+            $("#start").css("background-color", "#43bc4f")
+            $("#start").css("border-bottom", "6px solid #006717")
+            $("#start").css("border-top", "none")
+        }
+
+    })
+}
+function loadFailedStartScreen() {
+    $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
+    $("#start-container").css("display", "")
+    $(".question-div").first().text("Invalid quiz link")
+}
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
     authDomain: "id-assign3.firebaseapp.com",
@@ -181,37 +271,16 @@ var database = firebase.database();
 findMute()
 const queryString = window.location.search;
 const key = new URLSearchParams(queryString).get("key")
-var questions = {}
+var questions = []
+console.log("ok")
 database.ref("/quiz/" + key).once("value").then((snapshot) => {
     if (snapshot.exists()) {
-        $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
-        $("#start-container").css("display", "")
-        var state = snapshot.val() || 'Anonymous';
-        $(".question-div").first().text(state.name)
-        $(".end-title").text(state.name)
-        $("#made-by").text(`Made By: ${state.ownerName}`)
-        $("#est-time").text(`Estimated quiz duration: ${calEstimatedTime(state.quizQuestion)}s`)
-        $("#start").css("background-color", "#43bc4f")
-        $("#start").css("border-bottom", "6px solid #006717")
-        $("#start").hover(function () {
-            if ($("#start").css("background-color") == "rgb(67, 188, 79)") {
-                $("#start").css("background-color", "#00881e")
-                $("#start").css("border-top", "2px solid #00881e")
-                $("#start").css("border-bottom", "4px solid  #003a0d")
-            } else {
-                $("#start").css("background-color", "#43bc4f")
-                $("#start").css("border-bottom", "6px solid #006717")
-                $("#start").css("border-top", "none")
-            }
-
-        })
+        var state = snapshot.val();
         questions = state.quizQuestion
+        loadSuccessfulStartScreen(state)
     } else {
-        $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
-        $("#start-container").css("display", "")
-        $(".question-div").first().text("Invalid quiz link")
+        get_QBank_And_Create(key)
     }
-
 })
 
 firebase.auth().onAuthStateChanged(function (user) {
