@@ -285,7 +285,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             if (userSnapshot.exists()) {
                 snapshotUserDetails = userSnapshot.val()
-                removeItem()
             } else {
                 window.location = "profile.html"
             }
