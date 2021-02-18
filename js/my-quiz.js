@@ -18,8 +18,22 @@ function loadQuizzes(state, key) {
     text_container.className = "text-container"
 
     const span = document.createElement("span");
+
+    const div = document.createElement("div")
+
     const h3 = document.createElement("h3")
     h3.textContent = state.name
+    h3.style.display = "inline"
+
+    const copyLink = document.createElement("div")
+    copyLink.textContent = "Copy link"
+    copyLink.className = "link-btn"
+
+    const img = document.createElement("img")
+    img.src = "src/link-45deg.svg"
+    img.alt = "link-icon"
+
+
     const p = document.createElement("p");
     p.textContent = state.description
     const remove_button = document.createElement("button");
@@ -29,9 +43,13 @@ function loadQuizzes(state, key) {
     remove_button.setAttribute("data-bs-toggle", "modal")
     remove_button.setAttribute("data-bs-target", "#deleteQuizModal")
 
+    copyLink.appendChild(img)
+
+    div.appendChild(h3)
+    div.appendChild(copyLink)
 
     text_container.appendChild(span)
-    text_container.appendChild(h3)
+    text_container.appendChild(div)
     text_container.appendChild(p)
     text_container.appendChild(remove_button)
 
@@ -42,6 +60,10 @@ function loadQuizzes(state, key) {
     $(".remove-btn").unbind("click")
     $(".remove-btn").on("click", function () {
         $("#confirm-delete").attr("data-quizId", $(this).parent().parent().attr("id"))
+    })
+    $(".link-btn").unbind("click")
+    $(".link-btn").on("click", async function () {
+        await navigator.clipboard.writeText(`https://npleewenkang.github.io/ID-Asgn3-GP4/take-quiz.html?key=${$(this).parent().parent().parent().attr("id")}`);
     })
 }
 $("#confirm-delete").on("click", function () {
@@ -92,6 +114,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         window.location = "login.html"
     }
 });
+
 
 // Navigation Bar
 if (window.innerWidth < 800) {

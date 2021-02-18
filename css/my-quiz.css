@@ -82,13 +82,25 @@ button{
     border-radius: 4px;
     border: 1px solid rgb(236, 236, 236);
 }
-
+.link-btn{
+    display: inline;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.link-btn:hover{
+    color: rgba(0, 0, 0, 0.7);
+}
 @media screen and (min-width: 501px){
     .container{
         width: 70%;
     }
 }
-
+@media only screen and (max-width: 1200px) {
+    .link-btn{
+        display: block;
+        margin-left: 0px;
+    }
+}
 @media only screen and (max-width: 800px) {
     .sideBar {
      display: none;

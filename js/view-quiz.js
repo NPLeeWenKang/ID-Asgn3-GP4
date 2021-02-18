@@ -77,21 +77,11 @@ const key = new URLSearchParams(queryString).get("key")
 database.ref("/pubQuiz/").once("value").then((snapshot) => {
     var state = snapshot.val() || 'Anonymous';
     const quiz_area = document.getElementById("quiz-area")
-    $.ajax({
-        method: "POST",
-        url: "https://opentdb.com/api_category.php",
-    }).done(function (result) {
-        for (const [key, value] of Object.entries(result.trivia_categories)) {
-            console.log(value)
-            createQuizBox(key, value, quiz_area)
-        }
-        for (const [key, value] of Object.entries(state)) {
-            createQuizBox(key, value, quiz_area)
-        }
-        $("#quiz-area").css("display", "")
-        $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")
-    })
-
+    for (const [key, value] of Object.entries(state)) {
+        createQuizBox(key, value, quiz_area)
+    }
+    $("#quiz-area").css("display", "")
+    $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")
 
 
 })
