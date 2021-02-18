@@ -16,6 +16,40 @@ h2{
     margin-top: 50px; 
     padding:10px;
 }
+
+.user-coin{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    position: absolute;
+    width: 200px;
+    height:110px;
+    top:56px;
+    right:20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding:10px;
+
+}
+.user-coin-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    width:90%;
+}
+
+.user-coin-div p{
+    margin: auto;
+    font-size:20px;
+}
+.user-coin-div img{
+    width:40px;
+    height:40px;
+    margin:5px;
+}
 .card {
     width: 230px;
     height: 230px;
@@ -72,5 +106,12 @@ h2{
 @media only screen and (min-width:250px) and (max-width:750px){
     h2{
         width:220px;
+    }
+
+}
+
+@media only screen and (max-width:970px){
+    h2{
+        margin-top: 110px;
     }
 }
