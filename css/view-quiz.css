@@ -82,6 +82,9 @@ button{
 .text-div{
     padding:15px;
 }
+.text-div h3{
+    font-size:26px;
+}
 
 .fix-warning{
     position: sticky !important;
