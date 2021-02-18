@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *,
 *:before,
 *:after {
@@ -6,9 +7,9 @@
 } 
 
 body {
+  font-family: 'Poppins', sans-serif;
   align-items: center;
   display: flex;
-  font-family: 'Roboto', sans-serif;
   justify-content: center;
 } 
 
