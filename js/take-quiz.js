@@ -144,10 +144,10 @@ function markQuestion(ans, div, question) {
         $("#player-coins").text(playerCoins)
         playerScore += 1
         $("#player-score").text(playerScore)
-        var audio = new Audio('../src/correct-effect.wav');
+        var audio = new Audio('../src/correct-effect.mp3');
         audio.play();
     } else {
-        var audio = new Audio('../src/wrong-effect.wav');
+        var audio = new Audio('../src/wrong-effect.mp3');
         $(div).css("background-color", "#ec6b83")
         audio.play();
     }
