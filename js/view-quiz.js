@@ -47,7 +47,12 @@ function createQuizBox(key, value, quiz_area) {
     card.setAttribute("data-bs-target", "#exampleModal")
     const img = document.createElement("img")
     img.className = "quiz-img"
-    img.src = value.img
+
+    if (value.img != null) {
+        img.src = value.img
+    } else {
+        img.src = "src/Category-Images/No-Category.jpg"
+    }
     const text_div = document.createElement("div")
     text_div.className = "text-div"
     const h3 = document.createElement("h3")

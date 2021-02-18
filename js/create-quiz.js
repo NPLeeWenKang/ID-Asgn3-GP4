@@ -128,10 +128,18 @@ function validateQuiz(questionArr) {
                 } else {
                     type = "private"
                 }
+                var name = $("#quiz-name").val()
+                if (name == "" || name == null) {
+                    name = "No title"
+                }
+                var description = $("#quiz-desc").val()
+                if (description == "" || name == null) {
+                    description = "No description"
+                }
                 const arr = {
                     quizId: Date.now(),
-                    name: $("#quiz-name").val(),
-                    description: $("#quiz-desc").val(),
+                    name: name,
+                    description: description,
                     ownerId: snapshotUserDetails.uid,
                     type: type,
                 }
