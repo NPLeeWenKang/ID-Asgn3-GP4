@@ -76,7 +76,7 @@ button{
     height:130px;
     object-fit: cover;
     object-position: center;
-
+    border-radius: 8px 8px 0px 0px;
 }
 
 .text-div{
