@@ -16,9 +16,7 @@ firebase.initializeApp(firebaseConfig);
 var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged(function (user) {
-
     if (user) {
-        console.log(user.uid)
         window.location = "profile.html"
     } else {
         console.log("ok")
