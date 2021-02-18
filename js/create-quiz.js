@@ -80,7 +80,7 @@ function submitDatabase(arr, qnArr, userQnList) {
                 if (error) {
                     console.alert(error);
                 } else {
-                    database.ref("user/" + user_id).update({ quizCreated: userQnList }, (error) => {
+                    database.ref("user/" + snapshotUserDetails.uid).update({ quizCreated: userQnList }, (error) => {
                         if (error) {
                             console.alert(error);
                         } else {
@@ -95,7 +95,7 @@ function submitDatabase(arr, qnArr, userQnList) {
                                 })
                             } else {
                                 console.log("no pub")
-                                //window.location = "my-quiz.html"
+                                window.location = "my-quiz.html"
                             }
                         }
                     });
@@ -132,16 +132,16 @@ function validateQuiz(questionArr) {
                     quizId: Date.now(),
                     name: $("#quiz-name").val(),
                     description: $("#quiz-desc").val(),
-                    ownerId: user_id,
+                    ownerId: snapshotUserDetails.uid,
                     type: type,
                 }
-                if (user_details.quizCreated == null) {
-                    user_details.quizCreated = [arr.quizId]
+                if (snapshotUserDetails.quizCreated == null) {
+                    snapshotUserDetails.quizCreated = [arr.quizId]
                 } else {
-                    user_details.quizCreated.push(arr.quizId)
+                    snapshotUserDetails.quizCreated.push(arr.quizId)
                 }
 
-                submitDatabase(arr, questionArr, user_details.quizCreated)
+                submitDatabase(arr, questionArr, snapshotUserDetails.quizCreated)
             })
         } else {
             $("#wrapper").empty();
@@ -702,16 +702,19 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-var user_details;
-var user_id
+var userDetails;
+var snapshotUserDetails;
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        database.ref("user/" + user.uid).once("value").then((snapshot) => {
-            if (snapshot.exists()) {
-                user_id = user.uid;
-                user_details = snapshot.val();
+        userDetails = user
+        database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
+            if (userSnapshot.exists()) {
+                snapshotUserDetails = userSnapshot.val()
+            } else {
+                window.location = "profile.html"
             }
         })
+
     } else {
         window.location = "login.html"
     }

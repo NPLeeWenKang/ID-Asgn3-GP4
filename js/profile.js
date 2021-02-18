@@ -1,18 +1,12 @@
 var database = firebase.database();
 var userDetails;
-var snapshotDetails;
-function loadUserData(snapshot) {
-    sessionStorage.setItem("user", JSON.stringify(snapshot))
-    displayData()
-    displayItems()
-}
+var snapshotUserDetails;
+
 function displayItems() {
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
-    if (data.items.badges != null) {
+    if (snapshotUserDetails.items.badges != null) {
         const badgesDiv = document.getElementById("badges-div")
         badgesDiv.textContent = ""
-        data.items.badges.forEach(element => {
+        snapshotUserDetails.items.badges.forEach(element => {
             const div = document.createElement("div")
             div.id = "img"
             div.className = "item"
@@ -32,10 +26,10 @@ function displayItems() {
         });
     }
 
-    if (data.items.collectibles != null) {
+    if (snapshotUserDetails.items.collectibles != null) {
         const collectiblesDiv = document.getElementById("collectibles-div")
         collectiblesDiv.textContent = ""
-        data.items.collectibles.forEach(element => {
+        snapshotUserDetails.items.collectibles.forEach(element => {
             const div = document.createElement("div")
             div.id = "img"
             div.className = "item"
@@ -56,34 +50,31 @@ function displayItems() {
     }
 }
 function displayData() {
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
-    snapshotDetails = data
-    $("#username").text(data.username)
-    if (data.profilePic != null) {
+    $("#username").text(snapshotUserDetails.username)
+    if (snapshotUserDetails.profilePic != null) {
 
         $("#profile-text").css("display", "none")
-        $("#profile-pic").attr("src", data.profilePic)
+        $("#profile-pic").attr("src", snapshotUserDetails.profilePic)
         $("#profile-pic").css("display", "")
     }
     $("#email").text(userDetails.email)
-    $("#edu-inst").text(data.edu)
-    $("#grade").text(data.grade)
-    $("#birthday").text(data.bDay)
-    $("#coins").text(data.coins)
+    $("#edu-inst").text(snapshotUserDetails.edu)
+    $("#grade").text(snapshotUserDetails.grade)
+    $("#birthday").text(snapshotUserDetails.bDay)
+    $("#coins").text(snapshotUserDetails.coins)
 
-    $("#modal-username").val(data.username)
+    $("#modal-username").val(snapshotUserDetails.username)
     const ava = document.querySelectorAll(".choose-ava")
     for (var i = 0; i < ava.length; i++) {
-        if (ava[i].getAttribute("src") == data.profilePic) {
+        if (ava[i].getAttribute("src") == snapshotUserDetails.profilePic) {
             ava[i].style.backgroundColor = "green"
             break;
         }
     }
-    $("#modal-email").val(data.email)
-    $("#modal-edu-inst").val(data.edu)
-    $("#modal-grade").val(data.grade)
-    $("#modal-birthday").val(data.bDay)
+    $("#modal-email").val(snapshotUserDetails.email)
+    $("#modal-edu-inst").val(snapshotUserDetails.edu)
+    $("#modal-grade").val(snapshotUserDetails.grade)
+    $("#modal-birthday").val(snapshotUserDetails.bDay)
 }
 function findAvatarSrc() {
     const ava = document.querySelectorAll(".choose-ava")
@@ -96,13 +87,12 @@ function findAvatarSrc() {
     }
     return src
 }
-function loadUserData(snapshot) {
-    sessionStorage.setItem("user", JSON.stringify(snapshot))
+function loadUserData() {
     displayData()
     displayItems()
 }
-function noUserData(user) {
-    database.ref("user/" + user.uid).set({
+function noUserData() {
+    database.ref("user/" + userDetails.uid).set({
         username: "User Name",
         coins: 50,
         uid: user.uid
@@ -112,6 +102,7 @@ function noUserData(user) {
             coins: 100,
             uid: user.uid
         }
+        snapshotUserDetails = data
         loadUserData(data)
     })
 }
@@ -123,11 +114,11 @@ firebase.auth().onAuthStateChanged(function (user) {
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (snapshot.exists()) {
                 console.log("exists")
-                snapshot
-                loadUserData(snapshot.val())
+                snapshotUserDetails = snapshot.val()
+                loadUserData()
             } else {
                 console.log("null")
-                noUserData(user)
+                noUserData()
             }
         })
     } else {
@@ -136,19 +127,18 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 $("#update").on("click", function () {
     console.log("ok")
-    const snapshot = {
-        ...snapshotDetails,
+    const newSnapshot = {
+        ...snapshotUserDetails,
         profilePic: findAvatarSrc(),
         username: $("#modal-username").val(),
         edu: $("#modal-edu-inst").val(),
         grade: $("#modal-grade").val(),
         bDay: $("#modal-birthday").val(),
     }
-    console.log(findAvatarSrc())
-    console.log(snapshot)
+    snapshotUserDetails = newSnapshot
     var user = firebase.auth().currentUser;
-    database.ref("user/" + user.uid).set(snapshot)
-    loadUserData(snapshot)
+    database.ref("user/" + user.uid).set(newSnapshot)
+    loadUserData()
 })
 $(".choose-ava").on("click", function () {
     $(".choose-ava").css("background-color", "")

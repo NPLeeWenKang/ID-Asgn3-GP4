@@ -32,11 +32,8 @@ function loadEnd() {
     $("#end").css("display", "")
     $("#final-score").text(`${playerScore}/${questionNo}`)
     $("#coins-earned").text(playerCoins)
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
-    data.coins = parseInt(data.coins) + playerCoins
-    database.ref("user/" + data.uid).update({ coins: data.coins })
-    sessionStorage.setItem("user", data)
+    snapshotUserDetails.coins = parseInt(snapshotUserDetails.coins) + playerCoins
+    database.ref("user/" + snapshotUserDetails.uid).update({ coins: snapshotUserDetails.coins })
 
 }
 function calEstimatedTime(quizQuestion) {
@@ -282,3 +279,19 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
         get_QBank_And_Create(key)
     }
 })
+var snapshotUserDetails;
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
+            if (userSnapshot.exists()) {
+                snapshotUserDetails = userSnapshot.val()
+                removeItem()
+            } else {
+                window.location = "profile.html"
+            }
+        })
+
+    } else {
+        window.location = "login.html"
+    }
+});

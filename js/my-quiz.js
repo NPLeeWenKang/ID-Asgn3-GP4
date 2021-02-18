@@ -1,5 +1,5 @@
-
 var userDetails;
+var snapshotUserDetails;
 
 function loadQuizzes(state, key) {
     console.log(key)
@@ -67,14 +67,11 @@ function loadQuizzes(state, key) {
     })
 }
 $("#confirm-delete").on("click", function () {
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
     var id = parseInt(this.getAttribute("data-quizId"))
-    data.quizCreated.splice(data.quizCreated.indexOf(id), 1)
-    database.ref("user/" + userDetails.uid).set(data)
+    snapshotUserDetails.quizCreated.splice(snapshotUserDetails.quizCreated.indexOf(id), 1)
+    database.ref("user/" + userDetails.uid).set(snapshotUserDetails)
     database.ref("quiz/" + id).remove()
     database.ref("pubQuiz/" + id).remove()
-    sessionStorage.setItem("user", JSON.stringify(data))
     $(`#${this.getAttribute("data-quizId")}`).remove()
 })
 
@@ -84,7 +81,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         userDetails = user
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             if (userSnapshot.exists()) {
-                sessionStorage.setItem("user", JSON.stringify(userSnapshot.val()))
+                snapshotUserDetails = userSnapshot.val()
                 if (userSnapshot.val().quizCreated != null) {
                     userSnapshot.val().quizCreated.forEach(element => {
                         database.ref("quiz/" + element).once("value").then((snapshot) => {

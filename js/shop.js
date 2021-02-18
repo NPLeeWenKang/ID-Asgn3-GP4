@@ -1,3 +1,4 @@
+var snapshotUserDetails;
 $(".card").on("click", function () {
     $("#shop-item").attr("src", $(this).attr("id"))
     $("#modal-name").text(`${$(this).find("h4").text()} (${parseInt($(this).find("div.coin-div").text())} coins)`)
@@ -5,27 +6,23 @@ $(".card").on("click", function () {
     $("#shop-item").attr("data-type", this.className.replace("card ", ""))
 })
 $("#purchase-btn").on("click", function () {
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
-    if (data.coins - $("#shop-item").attr("data-cost") >= 0) {
-        data.coins -= $("#shop-item").attr("data-cost")
-        if (data.items == null) {
-            data.items = {}
+    if (snapshotUserDetails.coins - $("#shop-item").attr("data-cost") >= 0) {
+        snapshotUserDetails.coins -= $("#shop-item").attr("data-cost")
+        if (snapshotUserDetails.items == null) {
+            snapshotUserDetails.items = {}
         }
         if ($("#shop-item").attr("data-type") == "badges") {
-            if (data.items.badges == null) {
-                data.items.badges = []
+            if (snapshotUserDetails.items.badges == null) {
+                snapshotUserDetails.items.badges = []
             }
-            data.items.badges.push($("#shop-item").attr("src"))
+            snapshotUserDetails.items.badges.push($("#shop-item").attr("src"))
         } else {
-            if (data.items.collectibles == null) {
-                data.items.collectibles = []
+            if (snapshotUserDetails.items.collectibles == null) {
+                snapshotUserDetails.items.collectibles = []
             }
-            data.items.collectibles.push($("#shop-item").attr("src"))
+            snapshotUserDetails.items.collectibles.push($("#shop-item").attr("src"))
         }
-
-        sessionStorage.setItem("user", JSON.stringify(data))
-        database.ref("user/" + data.uid).set(data)
+        database.ref("user/" + snapshotUserDetails.uid).set(snapshotUserDetails)
         removeItem()
         $("#success").css("display", "")
         setTimeout(function () {
@@ -40,11 +37,10 @@ $("#purchase-btn").on("click", function () {
 
 })
 function removeItem() {
-    var dataString = sessionStorage.getItem("user")
-    var data = JSON.parse(dataString)
-    if (data.items.badges != null) {
+    console.log(snapshotUserDetails)
+    if (snapshotUserDetails.items.badges != null) {
         const badgeDiv = document.querySelectorAll(".badges")
-        data.items.badges.forEach(badge => {
+        snapshotUserDetails.items.badges.forEach(badge => {
             badgeDiv.forEach(element => {
                 if (element.firstElementChild.getAttribute("src") == badge) {
                     element.parentNode.removeChild(element)
@@ -52,9 +48,9 @@ function removeItem() {
             })
         });
     }
-    if (data.items.collectibles != null) {
+    if (snapshotUserDetails.items.collectibles != null) {
         const collectibleDiv = document.querySelectorAll(".collectible")
-        data.items.collectibles.forEach(collectible => {
+        snapshotUserDetails.items.collectibles.forEach(collectible => {
             collectibleDiv.forEach(element => {
                 console.log(element.firstElementChild.getAttribute("src"))
                 console.log(collectible)
@@ -80,11 +76,15 @@ var database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(sessionStorage.getItem("user"))
-        if (sessionStorage.getItem("user") == null) {
-            window.location = "profile.html"
-        }
-        removeItem()
+        database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
+            if (userSnapshot.exists()) {
+                snapshotUserDetails = userSnapshot.val()
+                removeItem()
+            } else {
+                window.location = "profile.html"
+            }
+        })
+
     } else {
         window.location = "login.html"
     }
