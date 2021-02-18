@@ -60,6 +60,9 @@ Throughout the whole assignment, the group has worked together to build up this 
 1. Link icon (Bootstrap): https://icons.getbootstrap.com/icons/link-45deg/
 2. Trash bin icon (Bootstrap): https://icons.getbootstrap.com/icons/trash/
 3. Light bulb icon (flaticon): https://www.flaticon.com/free-icon/lamp_2910891?term=bulb&page=1&position=16&page=1&position=16&related_id=2910891&origin=search
+4. Responsive Design icon (flaticon): 
+https://www.flaticon.com/free-icon/responsive-design_2504209?term=responsive%20design&related_id=2504209
+5. Gamification icon (flaticon)
 ### Sounds
 1. Quiz song (Bensound): https://www.bensound.com/royalty-free-music/track/jazzy-frenchy
 2. Wrong choice sound effect (Freesound): https://freesound.org/people/unadamlar/sounds/476177/
@@ -68,8 +71,79 @@ Throughout the whole assignment, the group has worked together to build up this 
 ### Lottie
 1. Loading icon 1: https://lottiefiles.com/GilsonSantosUX
 2. Background of take-quiz: https://lottiefiles.com/user/327565
+### Profile Images
+1. man-1
+https://www.flaticon.com/free-icon/man_2922527?related_id=2922527&origin=pack
+
+2. man-2
+https://www.flaticon.com/free-icon/man_2922542
+
+3. man-3
+https://www.flaticon.com/free-icon/man_2922694?related_id=2922694&origin=pack
+
+4. man-4
+https://www.flaticon.com/free-icon/man_2922624
+
+5. man-5
+https://www.flaticon.com/free-icon/man_2922618
+
+6. man-6
+https://www.flaticon.com/free-icon/man_2922616
+
+7. woman-1
+https://www.flaticon.com/free-icon/woman_2922650
+
+8. woman 2
+https://www.flaticon.com/free-icon/woman_2922661
+
+9. woman-3
+https://www.flaticon.com/free-icon/woman_2922757
+
+10. woman-4
+https://www.flaticon.com/free-icon/woman_2922752
+
+11. woman-5
+https://www.flaticon.com/free-icon/woman_2922742
+
+12. woman-6
+https://www.flaticon.com/free-icon/woman_2922677
+
+### Shop Images
+1. Newbie	
+https://www.flaticon.com/free-icon/medal_610333?related_id=610333
+
+2. Adventurer
+https://www.flaticon.com/free-icon/adventurer_1274720?term=adventurer&page=1&position=10&page=1&position=10&related_id=1274720&origin=search
+
+3. Explorer
+https://www.flaticon.com/free-icon/explorer_603804?term=explorer&page=1&position=13&page=1&position=13&related_id=603804&origin=search
+
+4. Champion
+https://www.flaticon.com/free-icon/success_2830919?term=champion&page=1&position=34&page=1&position=34&related_id=2830919&origin=search
+
+5. Mountaineer
+https://www.flaticon.com/free-icon/achievement_3050426?term=mountain&page=1&position=32&page=1&position=32&related_id=3050426&origin=search
+
+6. Pen
+https://www.flaticon.com/free-icon/pen_715554?term=pen&page=1&position=10&page=1&position=10&related_id=715554&origin=search
+
+7. Pencil
+https://www.flaticon.com/free-icon/pencil_588395?term=pencil&page=1&position=12&page=1&position=12&related_id=588395&origin=search
+
+8. Laptop
+https://www.flaticon.com/free-icon/laptop_689314?term=laptop&page=1&position=77&page=1&position=77&related_id=689314&origin=search
+
+9. SuperStar
+https://www.flaticon.com/free-icon/star_616490?term=star&page=1&position=7&page=1&position=7&related_id=616490&origin=search
+
+10. Brainy
+https://www.flaticon.com/free-icon/book_2490421?term=brain&page=1&position=44&page=1&position=44&related_id=2490421&origin=search
+
+11. Notebook
+https://www.flaticon.com/free-icon/notebooks_544295?term=notebook&page=1&position=24&page=1&position=24&related_id=544295&origin=search
+
 ### Category Images
-1. Math: https://patersontimes.com/2013/08/08/guesstimating-can-improve-math-skills/
+12. Math: https://patersontimes.com/2013/08/08/guesstimating-can-improve-math-skills/
 
 2. Book: https://eltlearningjourneys.com/wp-content/uploads/2018/04/BOOKS.jpg
 
