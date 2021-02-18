@@ -84,17 +84,26 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-
+$(".card").on("click", function () {
+    $("#quiz-title").text($(this).find("h3").text())
+    $("#quiz-description").text($(this).find("p").text())
+    $("#quiz-img").attr("src", $(this).find("img").attr("src"))
+    $("#take-quiz").attr("data-target", $(this).attr("id"))
+})
 const queryString = window.location.search;
 const key = new URLSearchParams(queryString).get("key")
 database.ref("/pubQuiz/").once("value").then((snapshot) => {
-    var state = snapshot.val() || 'Anonymous';
-    const quiz_area = document.getElementById("quiz-area")
-    for (const [key, value] of Object.entries(state)) {
-        createQuizBox(key, value, quiz_area)
-    }
     $("#quiz-area").css("display", "")
     $("#loading-icon, #loading-icon>lottie-player, #loading-icon>h5").css("display", "none")
+    if (snapshot.exists()) {
+        var state = snapshot.val();
+        const quiz_area = document.getElementById("quiz-area")
+        for (const [key, value] of Object.entries(state)) {
+            createQuizBox(key, value, quiz_area)
+        }
+
+    }
+
 
 
 })
