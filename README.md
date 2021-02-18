@@ -22,7 +22,7 @@ Throughout the whole assignment, the group has worked together to build up this 
 11. Helped in testing website
 
 ### Keerthana (Front-end)
-1. Researched on responsive web designs and curated ideas
+1. Researched on modern responsive web designs and curated ideas
 2. Designed the layout of index.html 
 3. Designed the layout of profile.html
 4. Designed the layout of view-quiz.html
