@@ -108,9 +108,3 @@ h2{
     }
 
 }
-
-@media only screen and (max-width:970px){
-    h2{
-        margin-top: 110px;
-    }
-}
