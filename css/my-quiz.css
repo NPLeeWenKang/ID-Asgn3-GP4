@@ -37,8 +37,11 @@ button{
     object-position: center;
     margin:20px;
     border-radius:10px;
+    padding: 5px;
 }
-
+.choose-icon:hover{
+    background-color: red;
+}
 .container{
     background: white;
     display: flex;
@@ -105,12 +108,13 @@ button{
     .sideBar {
      display: none;
     }
+    
 }
 
 @media only screen and (min-width:250px) and (max-width:500px){
     .add-icon-btn{
-    width:120px;
-    height: 120px;
+        width:120px;
+        height: 120px;
     }
     .text-container{
         margin: 40px;

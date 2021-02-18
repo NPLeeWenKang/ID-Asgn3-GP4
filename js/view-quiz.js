@@ -33,17 +33,13 @@ $("#link-btn").on("click", function () {
 
 })
 
-$(".card").on("click", function () {
-    $("#quiz-title").text($(this).find("h3").text())
-    $("#quiz-description").text($(this).find("p").text())
-    $("#quiz-img").attr("src", $(this).find("img").attr("src"))
-    $("#take-quiz").attr("data-target", $(this).attr("id"))
-})
+
 
 $("#take-quiz").on("click", function () {
     window.location = `https://npleewenkang.github.io/ID-Asgn3-GP4/take-quiz.html?key=${$(this).attr("data-target")}`
 })
 function createQuizBox(key, value, quiz_area) {
+    console.log(value)
     const card = document.createElement("div")
     card.id = key
     card.className = "card"
@@ -51,12 +47,13 @@ function createQuizBox(key, value, quiz_area) {
     card.setAttribute("data-bs-target", "#exampleModal")
     const img = document.createElement("img")
     img.className = "quiz-img"
-    img.src = "..."
+    img.src = value.img
     const text_div = document.createElement("div")
     text_div.className = "text-div"
     const h3 = document.createElement("h3")
     h3.innerHTML = value.name
     const p = document.createElement("p")
+    p.style.display = "none"
     if (value.description == null) {
         p.innerHTML = ""
     } else {
@@ -68,8 +65,13 @@ function createQuizBox(key, value, quiz_area) {
     card.appendChild(img)
     card.appendChild(text_div)
     quiz_area.appendChild(card)
-
-
+    $(".card").unbind("click")
+    $(".card").on("click", function () {
+        $("#quiz-title").text($(this).find("h3").text())
+        $("#quiz-description").text($(this).find("p").text())
+        $("#quiz-img").attr("src", $(this).find("img").attr("src"))
+        $("#take-quiz").attr("data-target", $(this).attr("id"))
+    })
 }
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
@@ -103,10 +105,6 @@ database.ref("/pubQuiz/").once("value").then((snapshot) => {
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(sessionStorage.getItem("user"))
-        if (sessionStorage.getItem("user") == null) {
-            window.location = "profile.html"
-        }
     } else {
         window.location = "login.html"
     }

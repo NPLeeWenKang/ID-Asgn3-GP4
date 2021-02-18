@@ -2,7 +2,6 @@ var userDetails;
 var snapshotUserDetails;
 
 function loadQuizzes(state, key) {
-    console.log(key)
     const container = document.createElement("div");
     container.className = "container"
     container.id = key
@@ -10,9 +9,26 @@ function loadQuizzes(state, key) {
     const add_img = document.createElement("div");
     add_img.className = "add-img"
 
+
     const add_button = document.createElement("button");
     add_button.className = "add-icon-btn"
-    add_button.textContent = "+ Add Icon"
+
+    add_button.setAttribute("data-bs-toggle", "modal")
+    add_button.setAttribute("data-bs-target", "#addQuizIzon")
+
+    const image = document.createElement("img")
+    image.src = state.img
+    image.style.width = "100%"
+    image.style.height = "100%"
+    if (state.img == null) {
+        image.style.display = "none"
+    }
+
+    const quizName = document.createElement("div")
+    quizName.textContent = "+ Add Icon"
+    if (state.img != null) {
+        quizName.style.display = "none"
+    }
 
     const text_container = document.createElement("div");
     text_container.className = "text-container"
@@ -53,6 +69,9 @@ function loadQuizzes(state, key) {
     text_container.appendChild(p)
     text_container.appendChild(remove_button)
 
+    add_button.appendChild(image)
+    add_button.appendChild(quizName)
+
     container.appendChild(add_img)
     container.appendChild(add_button)
     container.appendChild(text_container)
@@ -65,7 +84,54 @@ function loadQuizzes(state, key) {
     $(".link-btn").on("click", async function () {
         await navigator.clipboard.writeText(`https://npleewenkang.github.io/ID-Asgn3-GP4/take-quiz.html?key=${$(this).parent().parent().parent().attr("id")}`);
     })
+    $(".add-icon-btn").unbind("click")
+    $(".add-icon-btn").on("click", function () {
+        $("#update").attr("data-target", $(this).parent().attr("id"))
+        $("#remove").attr("data-target", $(this).parent().attr("id"))
+        if ($(this).find("img").attr("src") != null) {
+            const icon = document.querySelectorAll(".choose-icon")
+            for (var i = 0; i < icon.length; i++) {
+                if (icon[i].getAttribute("src") == $(this).find("img").attr("src")) {
+                    icon[i].style.backgroundColor = "green"
+                    break;
+                }
+            }
+        }
+
+    })
 }
+$(".choose-icon").on("click", function () {
+    $(".choose-icon").css("background-color", "")
+    $(this).css("background-color", "green")
+})
+function findIconSrc() {
+    const ava = document.querySelectorAll(".choose-icon")
+    var src = null;
+    for (var i = 0; i < ava.length; i++) {
+        if (ava[i].style.backgroundColor == "green") {
+            src = ava[i].getAttribute("src")
+            break;
+        }
+    }
+    return src
+}
+$("#update").on("click", function () {
+    var id = $(this).attr("data-target")
+    var src = findIconSrc()
+    $(`#${id}`).find("img").first().attr("src", src)
+    $(`#${id}`).find("img").first().css("display", "")
+    $(`#${id}`).find("button>div").css("display", "none")
+    database.ref("quiz/" + id).update({ img: src })
+    database.ref("pubQuiz/" + id).update({ img: src })
+})
+$("#remove").on("click", function () {
+    var id = $(this).attr("data-target")
+    $(`#${id}`).find("img").first().attr("src", "")
+    $(`#${id}`).find("img").first().css("display", "none")
+    $(`#${id}`).find("button>div").css("display", "")
+    database.ref("quiz/" + id).update({ img: null })
+    database.ref("pubQuiz/" + id).update({ img: null })
+})
 $("#confirm-delete").on("click", function () {
     var id = parseInt(this.getAttribute("data-quizId"))
     snapshotUserDetails.quizCreated.splice(snapshotUserDetails.quizCreated.indexOf(id), 1)
