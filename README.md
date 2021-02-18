@@ -21,7 +21,18 @@ Throughout the whole assignment, the group has worked together to build up this 
 10. Assisted in website mockup
 11. Helped in testing website
 
-### Keerthana
+### Keerthana (Front-end)
+1. Researched on responsive web designs and curated ideas
+2. Designed the layout of index.html 
+3. Designed the layout of profile.html
+4. Designed the layout of view-quiz.html
+5. Designed the layout of my-quiz.html
+6. Designed the layout of shop.html
+7. Managed Webpage styling 
+8. Collated assets for profile , quiz categories & shop
+9. Further enhanced the assets using Illustrator
+10. Assisted in website mockup
+11. Helped in testing website  
 
 ## Design Process
 
