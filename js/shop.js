@@ -8,6 +8,7 @@ $(".card").on("click", function () {
 $("#purchase-btn").on("click", function () {
     if (snapshotUserDetails.coins - $("#shop-item").attr("data-cost") >= 0) {
         snapshotUserDetails.coins -= $("#shop-item").attr("data-cost")
+        $("#user-coins").text(`${snapshotUserDetails.coins} Coins`)
         if (snapshotUserDetails.items == null) {
             snapshotUserDetails.items = {}
         }

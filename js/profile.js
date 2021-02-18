@@ -97,7 +97,7 @@ function loadUserData() {
 function noUserData() {
     database.ref("user/" + userDetails.uid).set({
         username: "User Name",
-        coins: 50,
+        coins: 100,
         uid: userDetails.uid
     }, (error) => {
         const data = {
