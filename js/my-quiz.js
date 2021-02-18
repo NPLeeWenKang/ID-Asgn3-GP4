@@ -20,6 +20,8 @@ function loadQuizzes(state, key) {
     image.src = state.img
     image.style.width = "100%"
     image.style.height = "100%"
+    image.style.objectFit = "cover"
+    image.style.objectPosition = "center"
     if (state.img == null) {
         image.style.display = "none"
     }
