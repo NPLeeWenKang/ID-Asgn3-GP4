@@ -295,6 +295,16 @@ nav {
         padding: 5px !important;
         font-size: 20px;
     }
+    #made-by{
+        text-align: center;
+        display: block;
+        margin: 0px !important;
+    }
+    #est-time{
+        display: block;
+        text-align: center;
+        margin: 0px !important;
+    }
 }
 @media screen and (max-width:620px){
     .tocolumn{
