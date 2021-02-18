@@ -118,20 +118,34 @@ img{
     margin:auto;
 }
 .fifth-row{
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
     margin-bottom: 30px;
 }
 
 .sixth-row{
     padding:30px;
 }
-.wrapped-about{
-    background-color: white;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    padding: 30px;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 100px;
+
+.abt-banner{
+    background-color: rgba(225, 241, 255, 0.353);
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.first-row-text {
+    padding:20px;
+}
+
+.first-row-text h1{
+    font-weight: 600;
+    font-size: 50px;
+    color:#0c5783;
 }
 
 @media (max-width: 768px){
@@ -188,9 +202,6 @@ img{
     .wrapped-about{
         width: 90%;
         padding: 10px;
-    }
-    .col-sm{
-        padding: 30px;
     }
 }
 
