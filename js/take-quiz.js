@@ -282,13 +282,3 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
         get_QBank_And_Create(key)
     }
 })
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        if (sessionStorage.getItem("user") == null) {
-            window.location = "profile.html"
-        }
-    } else {
-        window.location = "login.html"
-    }
-});
