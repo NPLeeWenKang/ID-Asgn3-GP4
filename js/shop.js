@@ -37,30 +37,32 @@ $("#purchase-btn").on("click", function () {
 
 })
 function removeItem() {
-    console.log(snapshotUserDetails)
-    if (snapshotUserDetails.items.badges != null) {
-        const badgeDiv = document.querySelectorAll(".badges")
-        snapshotUserDetails.items.badges.forEach(badge => {
-            badgeDiv.forEach(element => {
-                if (element.firstElementChild.getAttribute("src") == badge) {
-                    element.parentNode.removeChild(element)
-                }
-            })
-        });
+    if (snapshotUserDetails.items != null) {
+        if (snapshotUserDetails.items.badges != null) {
+            const badgeDiv = document.querySelectorAll(".badges")
+            snapshotUserDetails.items.badges.forEach(badge => {
+                badgeDiv.forEach(element => {
+                    if (element.firstElementChild.getAttribute("src") == badge) {
+                        element.parentNode.removeChild(element)
+                    }
+                })
+            });
+        }
+        if (snapshotUserDetails.items.collectibles != null) {
+            const collectibleDiv = document.querySelectorAll(".collectible")
+            snapshotUserDetails.items.collectibles.forEach(collectible => {
+                collectibleDiv.forEach(element => {
+                    console.log(element.firstElementChild.getAttribute("src"))
+                    console.log(collectible)
+                    console.log(element.firstElementChild.getAttribute("src") == collectible)
+                    if (element.firstElementChild.getAttribute("src") == collectible) {
+                        element.parentNode.removeChild(element)
+                    }
+                })
+            });
+        }
     }
-    if (snapshotUserDetails.items.collectibles != null) {
-        const collectibleDiv = document.querySelectorAll(".collectible")
-        snapshotUserDetails.items.collectibles.forEach(collectible => {
-            collectibleDiv.forEach(element => {
-                console.log(element.firstElementChild.getAttribute("src"))
-                console.log(collectible)
-                console.log(element.firstElementChild.getAttribute("src") == collectible)
-                if (element.firstElementChild.getAttribute("src") == collectible) {
-                    element.parentNode.removeChild(element)
-                }
-            })
-        });
-    }
+
 }
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
@@ -81,6 +83,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (userSnapshot.exists()) {
                 snapshotUserDetails = userSnapshot.val()
+                $("#user-coins").text(`${snapshotUserDetails.coins} Coins`)
                 removeItem()
             } else {
                 window.location = "profile.html"

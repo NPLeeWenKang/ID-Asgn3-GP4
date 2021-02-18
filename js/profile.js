@@ -3,51 +3,54 @@ var userDetails;
 var snapshotUserDetails;
 
 function displayItems() {
-    if (snapshotUserDetails.items.badges != null) {
-        const badgesDiv = document.getElementById("badges-div")
-        badgesDiv.textContent = ""
-        snapshotUserDetails.items.badges.forEach(element => {
-            const div = document.createElement("div")
-            div.id = "img"
-            div.className = "item"
+    if (snapshotUserDetails.items != null) {
+        if (snapshotUserDetails.items.badges != null) {
+            const badgesDiv = document.getElementById("badges-div")
+            badgesDiv.textContent = ""
+            snapshotUserDetails.items.badges.forEach(element => {
+                const div = document.createElement("div")
+                div.id = "img"
+                div.className = "item"
 
-            const img = document.createElement("img")
-            img.src = element
-            img.alt = "item-img"
-            img.className = "item-img"
+                const img = document.createElement("img")
+                img.src = element
+                img.alt = "item-img"
+                img.className = "item-img"
 
-            const h5 = document.createElement("h5")
-            h5.className = "item-name"
-            h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
+                const h5 = document.createElement("h5")
+                h5.className = "item-name"
+                h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
 
-            div.appendChild(img)
-            div.appendChild(h5)
-            badgesDiv.appendChild(div)
-        });
+                div.appendChild(img)
+                div.appendChild(h5)
+                badgesDiv.appendChild(div)
+            });
+        }
+
+        if (snapshotUserDetails.items.collectibles != null) {
+            const collectiblesDiv = document.getElementById("collectibles-div")
+            collectiblesDiv.textContent = ""
+            snapshotUserDetails.items.collectibles.forEach(element => {
+                const div = document.createElement("div")
+                div.id = "img"
+                div.className = "item"
+
+                const img = document.createElement("img")
+                img.src = element
+                img.alt = "item-img"
+                img.className = "item-img"
+
+                const h5 = document.createElement("h5")
+                h5.className = "item-name"
+                h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
+
+                div.appendChild(img)
+                div.appendChild(h5)
+                collectiblesDiv.appendChild(div)
+            });
+        }
     }
 
-    if (snapshotUserDetails.items.collectibles != null) {
-        const collectiblesDiv = document.getElementById("collectibles-div")
-        collectiblesDiv.textContent = ""
-        snapshotUserDetails.items.collectibles.forEach(element => {
-            const div = document.createElement("div")
-            div.id = "img"
-            div.className = "item"
-
-            const img = document.createElement("img")
-            img.src = element
-            img.alt = "item-img"
-            img.className = "item-img"
-
-            const h5 = document.createElement("h5")
-            h5.className = "item-name"
-            h5.textContent = element.replace(".png", "").replace("src/Collectibles-img/", "")
-
-            div.appendChild(img)
-            div.appendChild(h5)
-            collectiblesDiv.appendChild(div)
-        });
-    }
 }
 function displayData() {
     $("#username").text(snapshotUserDetails.username)
@@ -95,12 +98,12 @@ function noUserData() {
     database.ref("user/" + userDetails.uid).set({
         username: "User Name",
         coins: 50,
-        uid: user.uid
+        uid: userDetails.uid
     }, (error) => {
         const data = {
             username: "User Name",
             coins: 100,
-            uid: user.uid
+            uid: userDetails.uid
         }
         snapshotUserDetails = data
         loadUserData(data)
