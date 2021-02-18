@@ -26,6 +26,16 @@ $("#purchase-btn").on("click", function () {
 
         sessionStorage.setItem("user", JSON.stringify(data))
         database.ref("user/" + data.uid).set(data)
+        removeItem()
+        $("#success").css("display", "")
+        setTimeout(function () {
+            $("#success").css("display", "none")
+        }, 3000)
+    } else {
+        $("#warning").css("display", "")
+        setTimeout(function () {
+            $("#warning").css("display", "none")
+        }, 3000)
     }
 
 })
@@ -46,6 +56,9 @@ function removeItem() {
         const collectibleDiv = document.querySelectorAll(".collectible")
         data.items.collectibles.forEach(collectible => {
             collectibleDiv.forEach(element => {
+                console.log(element.firstElementChild.getAttribute("src"))
+                console.log(collectible)
+                console.log(element.firstElementChild.getAttribute("src") == collectible)
                 if (element.firstElementChild.getAttribute("src") == collectible) {
                     element.parentNode.removeChild(element)
                 }
