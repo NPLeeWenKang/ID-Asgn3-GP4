@@ -80,12 +80,13 @@ span{
 .wrapper{
     margin-top:100px ;
     flex-direction: column;
-    padding-right: 0px;
+    padding: 0px;
   }
   .left_side,
   .right_side{
-    width:100%;
-    padding:48px;
+    width:80%;
+    max-width: 400px;
+    padding:30px;
   }
 }
 
@@ -94,6 +95,17 @@ span{
     padding:15px 20px;
     top:25px;
     left:10px;
+  }
+  .right_side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right_side>h2{
+    text-align: center;
+  }
+  .right_side>p{
+    text-align: center;
   }
 }
 

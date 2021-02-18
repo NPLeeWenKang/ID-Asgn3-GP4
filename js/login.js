@@ -16,16 +16,13 @@ firebase.initializeApp(firebaseConfig);
 var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged(function (user) {
+
     if (user) {
         console.log(user.uid)
         window.location = "profile.html"
+    } else {
+        console.log("ok")
+        $("#wrapper").css("display", "")
+        $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
     }
 });
-
-// var user = firebase.auth().currentUser;
-// console.log(user)
-// if (user) {
-//     window.location = "profile.html"
-// } else {
-//     // No user is signed in.
-// }

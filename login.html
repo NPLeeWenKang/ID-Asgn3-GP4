@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="wrapper" class="wrapper" style="display: none;">
         <a href="index.html"><button class="back-btn">Go to Home</button></a>
         <div class="left_side">
             <img src="src/login.svg">
@@ -23,6 +23,13 @@
             <p>We make it easy for you to feel secure and to have a personalised experience</p>
             <img id="login-btn" src="src/btn_google_signin_dark_normal_web@2x.png" width="230px" alt="image of login">
         </div>
+    </div>
+    <div id="loading-icon" style="margin-bottom: 100px;"
+        class="loading-icon d-flex flex-column justify-content-center align-items-center">
+        <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
+            background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+
+        <h5>Loading Data</h5>
     </div>
 
 
