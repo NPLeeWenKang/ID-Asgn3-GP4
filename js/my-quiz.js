@@ -89,6 +89,7 @@ function loadQuizzes(state, key) {
     $(".add-icon-btn").unbind("click")
     $(".add-icon-btn").on("click", function () {
         $("#update").attr("data-target", $(this).parent().attr("id"))
+        $("#update").attr("data-target", $(this).parent().attr("id"))
         $("#remove").attr("data-target", $(this).parent().attr("id"))
         if ($(this).find("img").attr("src") != null) {
             const icon = document.querySelectorAll(".choose-icon")
@@ -124,7 +125,12 @@ $("#update").on("click", function () {
     $(`#${id}`).find("img").first().css("display", "")
     $(`#${id}`).find("button>div").css("display", "none")
     database.ref("quiz/" + id).update({ img: src })
-    database.ref("pubQuiz/" + id).update({ img: src })
+    database.ref("pubQuiz/" + id).once("value").then(snapshot => {
+        if (snapshot.exists()) {
+            database.ref("pubQuiz/" + id).update({ img: src })
+        }
+    })
+
 })
 $("#remove").on("click", function () {
     var id = $(this).attr("data-target")
