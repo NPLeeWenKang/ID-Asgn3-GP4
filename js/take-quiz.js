@@ -27,6 +27,10 @@ $("#unmute").on("click", function () {
     $("#unmute").css("display", "none")
     localStorage.setItem("mute", "true")
 })
+$(window).focus(function () {
+    $("audio").trigger("pause")
+})
+
 function loadEnd() {
     $("audio").trigger("pause")
     $("#quiz").css("display", "none")
@@ -144,10 +148,10 @@ function markQuestion(ans, div, question) {
         $("#player-coins").text(playerCoins)
         playerScore += 1
         $("#player-score").text(playerScore)
-        var audio = new Audio('../src/correct-effect.mp3');
+        var audio = new Audio('src/correct-effect.mp3');
         audio.play();
     } else {
-        var audio = new Audio('../src/wrong-effect.mp3');
+        var audio = new Audio('src/wrong-effect.mp3');
         $(div).css("background-color", "#ec6b83")
         audio.play();
     }
