@@ -117,9 +117,11 @@ firebase.auth().onAuthStateChanged(function (user) {
 if (window.innerWidth < 800) {
     // On first start up
     $("#hamburger").css("display", "")
+    $("#navbarSupportedContent").css("display", "")
     $("#nav-btn").css("display", "none")
 } else {
     $("#hamburger").css("display", "none")
+    $("#navbarSupportedContent").css("display", "none")
     $("#nav-btn").css("display", "")
 }
 window.addEventListener("resize", function (event) {
@@ -127,9 +129,11 @@ window.addEventListener("resize", function (event) {
     if (window.innerWidth < 800) {
         // On first start up
         $("#hamburger").css("display", "")
+        $("#navbarSupportedContent").css("display", "")
         $("#nav-btn").css("display", "none")
     } else {
         $("#hamburger").css("display", "none")
+        $("#navbarSupportedContent").css("display", "none")
         $("#nav-btn").css("display", "")
     }
 })
