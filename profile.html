@@ -44,6 +44,12 @@
                     <li class="nav-item">
                         <a href="shop.html"><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
                     </li>
+                    <li class="nav-item">
+                        <a style="color: red;" href="#"
+                            onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
+                            <i class="fa fa-sign-out fa-lg"></i>Sign out
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div id="nav-btn">
@@ -148,7 +154,8 @@
                 </div>
 
                 <h3>Collectibles</h3>
-                <p style="font-style: italic; color:grey">Purchase collectibles using coins acquired and show off your knowledge to
+                <p style="font-style: italic; color:grey">Purchase collectibles using coins acquired and show off your
+                    knowledge to
                     fellow Quizzlers!</p>
                 <span></span>
 

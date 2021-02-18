@@ -35,13 +35,19 @@
                         <a href="profile.html"><i class="fa fa-user fa-lg"></i> Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a href="view-quiz.html"><i class="fa fa-pencil-square fa-lg"></i>Take Quiz</a>
+                        <a class="active" href="view-quiz.html"><i class="fa fa-pencil-square fa-lg"></i>Take Quiz</a>
                     </li>
                     <li class="nav-item">
                         <a href="my-quiz.html"><i class="fa fa-folder fa-lg"></i>My Quizzes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="active" href="shop.html"><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
+                        <a href="shop.html"><i class="fa fa-shopping-cart fa-lg"></i>Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: red;" href="#"
+                            onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
+                            <i class="fa fa-sign-out fa-lg"></i>Sign out
+                        </a>
                     </li>
                 </ul>
             </div>
