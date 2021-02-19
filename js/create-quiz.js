@@ -1,4 +1,5 @@
 function calcRangeDisplay_Points(val, dom) {
+    // Converts data
     if (val == "0") {
         dom.innerHTML = parseInt(val) * 1000 + " points";
     } else if (val == "1") {
@@ -9,6 +10,7 @@ function calcRangeDisplay_Points(val, dom) {
 }
 
 function calcRangeDisplay_Time(val, dom) {
+    // Converts data
     if (val == "0") {
         dom.innerHTML = "5 sec";
     } else if (val == "1") {
@@ -26,6 +28,7 @@ function calcRangeDisplay_Time(val, dom) {
     }
 }
 function convertPoints(point) {
+    // Converts data
     if (point == "0") {
         return parseInt(point) * 1000;
     } else if (point == "1") {
@@ -35,9 +38,11 @@ function convertPoints(point) {
     }
 }
 function convertPointsToVal(points) {
+    // Converts data
     return points / 1000
 }
 function convertTime(point) {
+    // Converts data
     if (point == "0") {
         return 5;
     } else if (point == "1") {
@@ -55,6 +60,7 @@ function convertTime(point) {
     }
 }
 function convertTimeToVal(point) {
+    // Converts data
     if (point == 5) {
         return 0;
     } else if (point == 10) {
@@ -72,29 +78,33 @@ function convertTimeToVal(point) {
     }
 }
 function submitDatabase(arr, qnArr, userQnList) {
+    // Submits data into database
     database.ref("quiz/" + arr.quizId).set(arr, (error) => {
+        // Submit data into quiz/
         if (error) {
             console.alert(error);
         } else {
             database.ref("quiz/" + arr.quizId + "/quizQuestion").set(qnArr, (error) => {
+                // Submit data into quiz/ %uid% /quizQuestion
                 if (error) {
                     console.alert(error);
                 } else {
                     database.ref("user/" + snapshotUserDetails.uid).update({ quizCreated: userQnList }, (error) => {
+                        // Update quizCreated user data
                         if (error) {
                             console.alert(error);
                         } else {
                             if (arr.type == "public") {
+                                // quiz is public
                                 database.ref("pubQuiz/" + arr.quizId).set(arr, (error) => {
                                     if (error) {
                                         console.alert(error);
                                     } else {
                                         window.location = "my-quiz.html"
-                                        //console.log("done")
                                     }
                                 })
                             } else {
-                                console.log("no pub")
+                                // quiz is private
                                 window.location = "my-quiz.html"
                             }
                         }
@@ -108,13 +118,13 @@ function submitDatabase(arr, qnArr, userQnList) {
 
 }
 function validateQuiz(questionArr) {
-    // $("#row1").addClass("row-cols-1")
-    // $("#row1").removeClass("row-cols-2")
+    // Valids the questions
     var myModalEl = document.getElementById('staticBackdrop')
     var modal = bootstrap.Modal.getInstance(myModalEl)
     setTimeout(function () {
 
         if (pass_fail) {
+            // Validation successful
             $("#validation-loading-icon").find("lottie-player").css("display", "none");
             $("#validation-loading-icon").find("div").css("display", "none");
             $("#after-validation-pass").css("display", "");
@@ -122,6 +132,7 @@ function validateQuiz(questionArr) {
             $("#comment").text("Validation successful! Your quiz looks great!")
             $("#modal-submit").removeClass("modal-submit")
             $("#modal-submit").on("click", function () {
+                // Loads data into arrays
                 var type = "public";
                 if ($("#public").prop('checked')) {
                     type = "public"
@@ -152,6 +163,7 @@ function validateQuiz(questionArr) {
                 submitDatabase(arr, questionArr, snapshotUserDetails.quizCreated)
             })
         } else {
+            // Validation failed
             $("#wrapper").empty();
             $("#validation-loading-icon").find("lottie-player").css("display", "none");
             $("#validation-loading-icon").find("div").css("display", "none");
@@ -169,6 +181,7 @@ function validateQuiz(questionArr) {
     }, 3000)
     var pass_fail = true;
     var failed = {}
+    // Validates data
     for (const [key, value] of Object.entries(questionArr)) {
         const errMessage = []
         let didQnFail = true;
@@ -199,6 +212,7 @@ function validateQuiz(questionArr) {
 
 }
 function createFailedValidation(dom, qnNo, err) {
+    // Display which questions are invalid and shows why it is wrong
     const div = document.createElement("div");
     div.style.borderRadius = "3px";
     div.style.backgroundColor = "white"
@@ -218,6 +232,7 @@ function createFailedValidation(dom, qnNo, err) {
     iconErr.src = "src/exclamation-circle-fill.svg"
 
     if (err.includes("err1")) {
+        // Question is invalid
         const errorDiv1 = document.createElement("div");
         errorDiv1.style.marginTop = "5px"
         errorDiv1.className = "d-flex align-items-center"
@@ -228,6 +243,7 @@ function createFailedValidation(dom, qnNo, err) {
         div.appendChild(errorDiv1)
     }
     if (err.includes("err2")) {
+        // Correct answer is invalid
         const errorDiv2 = document.createElement("div");
         errorDiv2.style.marginTop = "5px"
         errorDiv2.className = "d-flex align-items-center"
@@ -238,6 +254,7 @@ function createFailedValidation(dom, qnNo, err) {
         div.appendChild(errorDiv2)
     }
     if (err.includes("err3")) {
+        // Wrong answer is invalid
         const errorDiv3 = document.createElement("div");
         errorDiv3.style.marginTop = "5px"
         errorDiv3.className = "d-flex align-items-center"
@@ -251,6 +268,7 @@ function createFailedValidation(dom, qnNo, err) {
     dom.appendChild(div)
 }
 function createQBank() {
+    // Gets the available quiz category from Open Trivia API
     $.ajax({
         method: "POST",
         url: "https://opentdb.com/api_category.php",
@@ -269,12 +287,10 @@ function createQBank() {
 
     })
 }
-$("#category").on("input", function () {
-    console.log($("#category option:selected").val())
-    console.log(this.value)
 
-})
 function get_QBank_And_Create(url, questionArr, targetLength) {
+    // Gets questions from API
+    // It will always rerun until the number of quiz has reached the target length
     $.ajax({
         method: "POST",
         url: url,
@@ -318,9 +334,9 @@ function get_QBank_And_Create(url, questionArr, targetLength) {
         }
 
         if (Object.keys(questionArr).length != targetLength) {
-            console.log("error")
             get_QBank_And_Create(url, questionArr, targetLength)
         } else {
+            // Target length reached
             var qnNo = 1
             $("#create-quiz-area").empty();
             for (const [key, value] of Object.entries(questionArr)) {
@@ -354,7 +370,7 @@ $("#q-bank-submit").on("click", function () {
 
     var type = $("#type option:selected").val().toLowerCase();
 
-    console.log(number_qns, category, difficulty, type)
+    // Consolidates data and create API url
     var url = `https://opentdb.com/api.php?amount=${number_qns}`;
     if (category != 1) {
         url += `&category=${category}`
@@ -368,7 +384,6 @@ $("#q-bank-submit").on("click", function () {
     if (type == "multiple choice") {
         url += `&type=multiple`
     }
-    console.log(url)
     var questionArr = getQuestionData()
     var targetLength = parseInt(Object.keys(questionArr).length) + parseInt(number_qns)
     get_QBank_And_Create(url, questionArr, targetLength);
@@ -380,6 +395,7 @@ $("#q-bank-submit").on("click", function () {
 })
 createQBank()
 function createQuizDiv(body, questionNo, questionArr) {
+    // Creates a question
     const container = document.createElement("div");
     container.className = "question"
     container.style.marginTop = "10px"
@@ -461,6 +477,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     rangeList2.setAttribute("max", 6)
     rangeList2.setAttribute("step", 1)
     rangeList2.setAttribute("value", 3)
+    // Checks if question exists
     if (questionArr != null) {
         score2.innerHTML = `${questionArr.timeNeeded} sec`
         rangeList2.setAttribute("value", convertTimeToVal(questionArr.timeNeeded))
@@ -473,7 +490,6 @@ function createQuizDiv(body, questionNo, questionArr) {
     rangeDiv.appendChild(rangeInnerDiv2);
 
     const answerDiv = document.createElement("div");
-    //answerDiv.style.marginTop = "10px"
     const row1 = document.createElement("div");
     row1.id = "row1"
     row1.className = "row row-cols-2 g-0"
@@ -491,6 +507,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     input1.className = "quizInput answer1"
     input1.placeholder = "Option 1 (Correct Answer)"
     input1.maxLength = 20;
+    // Checks if correct answer exists
     if (questionArr != null && questionArr.correctAns.length != 0) {
         input1.value = questionArr.correctAns
     }
@@ -513,6 +530,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     input2.className = "quizInput answer2"
     input2.placeholder = "Option 2"
     input2.maxLength = 20;
+    // Checks if wrong answer exists
     if (questionArr != null && questionArr.wrongAns.length != 0) {
         input2.value = questionArr.wrongAns[0]
     }
@@ -536,6 +554,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     input3.className = "quizInput answer3"
     input3.placeholder = "Option 3 (Optional)"
     input3.maxLength = 20;
+    // Checks if wrong answer exists
     if (questionArr != null && questionArr.wrongAns.length != 0) {
         input3.value = questionArr.wrongAns[1]
     }
@@ -558,6 +577,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     input4.className = "quizInput answer4"
     input4.placeholder = "Option 4 (Optional)"
     input4.maxLength = 20;
+    // Checks if wrong answer exists
     if (questionArr != null && questionArr.wrongAns.length != 0) {
         input4.value = questionArr.wrongAns[2]
     }
@@ -573,10 +593,6 @@ function createQuizDiv(body, questionNo, questionArr) {
     row1.appendChild(answer4);
     answerDiv.appendChild(row1)
 
-
-    //const answer3 = document.createElement("div");
-    //const answer4 = document.createElement("div");
-
     container.appendChild(questionDiv)
     container.appendChild(rangeDiv)
     container.appendChild(answerDiv)
@@ -585,8 +601,8 @@ function createQuizDiv(body, questionNo, questionArr) {
 }
 
 function deleteQuestion(index) {
+    // When user deletes a question
     const questionArr = getQuestionData();
-    console.log(questionArr)
     delete questionArr[index - 1];
     var qnNo = 1
     $("#create-quiz-area").empty();
@@ -611,9 +627,11 @@ function deleteQuestion(index) {
 
 }
 function getQuestionData() {
+    // Get question data from questions already created
     const questions = document.getElementsByClassName("question");
     var questionArr = {}
     for (i = 0; i < questions.length; i++) {
+        // Loops through all questions and gets data
         let user_qn = questions[i].getElementsByClassName("user-qn")[0].value;
         let qn_1 = questions[i].getElementsByClassName("answer1")[0].value;
         let qn_2 = questions[i].getElementsByClassName("answer2")[0].value;
@@ -637,8 +655,9 @@ function getQuestionData() {
     return questionArr;
 }
 const body = document.getElementById("create-quiz-area");
-const b = document.getElementById("add-question");
-b.addEventListener("click", function () {
+const add_qn_btn = document.getElementById("add-question");
+add_qn_btn.addEventListener("click", function () {
+    // When add question button is clicked, create a new empty question
     createQuizDiv(body, body.childElementCount + 1)
     $(".range1").unbind("input")
     $(".range1").on("input", function () {
@@ -654,15 +673,15 @@ b.addEventListener("click", function () {
         deleteQuestion(parseInt(index))
 
     })
-    b.style.color = "rgba(0,0,0,0.5)";
+    add_qn_btn.style.color = "rgba(0,0,0,0.5)";
     setTimeout(function () {
-        b.style.color = "rgba(0,0,0,1)";
+        add_qn_btn.style.color = "rgba(0,0,0,1)";
     }, 500)
 })
-const range1 = document.getElementsByClassName("range1")
 
 
-createQuizDiv(body, 1)
+createQuizDiv(body, 1) // Initialises the first empty question
+
 $(".range1").on("input", function () {
     calcRangeDisplay_Points(this.value, this.parentElement.firstElementChild)
 })
@@ -674,15 +693,17 @@ $("input#number-qns").on("input", function () {
 })
 
 $(".delete-icon").on("click", function () {
+    // When delete button is clicked
     const index = this.previousSibling.textContent.replace("Question ", "")
     deleteQuestion(parseInt(index))
-
 })
 $("#done-btn").on("click", function () {
+    // When done button is clicked, validate questions
     clearModal()
     validateQuiz(getQuestionData());
 })
 function clearModal() {
+    // Clears the modal
     $("#validation-loading-icon").find("lottie-player").css("display", "");
     $("#validation-loading-icon").find("div").css("display", "");
     $("#after-validation-pass").css("display", "none");
@@ -697,6 +718,7 @@ function clearModal() {
     $("#modal-submit").unbind("click")
 }
 $('#staticBackdrop').on('hidden.bs.modal', function () {
+    // When modal is closed, clear the modal
     clearModal()
 })
 var firebaseConfig = {
@@ -714,16 +736,20 @@ var userDetails;
 var snapshotUserDetails;
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // User logged in
         userDetails = user
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             if (userSnapshot.exists()) {
+                // Initial user data does not exists
                 snapshotUserDetails = userSnapshot.val()
             } else {
+                // Initial user data exists
                 window.location = "profile.html"
             }
         })
 
     } else {
+        // User not logged in
         window.location = "login.html"
     }
 });

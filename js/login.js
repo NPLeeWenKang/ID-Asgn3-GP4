@@ -1,4 +1,5 @@
 $("#login-btn").on("click", function () {
+    // Login with google
     firebase.auth().signInWithRedirect(provider);
 })
 
@@ -17,9 +18,10 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // User has logged in
         window.location = "profile.html"
     } else {
-        console.log("ok")
+        // User not logged in
         $("#wrapper").css("display", "")
         $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
     }

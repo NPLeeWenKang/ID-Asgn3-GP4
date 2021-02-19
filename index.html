@@ -200,8 +200,10 @@
     $("#login").on("click", function () {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
+                // User is logged in
                 window.location = "profile.html"
             } else {
+                // User is not logged in
                 window.location = "login.html"
             }
         });

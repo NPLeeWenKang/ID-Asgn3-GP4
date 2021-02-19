@@ -6,34 +6,40 @@ $("audio").prop("volume", 0.6);
 
 
 $("#start").on("click", function () {
+    // When user clicks start, display the question
     $("#start-div").css("display", "none")
     $("#start").css("display", "none")
     $("#start").unbind("click")
     $("#quiz").css("display", "")
     $("audio").trigger("play");
-    console.log(questions.length)
     $("#total-score").text(questions.length)
     loadQuestion(questions[questionNo])
 })
 $("#mute").on("click", function () {
+    // When user unmutes sound
     $("audio").prop("muted", false);
     $("#mute").css("display", "none")
     $("#unmute").css("display", "inline")
     localStorage.setItem("mute", "false")
 })
 $("#unmute").on("click", function () {
+    // When user mutes sound
     $("audio").prop("muted", true);
     $("#mute").css("display", "inline")
     $("#unmute").css("display", "none")
     localStorage.setItem("mute", "true")
 })
 $(window).focus(function () {
+    // When window is in focus
     $("audio").trigger("play")
 })
 $(window).blur(function () {
+    // When window is not in focus
     $("audio").trigger("pause")
 })
 function loadEnd() {
+    // Loads the ending screen display
+    // Adds the coins earned into the user's data and updates datavase
     $("audio").trigger("pause")
     $("#quiz").css("display", "none")
     $("#end").css("display", "")
@@ -44,6 +50,7 @@ function loadEnd() {
 
 }
 function calEstimatedTime(quizQuestion) {
+    // Calculate the estimated time needed to finish quiz
     var estTime = 0;
     for (const [key, value] of Object.entries(quizQuestion)) {
         estTime += value.timeNeeded
@@ -51,6 +58,7 @@ function calEstimatedTime(quizQuestion) {
     return estTime
 }
 function shuffleArray(array) {
+    // Shuffles the answers so that they are random
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -59,6 +67,7 @@ function shuffleArray(array) {
     }
 }
 function findMute() {
+    // On page load, check localstorage if user has muted sound
     const tf = localStorage.getItem("mute") === 'true'
     if (tf) {
         $("audio").prop("muted", true);
@@ -71,7 +80,9 @@ function findMute() {
     }
 }
 function loadQuestion(question) {
+    // Loads a question
     if (question == null) {
+        // When no more questions are left
         loadEnd()
         return
     }
@@ -95,6 +106,7 @@ function loadQuestion(question) {
     questionNo += 1
     $(".innerDiv").unbind("click")
     $(".innerDiv").on("click", function () {
+        // When user chooses answer, stops timer and marks the question
         $(".quizInput").css("background-color", "")
         $(".quizInput").parent().parent().css("background-color", "")
         $(this).css("background-color", "#aaff00")
@@ -108,10 +120,13 @@ function loadQuestion(question) {
     })
     $("#done").unbind("click")
     $("#done").on("click", function () {
+        // When user clicks the skip/next button
         if (!timer) {
+            // if timer has stopped, load next question
             $("#done>div").text("Skip")
             loadQuestion(questions[questionNo])
         } else {
+            // if timer is still running, mark question
             $("#done>div").text("Next")
             clearInterval(timer)
             timer = false
@@ -120,24 +135,32 @@ function loadQuestion(question) {
 
     })
     var arr = [question.correctAns]
+    // Loads choices into a temp array
     question.wrongAns.forEach(element => {
         if (element != "") {
             arr.push(element)
         }
 
     })
+    // Shuffles the array, so that the arrangement is random
     shuffleArray(arr)
+    // Sets the question title
     $(".question-div").text(question.question)
+    // Display the shuffled data
     arr.forEach((element) => {
         $(`.answer${arr.indexOf(element) + 1}>div`).text(element)
     })
+    // Display time for question
     $(".time").text(question.timeNeeded)
+
+    // Sets a timer
     var time = question.timeNeeded
     var timer = setInterval(() => {
         time -= 1;
         $(".time").text(time)
 
         if (time <= 0) {
+            // When timer is 0, stop timer and mark question
             clearInterval(timer)
             timer = false
             markQuestion(ans, div, question)
@@ -145,7 +168,12 @@ function loadQuestion(question) {
     }, 1000);
 }
 function markQuestion(ans, div, question) {
+    // Marks a question
+    // div == element chosen by user
+    // ans == answer chosen by user
+
     if (ans == question.correctAns) {
+        // If user answer is correct, play correct choice sound effect
         playerCoins += question.points / 100
         $("#player-coins").text(playerCoins)
         playerScore += 1
@@ -153,6 +181,7 @@ function markQuestion(ans, div, question) {
         var audio = new Audio('src/correct-effect.mp3');
         audio.play();
     } else {
+        // If user answer is wrong, play wrong choice sound effect
         var audio = new Audio('src/wrong-effect.mp3');
         $(div).css("background-color", "#ec6b83")
         audio.play();
@@ -160,6 +189,7 @@ function markQuestion(ans, div, question) {
 
 
     $(".time").css("background-color", "#676767")
+    // Finds the element that contains the correct answer and collor it green
     if ($(`.answer1>div`).text() == question.correctAns) {
         $(`.answer1`).css("background-color", "#1ae56e")
         $(`.answer1`).parent().parent().css("background-color", "#1ae56e")
@@ -179,6 +209,8 @@ function markQuestion(ans, div, question) {
 }
 
 function get_QBank_And_Create(key) {
+    // get questions from API
+    // Will retrieve 5 questions
     var url = "https://opentdb.com/api.php?amount=5"
     if (key != 0) {
         url = `https://opentdb.com/api.php?amount=5&category=${key}`
@@ -188,11 +220,14 @@ function get_QBank_And_Create(key) {
         url: url,
     }).done(function (result) {
         if (result.response_code != 0) {
+            // If key is wrong / invalid
             loadFailedStartScreen();
         } else {
+            // Key is valid
+            // Loads the question into an array
             for (const [key, value] of Object.entries(result.results)) {
-
                 if (questions.length == 5) {
+                    // If target length has been reached
                     break;
                 }
                 if ($('<div>').html(`${value.question}`)[0].textContent.length > 100) {
@@ -227,9 +262,10 @@ function get_QBank_And_Create(key) {
             }
 
             if (questions.length != 5) {
-                console.log("error")
+                // If target length has been reached
                 get_QBank_And_Create(key)
             } else {
+                // If target length has been reached
                 const state = {
                     ownerName: "Auto Generated",
                     name: result.results[0].category,
@@ -242,7 +278,7 @@ function get_QBank_And_Create(key) {
     })
 }
 function loadSuccessfulStartScreen(state) {
-    console.log(questions)
+    // Loads the start screen (Successful)
     $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
     $("#start-container").css("display", "")
     $(".question-div").first().text(state.name)
@@ -265,6 +301,7 @@ function loadSuccessfulStartScreen(state) {
     })
 }
 function loadFailedStartScreen() {
+    // Loads the start screen (Successful)
     $("#loading").attr("style", "z-index: 100; width: 100%; height: 90%; display: none !important")
     $("#start-container").css("display", "")
     $(".question-div").first().text("Invalid quiz link")
@@ -280,21 +317,25 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
-findMute()
+findMute() // Checks localstorage if user has muted
+
+// Get the key / quizId
 const queryString = window.location.search;
-console.log(window.location.search)
 const key = new URLSearchParams(queryString).get("key")
 var questions = []
-console.log("ok")
 database.ref("/quiz/" + key).once("value").then((snapshot) => {
     if (snapshot.exists()) {
+        // use user questions
         var state = snapshot.val();
         questions = state.quizQuestion
+        // Checks ownerName
         database.ref("/user/" + state.ownerId).once("value").then(userSnapshot => {
             if (userSnapshot.exists()) {
+                // Owner name exists
                 state.ownerName = userSnapshot.val().username
                 loadSuccessfulStartScreen(state)
             } else {
+                // Owner name does not exists
                 state.ownerName = "No name retrieved"
                 loadSuccessfulStartScreen(state)
             }
@@ -302,21 +343,27 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
 
 
     } else {
+        // use Auto generated questions
         get_QBank_And_Create(key)
     }
 })
 var snapshotUserDetails;
+// Checks if user is logged in
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // Logged in
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             if (userSnapshot.exists()) {
+                // User initial data is present
                 snapshotUserDetails = userSnapshot.val()
             } else {
+                // User initial data is not present
                 window.location = "profile.html"
             }
         })
 
     } else {
+        // Not logged in
         window.location = "login.html"
     }
 });

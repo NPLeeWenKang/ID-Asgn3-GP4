@@ -2,6 +2,7 @@ var userDetails;
 var snapshotUserDetails;
 
 function loadQuizzes(state, key) {
+    // Uses quiz data to display them
     const container = document.createElement("div");
     container.className = "container"
     container.id = key
@@ -22,12 +23,14 @@ function loadQuizzes(state, key) {
     image.style.height = "100%"
     image.style.objectFit = "cover"
     image.style.objectPosition = "center"
+    // Checks image data
     if (state.img == null) {
         image.style.display = "none"
     }
 
     const quizName = document.createElement("div")
     quizName.textContent = "+ Add Icon"
+    // Checks image data
     if (state.img != null) {
         quizName.style.display = "none"
     }
@@ -80,14 +83,18 @@ function loadQuizzes(state, key) {
     quizBody.appendChild(container)
     $(".remove-btn").unbind("click")
     $(".remove-btn").on("click", function () {
+        // When user clicks on delete button
         $("#confirm-delete").attr("data-quizId", $(this).parent().parent().attr("id"))
     })
     $(".link-btn").unbind("click")
     $(".link-btn").on("click", async function () {
+        // When user clicks on copy link button, quiz link is placed in their clip board
         await navigator.clipboard.writeText(`https://npleewenkang.github.io/ID-Asgn3-GP4/take-quiz.html?key=${$(this).parent().parent().parent().attr("id")}`);
     })
     $(".add-icon-btn").unbind("click")
     $(".add-icon-btn").on("click", function () {
+        // When user clicks add icon / change icon
+        // Loads data into modal
         $("#update").attr("data-target", $(this).parent().attr("id"))
         $("#update").attr("data-target", $(this).parent().attr("id"))
         $("#remove").attr("data-target", $(this).parent().attr("id"))
@@ -108,6 +115,7 @@ $(".choose-icon").on("click", function () {
     $(this).css("background-color", "green")
 })
 function findIconSrc() {
+    // Finds the chosen quiz icons
     const ava = document.querySelectorAll(".choose-icon")
     var src = null;
     for (var i = 0; i < ava.length; i++) {
@@ -119,6 +127,7 @@ function findIconSrc() {
     return src
 }
 $("#update").on("click", function () {
+    // When user clicks update user icon, loads database with new information
     var id = $(this).attr("data-target")
     var src = findIconSrc()
     $(`#${id}`).find("img").first().attr("src", src)
@@ -133,6 +142,7 @@ $("#update").on("click", function () {
 
 })
 $("#remove").on("click", function () {
+    // When user clicks remove btn, loads data into modal
     var id = $(this).attr("data-target")
     $(`#${id}`).find("img").first().attr("src", "")
     $(`#${id}`).find("img").first().css("display", "none")
@@ -141,12 +151,13 @@ $("#remove").on("click", function () {
     database.ref("pubQuiz/" + id).update({ img: null })
 })
 $("#confirm-delete").on("click", function () {
+    // When user clicks confirm delete, removed the quiz data from db
     var id = parseInt(this.getAttribute("data-quizId"))
     snapshotUserDetails.quizCreated.splice(snapshotUserDetails.quizCreated.indexOf(id), 1)
     database.ref("user/" + userDetails.uid).set(snapshotUserDetails)
     database.ref("quiz/" + id).remove()
     database.ref("pubQuiz/" + id).remove()
-    $(`#${this.getAttribute("data-quizId")}`).remove()
+    $(`#${this.getAttribute("data-quizId")}`).remove() // Removes the card from the page
 })
 var firebaseConfig = {
     apiKey: "AIzaSyAvLIsQrahzjTlAAElrm85Mu_S8Rh6a_KY",
@@ -165,8 +176,11 @@ firebase.auth().onAuthStateChanged(function (user) {
         userDetails = user
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             if (userSnapshot.exists()) {
+                // Initial user data is loaded
                 snapshotUserDetails = userSnapshot.val()
                 if (userSnapshot.val().quizCreated != null) {
+                    // User has created quizzes
+                    // Loads the quiz data
                     userSnapshot.val().quizCreated.forEach(element => {
                         database.ref("quiz/" + element).once("value").then((snapshot) => {
                             $("#my-quizzes").css("display", "")
@@ -174,24 +188,26 @@ firebase.auth().onAuthStateChanged(function (user) {
                             if (snapshot.exists()) {
                                 loadQuizzes(snapshot.val(), element)
                             } else {
+                                // Data not in database
                                 console.log("null")
                             }
                         })
                     });
 
                 } else {
+                    // User has not created any quizzes
                     $("#my-quizzes").css("display", "")
                     $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
-                    console.log("no quiz created")
                 }
             } else {
+                // Initial user data is not loaded
                 window.location = "profile.html"
             }
 
         })
 
-
     } else {
+        // User is not logged in
         window.location = "login.html"
     }
 });

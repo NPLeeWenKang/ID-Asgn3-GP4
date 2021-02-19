@@ -1,12 +1,16 @@
 var snapshotUserDetails;
 $(".card").on("click", function () {
+    // When item card is clicked, load data into modal
     $("#shop-item").attr("src", $(this).attr("id"))
     $("#modal-name").text(`${$(this).find("h4").text()} (${parseInt($(this).find("div.coin-div").text())} coins)`)
     $("#shop-item").attr("data-cost", parseInt($(this).find("div.coin-div").text()))
     $("#shop-item").attr("data-type", this.className.replace("card ", ""))
 })
 $("#purchase-btn").on("click", function () {
+    // When user clicks confirm purchase
+    // Checks if user has enough money
     if (snapshotUserDetails.coins - $("#shop-item").attr("data-cost") >= 0) {
+        // Has enough money
         snapshotUserDetails.coins -= $("#shop-item").attr("data-cost")
         $("#user-coins").text(`${snapshotUserDetails.coins} Coins`)
         if (snapshotUserDetails.items == null) {
@@ -23,13 +27,15 @@ $("#purchase-btn").on("click", function () {
             }
             snapshotUserDetails.items.collectibles.push($("#shop-item").attr("src"))
         }
+        // Updates data with new item data
         database.ref("user/" + snapshotUserDetails.uid).set(snapshotUserDetails)
-        removeItem()
+        removeItem() // Removes items from shop UI
         $("#success").css("display", "")
         setTimeout(function () {
             $("#success").css("display", "none")
         }, 3000)
     } else {
+        // Has not enough money
         $("#warning").css("display", "")
         setTimeout(function () {
             $("#warning").css("display", "none")
@@ -38,6 +44,7 @@ $("#purchase-btn").on("click", function () {
 
 })
 function removeItem() {
+    // Removes items from shop IU
     if (snapshotUserDetails.items != null) {
         if (snapshotUserDetails.items.badges != null) {
             const badgeDiv = document.querySelectorAll(".badges")
@@ -53,9 +60,6 @@ function removeItem() {
             const collectibleDiv = document.querySelectorAll(".collectible")
             snapshotUserDetails.items.collectibles.forEach(collectible => {
                 collectibleDiv.forEach(element => {
-                    console.log(element.firstElementChild.getAttribute("src"))
-                    console.log(collectible)
-                    console.log(element.firstElementChild.getAttribute("src") == collectible)
                     if (element.firstElementChild.getAttribute("src") == collectible) {
                         element.parentNode.removeChild(element)
                     }
@@ -79,19 +83,23 @@ var database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // User logged in
         database.ref("user/" + user.uid).once("value").then((userSnapshot) => {
             $(".scroll-wrapper>div").css("display", "")
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (userSnapshot.exists()) {
+                // If initial user data is present
                 snapshotUserDetails = userSnapshot.val()
                 $("#user-coins").text(`${snapshotUserDetails.coins} Coins`)
                 removeItem()
             } else {
+                // If initial user data is not present
                 window.location = "profile.html"
             }
         })
 
     } else {
+        // User not logged in
         window.location = "login.html"
     }
 });

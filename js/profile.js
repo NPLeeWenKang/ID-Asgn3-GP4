@@ -4,10 +4,13 @@ var userDetails;
 var snapshotUserDetails;
 
 function displayItems() {
+    // Display items in user inventory
     if (snapshotUserDetails.items != null) {
         if (snapshotUserDetails.items.badges != null) {
+            // Displays badges
             const badgesDiv = document.getElementById("badges-div")
             badgesDiv.textContent = ""
+            // Loads and appends each item
             snapshotUserDetails.items.badges.forEach(element => {
                 const div = document.createElement("div")
                 div.id = "img"
@@ -29,8 +32,10 @@ function displayItems() {
         }
 
         if (snapshotUserDetails.items.collectibles != null) {
+            // Displays collectibles
             const collectiblesDiv = document.getElementById("collectibles-div")
             collectiblesDiv.textContent = ""
+            // Loads and appends each item
             snapshotUserDetails.items.collectibles.forEach(element => {
                 const div = document.createElement("div")
                 div.id = "img"
@@ -54,9 +59,10 @@ function displayItems() {
 
 }
 function displayData() {
+    // Display user data onto page
     $("#username").text(snapshotUserDetails.username)
     if (snapshotUserDetails.profilePic != null) {
-
+        // Checks if user has a profile pic
         $("#profile-text").css("display", "none")
         $("#profile-pic").attr("src", snapshotUserDetails.profilePic)
         $("#profile-pic").css("display", "")
@@ -70,6 +76,7 @@ function displayData() {
     $("#modal-username").val(snapshotUserDetails.username)
     const ava = document.querySelectorAll(".choose-ava")
     for (var i = 0; i < ava.length; i++) {
+        // Sets the user's profile pic into the modal
         if (ava[i].getAttribute("src") == snapshotUserDetails.profilePic) {
             ava[i].style.backgroundColor = "green"
             break;
@@ -81,6 +88,7 @@ function displayData() {
     $("#modal-birthday").val(snapshotUserDetails.bDay)
 }
 function findAvatarSrc() {
+    // Finds the chosen profile picture if the user click "update"
     const ava = document.querySelectorAll(".choose-ava")
     var src = null;
     for (var i = 0; i < ava.length; i++) {
@@ -92,10 +100,13 @@ function findAvatarSrc() {
     return src
 }
 function loadUserData() {
+    // Loads user data
     displayData()
     displayItems()
 }
 function noUserData() {
+    // If user has no initial data.
+    // Function will place default data into user
     database.ref("user/" + userDetails.uid).set({
         username: "User Name",
         coins: 100,
@@ -123,25 +134,29 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+        // User is logged in
         userDetails = user
         database.ref("user/" + user.uid).once("value").then((snapshot) => {
+            // Getting user data
             $("#main-content").css("display", "")
             $("#loading-icon").attr("style", "margin-top: 100px; display: none !important;")
             if (snapshot.exists()) {
-                console.log("exists")
+                // Initial data exists
                 snapshotUserDetails = snapshot.val()
                 loadUserData()
             } else {
-                console.log("null")
+                // No initial data exists
                 noUserData()
             }
         })
     } else {
+        // If user not logged in
         window.location = "login.html"
     }
 });
 $("#update").on("click", function () {
-    console.log("ok")
+    // When "update" button is clicked
+    // Updates database
     const newSnapshot = {
         ...snapshotUserDetails,
         profilePic: findAvatarSrc(),
