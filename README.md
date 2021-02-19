@@ -32,11 +32,15 @@ Throughout the whole assignment, the group has worked together to build up this 
 4. Designed the layout of view-quiz.html
 5. Designed the layout of my-quiz.html
 6. Designed the layout of shop.html
-7. Helped and Managed Webpage styling 
-8. Collated assets for profile , quiz categories & shop
-9. Further enhanced the assets using Illustrator
-10. Assisted in website mockup
-11. Helped in testing website  
+7. Managed webpage styling for index.css
+8. Managed webpage styling for profile.css
+9. Managed webpage styling for view-quiz.css
+10. Managed webpage styling for my-quiz.css
+11. Managed webpage styling for shop.css
+12. Collated assets for profile , quiz categories & shop
+13. Further enhanced the assets using Illustrator
+14. Assisted in website mockup
+15. Helped in testing website  
 
 ## Design Process
 Working in a group can be difficult. Therefore, before we started coding, we had to ensure that we were on the same page. So, we had to decide what was our purpose, who are our audience. Together, we managed to outline our assignment and ensure that the idea was agreeable to each other. As different people visualise differently, we did the website mockup together, drawing up a low fidelity mockup which allows us to visualise our ideas and concepts.</br>
