@@ -20,28 +20,7 @@ button{
     height: calc(100vh - 56px);
     overflow-y: auto;
 }
-#my-quizzes{
-    margin-top:70px;
-    
-}
-.quiz-icon-imgs{
-    height:350px;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
-.choose-icon{
-    width:300px;
-    height: 200px;
-    object-fit: cover;
-    object-position: center;
-    margin:20px;
-    border-radius:10px;
-    padding: 5px;
-}
-.choose-icon:hover{
-    background-color: red;
-}
+/*Styling container of my quiz*/
 .container{
     background: white;
     display: flex;
@@ -54,12 +33,13 @@ button{
     margin-bottom: 20px;
     position: relative;
 }
-
+/*Styling text inside container*/
 .text-container{
     width:70%;
     margin: 60px;
 }
 
+/*Styling ca add icon btn for user's to add icon*/
 .add-icon-btn{
     width:200px;
     height: 150px;
@@ -75,6 +55,30 @@ button{
     transition: 0.3s;
 }
 
+#my-quizzes{
+    margin-top:70px;
+    
+}
+/*Styling the div in the modal to choose icon*/
+.quiz-icon-imgs{
+    height:350px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+/*Styling the img in the modal*/
+.choose-icon{
+    width:300px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    margin:20px;
+    border-radius:10px;
+    padding: 5px;
+}
+.choose-icon:hover{
+    background-color: red;
+}
+/*Styling remove quiz button*/
 #remove-btn{
     position:absolute;
     bottom:20px;
@@ -94,6 +98,7 @@ button{
 .link-btn:hover{
     color: rgba(0, 0, 0, 0.7);
 }
+/*MEDIA QUERIES to adapt to different screen sizes*/
 @media screen and (min-width: 501px){
     .container{
         width: 70%;

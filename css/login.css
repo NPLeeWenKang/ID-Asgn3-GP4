@@ -16,7 +16,7 @@ a:hover{
 body {
   font-family: 'Poppins', sans-serif;
 } 
-
+/*Styling wrapper of my login contnts*/
 .wrapper{
   background:#fff;
   border-radius: .75em;
@@ -29,6 +29,7 @@ body {
   margin: 50px;
 }
 
+/*Setting equal width on both img and content*/
 .left_side,
 .right_side{
   width:50%;
@@ -40,19 +41,22 @@ span{
     2px 1px 0px #faf38c, 
     1px 4px 0px rgba(0, 0, 0, 0.2);
 }
+/*Styling heading in the wrapper*/
 .right_side > h2{
   color:#0c5783;
   font-size: 45px;
   margin-bottom: 20px;
 }
-
+/*Styling paragraph in the wrapper*/
 .right_side > p{
   color:#929292;
   margin-bottom: 20px;
 }
+/*Styling login page google btn*/
 #login-btn{
   cursor: pointer;
 }
+/*Styling Got to Home page*/
 .back-btn {
   position: absolute;
   top:50px;
@@ -77,6 +81,8 @@ span{
   opacity: 0.8;
   transform: scale(1.1);
 }
+
+/*MEDIA QUERIES to adapt to different screen sizes*/
 @media (max-width:767px){
   .back-btn{
     top:20px;

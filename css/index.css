@@ -1,25 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/*font family for all content in index page*/
 *{
     font-family: 'Poppins', sans-serif;
 }
 
-.luminate-intro{
-    margin:auto;
-    text-align: center;
-    width:50%;
-    margin-bottom: 100px;
-}
 nav {
     -webkit-box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33); 
     box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33);
     z-index: 100;
 }
-.second-row{
-    margin-top:100px;
-    padding:80px;
-    background-color: rgb(243, 243, 243);
-}
+
+/*luminate title styling*/
 .title {
     color: #0c5783;
     font-size: 80px;
@@ -29,12 +21,17 @@ nav {
     4px 4px 0px #faf38c, 
     7px 7px 0px rgba(0, 0, 0, 0.2);
 }
+/*lottie-player styling*/
 .col-sm lottie-player{
     margin: auto;
 }
+
+/*First row right side conetnt styling*/
 .banner-right{
     margin-top:80px;
 }
+
+/*Styling text message under title*/
 .text-message {
     color: #9fb5cc;
     font-size: 1.1em;
@@ -43,6 +40,7 @@ nav {
     margin-bottom: 48px;
 }
 
+/*Styling go to dashboard button*/
 .dash-btn {
     border:none;
     outline: none;
@@ -63,12 +61,28 @@ nav {
     opacity: 0.8;
     transform: scale(1.1);
 }
+
+/*Styling second row*/
+.second-row{
+    margin-top:100px;
+    padding:80px;
+    background-color: rgb(243, 243, 243);
+}
+/*styling luminate intro in second row*/
+.luminate-intro{
+    margin:auto;
+    text-align: center;
+    width:50%;
+    margin-bottom: 100px;
+}
+/*Wrapping the cards and applying flex*/
 .flex-card-row{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;/*center all the card to the center of the page*/
 } 
-/*styling the first row of cards*/
+
+/*styling the row of cards*/
 .card {
     text-align: center;
     padding:20px;
@@ -80,6 +94,7 @@ nav {
     width:400px;
 }
 
+/*Make the logo stay in a position relative to the card*/
 .logo {
     width: 110px;
     position: absolute;
@@ -87,9 +102,13 @@ nav {
     left: 50%;
     transform: translateX(-50%);
 }
+
+/*Styling heading in card*/
 .card h3{
     font-weight: bolder;
 }
+
+/*Styling text in card*/
 .card-text{
     margin-top: 50px;
 }
@@ -98,16 +117,20 @@ nav {
     text-align: center;
     color: rgb(37, 37, 37);
 }
-
+/*Styling third row in index page*/
 .third-row{
     margin-top:100px;
     padding:80px;
 }
+
+/*Styling forth row in index page*/
 .forth-row{
     padding:80px;
     padding-top: 0px;
     margin-bottom: 50px;
 }
+
+/*Styling gamification and responsive design image*/
 .image-feature{
     max-width: 300px;
     width: 100%;
@@ -117,6 +140,8 @@ img{
     display: block;
     margin:auto;
 }
+
+/*Styling fifth row in index page*/
 .fifth-row{
     background-color: white;
     border-radius: 5px;
@@ -124,10 +149,12 @@ img{
     margin-bottom: 30px;
 }
 
+/*Styling third row in index page*/
 .sixth-row{
     padding:30px;
 }
 
+/*Styling about luminate banner*/
 .abt-banner{
     background-color: rgba(225, 241, 255, 0.353);
     height: 450px;
@@ -137,7 +164,7 @@ img{
     text-align: center;
     margin-bottom: 50px;
 }
-
+/*Styling about luminate banner content*/
 .first-row-text {
     padding:20px;
 }
@@ -148,6 +175,7 @@ img{
     color:#0c5783;
 }
 
+/*MEDIA QUERIES to adapt to various screen sizes*/
 @media (max-width: 768px){
     .luminate-intro{
         width:90%;

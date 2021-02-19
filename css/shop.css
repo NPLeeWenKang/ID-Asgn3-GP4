@@ -3,11 +3,14 @@
     overflow-y: auto;
 }
 
+/*Styling badges and collectibles section to have flex property*/
 .badges-section,.collectibles-section{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/*Styling headers for badges and collectibles*/
 h2{
     text-align: center;
     background-color:rgb(170, 225, 229);
@@ -17,6 +20,7 @@ h2{
     padding:10px;
 }
 
+/*Styling the div where user coin is displayed*/
 .user-coin{
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
@@ -33,6 +37,7 @@ h2{
     padding:10px;
 
 }
+/*Styling the coin and user avail coins value to be in a row*/
 .user-coin-div{
     display: flex;
     flex-direction: row;
@@ -49,6 +54,8 @@ h2{
     height:40px;
     margin:5px;
 }
+
+/*Styling individual shop item cards*/
 .card {
     width: 230px;
     height: 230px;
@@ -59,6 +66,8 @@ h2{
     box-sizing: border-box;
     cursor:pointer;
 }
+
+/*Styling the div which shows value of each item*/
 .coin-div{
     display: flex;
     flex-direction: row;
@@ -97,6 +106,8 @@ h2{
     margin: auto;
     bottom: 16px;
 }
+
+/*MEDIA QUERIES to adapt to different screen sizes*/
 @media only screen and (max-width: 800px) {
     .sideBar {
      display: none;

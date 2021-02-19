@@ -23,6 +23,7 @@ button{
   margin:auto;
   position: relative;
 }
+/*Container to wrap all profile information*/
 .container{
   background: white;
   display: flex;
@@ -33,14 +34,14 @@ button{
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
   padding:20px;
 }
-
+/*Make content appear in columns*/
 .text-container{
   display:flex;
   flex:1 0 1;
   flex-direction:column;
   padding:40px;
 }
-
+/*Styling add avatar button*/
 .add-avatar-btn{
   width:160px;
   height: 160px;
@@ -57,6 +58,7 @@ button{
   transition: 0.3s;
 }
 
+/*Styling wrapper for the user avatarr*/
 .avatar-wrapper{
   height:300px;
   display: flex;
@@ -65,6 +67,7 @@ button{
   justify-content: space-around;
 }
 
+/*Styling avatar image div in modal*/
 .avatar-img{
   height:150px;
   overflow: hidden;
@@ -72,6 +75,7 @@ button{
   cursor: pointer;
 }
 
+/*Styling div that shows user's coins*/
 .player-coin{
   display: flex;
   flex-direction: row;
@@ -96,14 +100,17 @@ button{
 .avatar-img img{
   margin:5px;
 }
+
+/*Make Avatar round*/
 .choose-ava{
   border-radius: 50%;
   padding: 5px;
 }
+
 .choose-ava:hover{
   background-color: indianred;
 }
-
+/*Styling edit profile btn*/
 #edit-btn{
   position:absolute;
   bottom:20px;
@@ -116,6 +123,7 @@ button{
   border: 1px solid rgb(236, 236, 236);
 }
 
+/*Styling 2 divs to be side by side for profile information*/
 .split-information{
   margin-top:20px;
   display:flex;
@@ -131,7 +139,7 @@ h3{
   font-weight: 600;
   letter-spacing: 1px;
 }
-
+/*Styling the user's cprofile content when added*/
 #email,#edu-inst,#grade,#birthday{
   font-family: 'Open Sans', sans-serif;
   color:rgb(93, 93, 93);
@@ -141,6 +149,7 @@ h3{
 .email-div,.edu-div,.grade-div,.bday-div{
   width:380px;
 }
+/*Styling user's item div*/
 .items-div{
   background: white;
   display: flex;
@@ -158,6 +167,7 @@ h3{
   background: #0c5783;
   margin-bottom: 30px;
 }
+/*Make badges and collectibles flex show they are side by side*/
 .badges-div,.collectibles-div{
   display: flex;
   flex-direction: row;
@@ -181,6 +191,7 @@ h3{
   text-align: center;
 }
 
+/*MEDIA QUERIES to adpt to different screen sizes*/
 @media screen and (min-width: 800px){
   .container{
       width: 100%;

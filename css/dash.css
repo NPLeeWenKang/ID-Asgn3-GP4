@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/*Dash CSS will be applied to all pages that is in the dashboard*/
+
+/*Setting body to hide overflow content*/
 body{
     overflow-y: hidden;
 }
@@ -17,6 +20,8 @@ a{
 .navbar-brand{
     cursor: pointer;
 }
+
+/*Styling the exit buttonr*/
 .exit-btn {
     cursor: pointer;
     padding: 9.5px;
@@ -31,6 +36,8 @@ a{
     border-color: rgba(0,0,0,0.6);
     color: rgba(0,0,0,0.6);
 }
+
+/*Styling side barr*/
 .sideBar {
     width: 250px;
     background-color: #f1f1f1;
@@ -39,6 +46,7 @@ a{
     font-size:18px;
     float: left;
 }
+/*Styling font awesome icons in the side bar*/
 .fa {
     margin: 13px;
 }
