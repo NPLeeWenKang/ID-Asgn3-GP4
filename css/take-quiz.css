@@ -42,6 +42,15 @@ nav {
     border-top: 2px solid #00881e;
     border-bottom: 4px solid  #003a0d;
 }
+#start-div{
+    height: 100%;
+}
+#quiz{
+    height: 100%;
+}
+#end{
+    height: 100%;
+}
 #start{
     padding: 20px;
     font-size: 60px;
@@ -168,7 +177,8 @@ nav {
     background-color: #757575;
 }
 .scroll-wrapper{
-    height: calc(100vh - 66px);
+    position: relative;
+    height: calc(100vh - 56px);
     overflow:hidden;
 }
 #area-wrapper{
@@ -261,16 +271,10 @@ nav {
 .next-btn{
     width: 150px;
 }
-.arrow {
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-  }
-.right-arrow {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
+.next-btn:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
 .range{
     width: 200px;
 }
@@ -370,5 +374,14 @@ nav {
     }
     .range-wrapper{
         flex-direction: column;
+    }
+    .scroll-wrapper{
+        height: calc(100vh - 66px);
+    }
+}
+
+@media screen and (max-width:280px){
+    .scroll-wrapper{
+        height: calc(100vh - 106px);
     }
 }

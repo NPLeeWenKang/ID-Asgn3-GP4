@@ -1,10 +1,10 @@
 function calcRangeDisplay_Points(val, dom) {
     if (val == "0") {
-        dom.innerHTML = parseInt(val) * 1000 + " lux";
+        dom.innerHTML = parseInt(val) * 1000 + " points";
     } else if (val == "1") {
-        dom.innerHTML = parseInt(val) * 1000 + " lux";
+        dom.innerHTML = parseInt(val) * 1000 + " points";
     } else if (val == "2") {
-        dom.innerHTML = parseInt(val) * 1000 + " lux";
+        dom.innerHTML = parseInt(val) * 1000 + " points";
     }
 }
 
@@ -432,7 +432,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     const rangeInnerDiv1 = document.createElement("div");
     const score1 = document.createElement("div");
     score1.className = "score d-flex justify-content-center align-items-center"
-    score1.innerHTML = "1000 lux"
+    score1.innerHTML = "1000 points"
 
     const rangeList = document.createElement("input")
     rangeList.type = "range"
@@ -442,7 +442,7 @@ function createQuizDiv(body, questionNo, questionArr) {
     rangeList.setAttribute("step", 1)
     rangeList.setAttribute("value", 1)
     if (questionArr != null) {
-        score1.innerHTML = `${questionArr.points} lux`
+        score1.innerHTML = `${questionArr.points} points`
         rangeList.setAttribute("value", convertPointsToVal(questionArr.points))
     }
 
