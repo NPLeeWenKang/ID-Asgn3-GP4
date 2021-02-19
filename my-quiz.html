@@ -23,7 +23,8 @@
     <nav class="navbar navbar-light" style="background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
+                <img src="src/luminate-icon.png" alt="luminate icon" width="30" height="30"
+                    class="d-inline-block align-top">
                 Luminate
             </a>
             <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -56,12 +57,13 @@
             <div id="nav-btn">
                 <div style="display: inline;"
                     onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
-                    <span id="" class="exit-btn">
+                    <span class="exit-btn">
                         Sign out
                     </span>
                 </div>
 
             </div>
+        </div>
     </nav>
 
 
@@ -117,7 +119,7 @@
         <div class="modal-dialog" style="max-width: 650px; margin-top:140px;">
             <div class="modal-content">
                 <div class="modal-body" style="text-align: center;">
-                    <img src="src/bin.png" width="120px;" style="margin:30px">
+                    <img src="src/bin.png" width="120px;" style="margin:30px" alt="bin icon">
                     <h3>DELETE QUIZ</h3>
                     <p style="margin-top: 15px;">Are you sure you want to delete your quiz? This process cannot be
                         undone</p>
@@ -142,30 +144,30 @@
                 </div>
                 <div class="modal-body">
                     <div class="quiz-icon-imgs" style="margin-bottom: 50px; width: 100%;">
-                        <img class="choose-icon" src="src/Category-Images/Animals.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Anime.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Art.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Science-Nature.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Celebrities.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Board-Games.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Comics.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Books.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Gadgets.jpg">
-                        <img class="choose-icon" src="src/Category-Images/General-Knowledge.png">
-                        <img class="choose-icon" src="src/Category-Images/Geography.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Cartoon.jpg">
-                        <img class="choose-icon" src="src/Category-Images/History.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Math.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Music.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Musical.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Mythology.jpg">
-                        <img class="choose-icon" src="src/Category-Images/Politics.jpg">
+                        <img class="choose-icon" src="src/Category-Images/Animals.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Anime.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Art.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Science-Nature.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Celebrities.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Board-Games.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Comics.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Books.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Gadgets.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/General-Knowledge.png" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Geography.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Cartoon.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/History.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Math.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Music.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Musical.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Mythology.jpg" alt="quiz icon">
+                        <img class="choose-icon" src="src/Category-Images/Politics.jpg" alt="quiz icon">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button id="remove" type="button" class="btn btn-danger" data-bs-dismiss="modal">Remove
                         Icon</button>
-                    <button id="update" type="button" class="btn btn-Success" data-bs-dismiss="modal">Confirm
+                    <button id="update" type="button" class="btn btn-success" data-bs-dismiss="modal">Confirm
                         Selection</button>
                 </div>
             </div>

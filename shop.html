@@ -22,7 +22,8 @@
     <nav class="navbar navbar-light" style="background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
-                <img src="src/luminate-icon.png" alt="" width="30" height="30" class="d-inline-block align-top">
+                <img src="src/luminate-icon.png" alt="luminate icon" width="30" height="30"
+                    class="d-inline-block align-top">
                 Luminate
             </a>
             <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -55,12 +56,13 @@
             <div id="nav-btn">
                 <div style="display: inline;"
                     onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
-                    <span id="" class="exit-btn">
+                    <span class="exit-btn">
                         Sign out
                     </span>
                 </div>
 
             </div>
+        </div>
     </nav>
 
     <div class="sideBar">
@@ -89,9 +91,9 @@
             <section class="badges-section">
                 <div class="card badges" id="src/Collectibles-img/Newbie.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Newbie.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Newbie.png" alt="newbie badge">
                     <div class="text-div">
-                        <h4 id="title">Newbie</h4>
+                        <h4>Newbie</h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">40 Coins</p>
@@ -101,7 +103,7 @@
 
                 <div class="card badges" id="src/Collectibles-img/Adventurer.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Adventurer.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Adventurer.png" alt="adventurer badge">
                     <div class="text-div">
                         <h4>Adventurer</h4>
                         <div class="coin-div">
@@ -112,7 +114,7 @@
                 </div>
                 <div class="card badges" id="src/Collectibles-img/Explorer.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Explorer.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Explorer.png" alt="explorer badge">
                     <div class="text-div">
                         <h4>Explorer</h4>
                         <div class="coin-div">
@@ -123,9 +125,9 @@
                 </div>
                 <div class="card badges" id="src/Collectibles-img/SuperStar.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/SuperStar.png">
+                    <img class="quiz-img" src="src/Collectibles-img/SuperStar.png" alt="superstar badge">
                     <div class="text-div">
-                        <h4 id="title">Superstar</h4>
+                        <h4>Superstar</h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">190 Coins</p>
@@ -135,7 +137,7 @@
 
                 <div class="card badges" id="src/Collectibles-img/Mountaineer.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Mountaineer.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Mountaineer.png" alt="mountaineer badge">
                     <div class="text-div">
                         <h4>Mountaineer</h4>
                         <div class="coin-div">
@@ -146,7 +148,7 @@
                 </div>
                 <div class="card badges" id="src/Collectibles-img/Brainy.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Brainy.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Brainy.png" alt="brainy badge">
                     <div class="text-div">
                         <h4>Brainy</h4>
                         <div class="coin-div">
@@ -157,7 +159,7 @@
                 </div>
                 <div class="card badges" id="src/Collectibles-img/Champion.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Champion.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Champion.png" alt="champion badge">
                     <div class="text-div">
                         <h4>Champion</h4>
                         <div class="coin-div">
@@ -172,9 +174,9 @@
             <section class="collectibles-section">
                 <div class="card collectible" id="src/Collectibles-img/Notebook.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Notebook.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Notebook.png" alt="notebook item">
                     <div class="text-div">
-                        <h4 id="title">Notebook</h4>
+                        <h4>Notebook</h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">50 Coins</p>
@@ -183,9 +185,9 @@
                 </div>
                 <div class="card collectible" id="src/Collectibles-img/Pen.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Pen.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Pen.png" alt="pen item">
                     <div class="text-div">
-                        <h4 id="title">Pen</h4>
+                        <h4>Pen</h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">80 Coins</p>
@@ -194,9 +196,9 @@
                 </div>
                 <div class="card collectible" id="src/Collectibles-img/Pencil.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Pencil.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Pencil.png" alt="pencil item">
                     <div class="text-div">
-                        <h4 id="title">Pencil</h4>
+                        <h4>Pencil</h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">100 Coins</p>
@@ -205,9 +207,9 @@
                 </div>
                 <div class="card collectible" id="src/Collectibles-img/Laptop.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <img class="quiz-img" src="src/Collectibles-img/Laptop.png">
+                    <img class="quiz-img" src="src/Collectibles-img/Laptop.png" alt="laptop item">
                     <div class="text-div">
-                        <h4 id="title"><Label>Laptop</Label></h4>
+                        <h4><Label>Laptop</Label></h4>
                         <div class="coin-div">
                             <img src="src/coin.png">
                             <p style=" vertical-align: middle;">120 Coins</p>
@@ -240,8 +242,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img id="shop-item" src="" alt="img-of-collectible" width="150px"
-                        style="margin:auto; display: block;">
+                    <img id="shop-item" alt="img-of-collectible" width="150" style="margin:auto; display: block;">
                     <h3 id="modal-name" style="margin-top:40px;">Name of COLLECTIBLE</h3>
                     <!--<p>add a description for each item if got time</p>-->
                     <p style="margin-top: 15px;">Are you sure you would like to purchase this collectible?</p>
