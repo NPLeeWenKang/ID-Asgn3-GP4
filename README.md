@@ -35,18 +35,45 @@ Throughout the whole assignment, the group has worked together to build up this 
 11. Helped in testing website  
 
 ## Design Process
+Working in a group can be difficult. Therefore, before we started coding, we had to ensure that we were on the same page. So, we had to decide what was our purpose, who are our audience. Together, we managed to outline our assignment and ensure that the idea was agreeable to each other. As different people visualise differently, we did the website mockup together, drawing up a low fidelity mockup which allows us to visualise our ideas and concepts.</br>
+
+To ensure that our website is useful to our target audience, we had to empathise with them, allowing us to understand their needs and wants when using this website.
+1. As a students, I would like the quiz process to be "gamified". This would allow me to feel more motivated to do quizzes. In addition, I would like to create quizzes and share them to people online.
+2. As an educator, I would like a way to create quizzes and share them with my students. I would also like a method to generate questions for me if I am not able to think of questions. 
+
+To ensure that our website was functional on both PC and Mobile, we used the "mobile first" mentality. This allowed us to ensure that our website is both PC and Mobile friendly.
+
+Throughout the assignment, we constantly kept in contact and updated each other on our progress. This also allowed us to test and check each other's code to ensure that everything was perfect. As assignment 3 was the largest assignment, we had to ensure that the amount of bugs and issues were minimal, so that it would be easier to debug during test day.</br>
+
+As we are IT students, we understood the "rule" of developing bit sized code and continuously checking to ensure that there are no errors. This allowed us to troubleshoot and solve problems in a much faster and efficient manner.</br>
+
 
 ## Features
+### API and Technology used
+1. Open Trivia API: https://opentdb.com/
+2. Firebase Authentication: https://firebase.google.com/docs/auth
+3. Firebase Realtime Database: https://firebase.google.com/docs/database
+4. Lottie: https://lottiefiles.com/
+5. Bootstrap: https://getbootstrap.com/
+6. Font Awesome: https://fontawesome.com/
 ### User Profile
+In the Website, users are able to see their profile, where there are able to edit their profile pictures, educational institutes, birthday, etc. In addition, in the profile page, users are able to view the badges and collectibles they have purchased from the shop.
 ### Auto generated quizzes
+In the view quiz page, users are able to see auto generated quizzes that they are able to attempt. Some include, Computer Science, Video games and Anime. Using the Open Trivia API, the website is able to automatically generate quizzes that contain different questions eventhough the category is the same. This ensures that there will always be new and exciting quizzes to be attempted.
 ### Public user created quizzes
+In addition to auto generated quizzes. Users can create their own quizzes and set them to public. This would allow other users to view them on the view-quiz page. With this feature, users are able to share their quizzes without sending the quiz link.
 ### Private user created quizzes
+If users do not want their quizzes to be public, users can set quizzes to private. As a result, the quiz will not show up publicly and can only be accessed through the share link
 ### Create your own quiz (Includes question bank)
+To help users during the create quiz process. We have implemented a questions bank feature where users are able to use the Open Trivia API to retrieve questions. Therefore, users are able to include their own questions beside the pre-generated questions.
 ### Shop (Gamification)
-
+To "gamify" the experience, we have implemented an item shop that allows users to purchase items using the coins earned from quizzes. Too earn coins, users have to attempt quizzez and the coins are given out based on the difficulty of each question. After purchasing items, users can view their items in their profile page.
 
 ## Testing
+### Testing Day
+To ensure that our website was functional and error free, we designated the last 2 days of our assignment to "Testing". During this 2 days, we would intensely test our website to figure our logic problems and issues.</br>
 
+As a result, we uncovered several errors and logic problems which we have to debug. However, since major errors has been fixed during production, little time was need to troubleshoot and solve the problems.</br>
 ### Online validators
 
 ### Screen size
@@ -64,6 +91,18 @@ Throughout the whole assignment, the group has worked together to build up this 
 
 
 ## Credits
+### Technologies used
+1. HTML
+2. CSS
+3. Javascript
+4. Jquery
+### API and libraries used
+1. Open Trivia API: https://opentdb.com/
+2. Firebase Authentication: https://firebase.google.com/docs/auth
+3. Firebase Realtime Database: https://firebase.google.com/docs/database
+4. Lottie: https://lottiefiles.com/
+5. Bootstrap: https://getbootstrap.com/
+6. Font Awesome: https://fontawesome.com/
 ### Certain parts of the website was inspired by
 1. ClassDojo: https://www.classdojo.com/en-gb/?redirect=true
 2. Kahoot: https://kahoot.com/
