@@ -290,7 +290,17 @@ database.ref("/quiz/" + key).once("value").then((snapshot) => {
     if (snapshot.exists()) {
         var state = snapshot.val();
         questions = state.quizQuestion
-        loadSuccessfulStartScreen(state)
+        database.ref("/user/" + state.ownerId).once("value").then(userSnapshot => {
+            if (userSnapshot.exists()) {
+                state.ownerName = userSnapshot.val().username
+                loadSuccessfulStartScreen(state)
+            } else {
+                state.ownerName = "No name retrieved"
+                loadSuccessfulStartScreen(state)
+            }
+        })
+
+
     } else {
         get_QBank_And_Create(key)
     }
