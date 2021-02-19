@@ -1,10 +1,10 @@
 $("#link").on("keypress", function (event) {
     if (event.key == "Enter") {
-        const urlLocation = $("#link").val()
+        const urlLocation = $("#link").val().split("?")[1]
         const key = new URLSearchParams(urlLocation).get("key")
         database.ref("/quiz/" + key).once("value").then((snapshot) => {
             if (snapshot.exists()) {
-                window.location = urlLocation
+                window.location = `take-quiz.html?key=${key}`
             } else {
                 $("#warning").css("display", "")
                 setTimeout(function () {
@@ -17,11 +17,11 @@ $("#link").on("keypress", function (event) {
 })
 $("#link-btn").on("click", function () {
 
-    const urlLocation = $("#link").val()
+    const urlLocation = $("#link").val().split("?")[1]
     const key = new URLSearchParams(urlLocation).get("key")
     database.ref("/quiz/" + key).once("value").then((snapshot) => {
         if (snapshot.exists()) {
-            window.location = urlLocation
+            window.location = `take-quiz.html?key=${key}`
         } else {
             $("#warning").css("display", "")
             setTimeout(function () {

@@ -282,6 +282,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 findMute()
 const queryString = window.location.search;
+console.log(window.location.search)
 const key = new URLSearchParams(queryString).get("key")
 var questions = []
 console.log("ok")
