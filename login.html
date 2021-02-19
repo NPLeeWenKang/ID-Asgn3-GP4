@@ -14,17 +14,21 @@
 </head>
 
 <body>
-    <div id="wrapper" class="wrapper" style="display: none;">
-        <a href="index.html"><button class="back-btn">Go to Home</button></a>
-        <div class="left_side">
-            <img src="src/login.svg">
-        </div>
-        <div class="right_side">
-            <h2>Welcome to <span>LUMINATE</span></h2>
-            <p>We make it easy for you to feel secure and to have a personalised experience</p>
-            <img id="login-btn" src="src/btn_google_signin_dark_normal_web@2x.png" width="230px" alt="image of login">
+    <div class="d-flex justify-content-center align-items-center" style="width: 100vw;
+    height: 100vh;">
+        <div id="wrapper" class="wrapper" style="display: none;">
+            <a href="index.html" class="back-btn">Go to Home</a>
+            <div class="left_side">
+                <img src="src/login.svg" alt="login-icon">
+            </div>
+            <div class="right_side">
+                <h2>Welcome to <span>LUMINATE</span></h2>
+                <p>We make it easy for you to feel secure and to have a personalised experience</p>
+                <img id="login-btn" src="src/btn_google_signin_dark_normal_web@2x.png" width="230" alt="image of login">
+            </div>
         </div>
     </div>
+
     <div id="loading-icon" style="margin-bottom: 100px;"
         class="loading-icon d-flex flex-column justify-content-center align-items-center">
         <lottie-player id="loading-icon-video" src="https://assets2.lottiefiles.com/packages/lf20_9OQ4nR.json"
@@ -32,9 +36,6 @@
 
         <h5>Loading Data</h5>
     </div>
-
-
-
 </body>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>

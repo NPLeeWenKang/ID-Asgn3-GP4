@@ -5,12 +5,16 @@
 *:after {
   box-sizing: border-box;
 } 
+a{
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  color: white;
 
+}
 body {
   font-family: 'Poppins', sans-serif;
-  align-items: center;
-  display: flex;
-  justify-content: center;
 } 
 
 .wrapper{
@@ -97,10 +101,14 @@ span{
     top:25px;
     left:10px;
   }
+  .left_side{
+    padding:20px;
+  }
   .right_side{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding:20px;
   }
   .right_side>h2{
     text-align: center;
