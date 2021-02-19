@@ -3,8 +3,9 @@ Name: Lee Wen Kang, Keerthana<br />
 Class: P03<br />
 ID: S10203100, S10194171<br />
 Website URL: https://npleewenkang.github.io/ID-Asgn3-GP4/<br/>
+Website Pitch: https://drive.google.com/file/d/1zZPJ5VXnGp6idqhfzoIAdNSw80RU4Q_p/view?usp=sharing</br>
 
-
+Luminate is a website that gamifies the quiz taking experience. Together with gamification features and more, we hope that this website would be a pleasent to use and navigate through.
 ## Contributions
 Throughout the whole assignment, the group has worked together to build up this amazing website. By constantly communicating and keeping each other in the loop, we managed to finish the assignment without any difficulties. To ensure that we are able to complete this assignment smoothly, we have split the work into 2 magor sections, Front-end and Back-end. This allowed us to work independently and reduce conficts.</br>
 ### Lee Wen Kang (Back-end)
@@ -43,9 +44,10 @@ Working in a group can be difficult. Therefore, before we started coding, we had
 
 To ensure that our website is useful to our target audience, we had to empathise with them, allowing us to understand their needs and wants when using this website.
 1. As a students, I would like the quiz process to be "gamified". This would allow me to feel more motivated to do quizzes. In addition, I would like to create quizzes and share them to people online.
-2. As an educator, I would like a way to create quizzes and share them with my students. I would also like a method to generate questions for me if I am not able to think of questions. 
+2. As an educator, I would like a way to create quizzes and share them with my students. I would also like a method to generate questions for me if I am not able to think of questions.
+3. As a person who likes trivias, I hope that there would be able to automatically generate trivia questions, as I may not find user created quizzes that interests me.
 
-To ensure that our website was functional on both PC and Mobile, we used the "mobile first" mentality. This allowed us to ensure that our website is both PC and Mobile friendly.
+To ensure that our website was functional on both PC and Mobile, we used the "mobile first" mentality. This allowed us to ensure that our website is both PC and Mobile friendly.</br>
 
 Throughout the assignment, we constantly kept in contact and updated each other on our progress. This also allowed us to test and check each other's code to ensure that everything was perfect. As assignment 3 was the largest assignment, we had to ensure that the amount of bugs and issues were minimal, so that it would be easier to debug during test day.</br>
 
@@ -79,20 +81,20 @@ To ensure that our website was functional and error free, we designated the last
 
 As a result, we uncovered several errors and logic problems which we have to debug. However, since major errors has been fixed during production, little time was need to troubleshoot and solve the problems.</br>
 ### Online validators
-
+To ensure that our code is up to standard and error free, We have used several online validators to validate our code. Some of them include:
+1. W3C Markup Validation: https://validator.w3.org/
+2. W3C CSS Validation: https://jigsaw.w3.org/css-validator/
 ### Screen size
-
+To ensure that our website is both Mobile and PC friendly, we have taken several steps to ensure that the usability is sound.
 1. Resizing browser manually<br/>
-
+By manually resizing our browser, we are able to simulate different screen sizes, allowing us to ensure that our styling is working.
 2. Using Chrome's mobile emulator<br/>
-
+In addition to manually resizing the browser, we also used Chrome's mobile emulator to "simulate" the experience on a phone. To read more about it: https://developers.google.com/web/tools/chrome-devtools/device-mode.
 3. Using a physical phone<br/>
+Since Chrome's mobile emulator does not truely "simulate" a mobile experience, we used a Samsung S8 and Iphone 12 to test our website on mobile.
 
-### Browsers
-
-### Links
-
-
+### Firebase Realtime Database Rules
+To ensure that my user's data is safe and secure, I had to implement some Database rules to ensure that only authenticated users are able to access the database. To test these rules, I had tried to access the database when I was not authenticated which successfully denied access to me.
 
 ## Credits
 ### Technologies used
