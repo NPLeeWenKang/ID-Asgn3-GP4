@@ -23,6 +23,7 @@ nav {
     box-shadow: 0px -2px 12px 0px rgba(0,0,0,0.33);
     z-index: 100;
 }
+/* Ending Screen exit button */
 #back-to-home{
     padding: 20px;
     font-size: 60px;
@@ -51,6 +52,7 @@ nav {
 #end{
     height: 100%;
 }
+/* Starting screen style */
 #start{
     padding: 20px;
     font-size: 60px;
@@ -70,6 +72,7 @@ nav {
     border-top: 2px solid #757575;
     border-bottom: 4px solid  #616161;
 }
+/* Mute button styling */
 #mute-btn{
     text-align: center;
     padding: 9.5px;
@@ -149,33 +152,7 @@ nav {
     border-color: rgba(0,0,0,0.6);
     color: rgba(0,0,0,0.6);
 }
-.done-btn {
-    cursor: pointer;
-    padding: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: bold;
-    color: white;
-    background-color: #008d1f;
-    border-top: 1px solid #008d1f;
-    border-bottom: 4px solid #006717;
-    border-radius: 3px;
-}
-.done-btn:hover{
-    border-bottom: 4px solid #006717;
-    border-top: none;
-    background-color: #006717;
-}
-.modal-submit{
-    background-color: #9c9c9c; 
-    border-top: 1px solid  #9c9c9c; 
-    border-bottom: 4px solid #757575;
-}
-.modal-submit:hover{
-    border-bottom: 4px solid #757575;
-    border-top: none;
-    background-color: #757575;
-}
+
 .scroll-wrapper{
     position: relative;
     height: calc(100vh - 56px);
@@ -201,9 +178,11 @@ nav {
     background-color: #e9e9e9;
     border-bottom: 4px solid rgba(0,0,0,0.25);
 }
+/* Manages the answer options */
 .left {
     margin-right: 5px;
 }
+/* Manages the answer options */
 .right{
     margin-left: 5px;
 }
@@ -214,6 +193,7 @@ nav {
     height: 70px;
     display: flex;
 }
+/* Styles the colored tags next to each option */
 .tag {
     margin-right: 10px;
     width: 8px;
@@ -227,34 +207,8 @@ nav {
     outline: none;
     font-size: 20px;
 }
-#add-qn-btnGroup{
-    margin-bottom:50px;
-    margin-top: 10px;
-    transition: 0.4s;
-}
-#add-question{
-    cursor: pointer;
-    color: rgba(0,0,0,0.8);
-}
-#qn-bank-btn {
-    cursor: pointer;
-    margin-left: 10px;
-    padding: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border: 2px solid rgba(0,0,0,0.8);
-    border-radius: 100px;
-}
-#validation-loading-icon{
-    position: relative;
-}
-#alert{
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-}
+
+/* Styles the score boxes when taking quiz */
 .score{
     cursor: default;
     text-align: center;
@@ -268,6 +222,7 @@ nav {
     background-color : #bd00ff;
     border-radius : 100px;
 }
+/* Styles button that skips question */
 .next-btn{
     width: 150px;
 }
@@ -275,9 +230,7 @@ nav {
     transform: scale(1.1);
     transition: 0.3s;
 }
-.range{
-    width: 200px;
-}
+/* Timer counting down */
 .time{
     text-align: center;
     font-size: 65px;
@@ -356,24 +309,10 @@ nav {
         padding: 10px;
     }
 }
-@media screen and (max-width:500px){
-    .range{
-        width: 150px;
-    }
-}
-.q-bank-opt{
-    margin-top: 10px;
-}
 @media screen and (max-width:320px){
     #nav-btn{
         margin-top: 10px;
         margin-bottom: 10px;
-    }
-    .range{
-        width: 200px;
-    }
-    .range-wrapper{
-        flex-direction: column;
     }
     .scroll-wrapper{
         height: calc(100vh - 66px);

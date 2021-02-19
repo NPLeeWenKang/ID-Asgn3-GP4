@@ -12,6 +12,7 @@
 </head>
 
 <body style="background-color: #eee;">
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-light" style="background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -33,6 +34,7 @@
         </div>
     </nav>
     <div id="scroll-wrapper">
+        <!-- Created questions will appear here -->
         <div id="area-wrapper">
             <div id="create-quiz-area">
             </div>
@@ -40,6 +42,7 @@
         </div>
         <div class="d-flex justify-content-center align-items-center">
             <div id="add-qn-btnGroup" class="d-flex justify-content-center align-items-center">
+                <!-- Button to add 1 question -->
                 <div id="add-question">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -48,17 +51,20 @@
                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg>
                 </div>
+                <!-- Button to open question bank -->
                 <div id="qn-bank-btn" data-bs-toggle="modal" data-bs-target="#q-bank">Question bank</div>
             </div>
 
         </div>
     </div>
 
+    <!-- Modal for validation -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header" style="display: block;">
+                    <!-- Modal Header -->
                     <div class="d-flex  align-items-center">
                         <h5 class="modal-title" id="staticBackdropLabel" style="display: inline;">Quiz Validation</h5>
                         <span style="margin-left: 10px;" class="checkmark">
@@ -75,6 +81,7 @@
                     <div id="comment">Please wait while our system validates the quiz!</div>
                 </div>
                 <div class="modal-body" id="modal-body-validate">
+                    <!-- Loading Icon -->
                     <div id="validation-loading-icon"
                         class="d-flex flex-column justify-content-center align-items-center">
                         <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_jvkbug4h.json"
@@ -83,11 +90,14 @@
                         <div style="bottom: 50px;position: absolute; font-size: 17px;font-weight: bold;">Validating...
                         </div>
                     </div>
+                    <!-- if validation passed -->
                     <div id="after-validation-pass" style="display: none;">
+                        <!-- Quiz name input -->
                         <div class="form-floating">
                             <input type="text" class="form-control" id="quiz-name" maxlength="40">
                             <label for="quiz-name">Quiz name</label>
                         </div>
+                        <!-- Quiz description input -->
                         <div style="margin-top: 10px;" class="form-floating">
 
                             <textarea style="resize: none; height: 150px;" class="form-control" id="quiz-desc"
@@ -113,6 +123,7 @@
                             </label>
                         </div>
                     </div>
+                    <!-- if validation failed -->
                     <div id="after-validation-fail" style="display: none;">
                         <div id="wrapper">
 
@@ -136,12 +147,13 @@
     </div>
 
 
-
+    <!-- Modal for question bank -->
     <div class="modal fade" id="q-bank" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header" style="display: block;">
+                    <!-- Modal Header -->
                     <div class="d-flex  align-items-center">
                         <h5 class="modal-title" id="staticBackdropLabel" style="display: inline;">Question Bank</h5>
                         <span style="margin-left: 10px;" class="checkmark">
@@ -155,14 +167,16 @@
                     <div>Can't think of questions? Try our Question Bank!</div>
                 </div>
                 <div class="modal-body">
+                    <!-- Default number of questions is 1 -->
                     <label for="number-qns" class="form-label" id="number-qns-label">Number of Questions: 1</label>
                     <input type="range" class="form-range" id="number-qns" min="1" max="10" step="1" value="1">
+                    <!-- Select question category -->
                     <div class="q-bank-opt">
                         <label for="category">Select Category</label>
                         <select class="form-select" aria-label="Default select example" id="category">
                         </select>
                     </div>
-
+                    <!-- Select question Difficulty -->
                     <div class="q-bank-opt">
                         <label for="difficulty" class="form-label">Select Difficulty</label>
                         <select class="form-select" aria-label="Default select example" id="difficulty">
@@ -172,6 +186,7 @@
                             <option value="Hard">Hard</option>
                         </select>
                     </div>
+                    <!-- Select question type -->
                     <div class="q-bank-opt">
                         <label for="type" class="form-label">Select Type</label>
                         <select class="form-select" aria-label="Default select example" id="type">

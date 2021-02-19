@@ -82,23 +82,23 @@ function submitDatabase(arr, qnArr, userQnList) {
     database.ref("quiz/" + arr.quizId).set(arr, (error) => {
         // Submit data into quiz/
         if (error) {
-            console.alert(error);
+            // console.alert(error);
         } else {
             database.ref("quiz/" + arr.quizId + "/quizQuestion").set(qnArr, (error) => {
                 // Submit data into quiz/ %uid% /quizQuestion
                 if (error) {
-                    console.alert(error);
+                    // console.alert(error);
                 } else {
                     database.ref("user/" + snapshotUserDetails.uid).update({ quizCreated: userQnList }, (error) => {
                         // Update quizCreated user data
                         if (error) {
-                            console.alert(error);
+                            // console.alert(error);
                         } else {
                             if (arr.type == "public") {
                                 // quiz is public
                                 database.ref("pubQuiz/" + arr.quizId).set(arr, (error) => {
                                     if (error) {
-                                        console.alert(error);
+                                        // console.alert(error);
                                     } else {
                                         window.location = "my-quiz.html"
                                     }

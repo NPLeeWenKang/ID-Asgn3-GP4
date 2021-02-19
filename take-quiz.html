@@ -13,9 +13,11 @@
 
 
 <body style="background-color: #eee;">
+    <!-- Audio for quiz -->
     <audio loop>
         <source src="src/bensound-jazzyfrenchy.mp3" type="audio/mp3">
     </audio>
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-light" style="background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -56,10 +58,11 @@
         </div>
     </nav>
     <div class="scroll-wrapper">
-        <!-- https://assets2.lottiefiles.com/packages/lf20_HSr89w.json -->
+        <!-- Animated Background -->
         <lottie-player src="src/lf30_editor_jxtjld54.json" background="#D4D4D4" speed="1"
             style="width: 100%; height: 100%; position: absolute;" loop autoplay>
         </lottie-player>
+        <!-- Starting Screen -->
         <div id="start-div">
             <div id="loading" style="z-index: 100; width: 100%; height: 90%;"
                 class="d-flex flex-column justify-content-center align-items-center">
@@ -77,15 +80,17 @@
                     <span id="made-by" style="margin-right: 10px;">Made by:</span>
                     <span id="est-time" style="margin-left: 10px;">Estimated quiz duration:</span>
                 </div>
+                <!-- To start quiz -->
                 <div id="start">
                     Start
                 </div>
             </div>
         </div>
-
+        <!-- Taking quiz Screen -->
         <div id="quiz" style="display: none;">
             <div id="area-wrapper" class="d-flex flex-column justify-content-between">
                 <div id="create-quiz-area">
+                    <!-- Question area -->
                     <div class="question-div">
                     </div>
                 </div>
@@ -95,12 +100,14 @@
                         <div>
                             <div class="score d-flex justify-content-center align-items-center">
                                 <div>
+                                    <!-- Shows the amount of coins earned -->
                                     <div>Coins earned</div>
                                     <div id="player-coins"></div>
                                 </div>
 
                             </div>
                             <div class="score d-flex flex-column justify-content-center align-items-center">
+                                <!-- Shows off the amount of correct questions -->
                                 <div>Score</div>
                                 <div>
                                     <span id="player-score"></span>
@@ -114,12 +121,14 @@
                             <div>
                             </div>
                         </div>
+                        <!-- Btn skips to next question -->
                         <div class="next-btn score" id="done">
                             <div>Skip</div>
                         </div>
                     </div>
                 </div>
                 <div id="quiz-wrapper" style="margin-bottom: 10px;">
+                    <!-- Options area -->
                     <div class="row row-cols-2 g-0">
                         <div class="col">
                             <div class="innerDiv left">
@@ -180,16 +189,20 @@
 
             </div>
         </div>
+        <!-- End screen, only appears after completing all questions -->
         <div style="z-index: 100; display: none;" id="end">
             <div class="d-flex flex-column justify-content-center align-items-center"
                 style="width: 100%; height: 100%;">
+                <!-- Quiz title -->
                 <div class="end-div end-title"
                     style="width: 80%;max-width: 900px; margin-left: 0px; margin-right: 0px;">
                 </div>
+                <!-- Total score -->
                 <div class="end-div small" style="width: 80%;max-width: 900px; margin-left: 0px; margin-right: 0px;">
                     <span>Total Score:&thinsp;</span>
                     <span id="final-score">1000</span>
                 </div>
+                <!-- Total coins earned from quiz -->
                 <div class="end-div small" style="width: 80%;max-width: 900px; margin-left: 0px; margin-right: 0px;">
                     <div class="coin-div">
                         <img src="src/coin.png" alt="image of coin">
@@ -198,7 +211,7 @@
                     </div>
                 </div>
 
-
+                <!-- Btn to go home -->
                 <a id="back-to-home" href="profile.html">Back to Profile</a>
 
             </div>
