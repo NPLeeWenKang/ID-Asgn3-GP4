@@ -185,17 +185,17 @@ function validateQuiz(questionArr) {
     for (const [key, value] of Object.entries(questionArr)) {
         const errMessage = []
         let didQnFail = true;
-        if (value.question.length == 0) {
+        if (value.question.replace(" ", "").length == 0) {
             pass_fail = false;
             didQnFail = false;
             errMessage.push("err1")
         }
-        if (value.correctAns.length == 0) {
+        if (value.correctAns.replace(" ", "").length == 0) {
             pass_fail = false;
             didQnFail = false;
             errMessage.push("err2")
         }
-        if (value.wrongAns[0].length == 0) {
+        if (value.wrongAns[0].replace(" ", "").length == 0) {
             pass_fail = false;
             didQnFail = false;
             errMessage.push("err3")
@@ -556,7 +556,10 @@ function createQuizDiv(body, questionNo, questionArr) {
     input3.maxLength = 20;
     // Checks if wrong answer exists
     if (questionArr != null && questionArr.wrongAns.length != 0) {
-        input3.value = questionArr.wrongAns[1]
+        if (questionArr.wrongAns[1] != null) {
+            input3.value = questionArr.wrongAns[1]
+        }
+
     }
 
     content3.appendChild(color3)
@@ -579,7 +582,9 @@ function createQuizDiv(body, questionNo, questionArr) {
     input4.maxLength = 20;
     // Checks if wrong answer exists
     if (questionArr != null && questionArr.wrongAns.length != 0) {
-        input4.value = questionArr.wrongAns[2]
+        if (questionArr.wrongAns[2] != null) {
+            input4.value = questionArr.wrongAns[2]
+        }
     }
 
     content4.appendChild(color4)
