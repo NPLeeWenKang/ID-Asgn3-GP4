@@ -118,7 +118,7 @@ function validateQuiz(questionArr) {
             $("#validation-loading-icon").find("lottie-player").css("display", "none");
             $("#validation-loading-icon").find("div").css("display", "none");
             $("#after-validation-pass").css("display", "");
-            $("#checkmark").css("color", "green")
+            $(".checkmark").css("color", "green")
             $("#comment").text("Validation successful! Your quiz looks great!")
             $("#modal-submit").removeClass("modal-submit")
             $("#modal-submit").on("click", function () {
@@ -159,7 +159,7 @@ function validateQuiz(questionArr) {
             $("#modal-body-validate").css("backgroundColor", "#eee")
             $("#modal-body-validate").css("paddingBottom", "0")
             $("#modal-body-validate").css("paddingTop", "0")
-            $("#checkmark").css("color", "red")
+            $(".checkmark").css("color", "red")
             $("#comment").text("Validation failed! Something went wrong!")
             for (const [key, value] of Object.entries(failed)) {
                 createFailedValidation(document.getElementById("wrapper"), key, value)
@@ -688,7 +688,7 @@ function clearModal() {
     $("#after-validation-pass").css("display", "none");
     $("#after-validation-fail").css("display", "none");
     $("#wrapper").empty();
-    $("#checkmark").css("color", "")
+    $(".checkmark").css("color", "")
     $("#modal-body-validate").css("backgroundColor", "")
     $("#modal-body-validate").css("paddingBottom", "")
     $("#modal-body-validate").css("paddingTop", "")
