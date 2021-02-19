@@ -56,7 +56,7 @@
             <div id="nav-btn">
                 <div style="display: inline;"
                     onclick="firebase.auth().signOut().then(()=>{window.location = 'index.html'}); ">
-                    <span id="" class="exit-btn">
+                    <span class="exit-btn">
                         Sign out
                     </span>
                 </div>
@@ -88,15 +88,15 @@
             <div class="main">
                 <div class="container">
                     <div class="avatar-wrapper">
-                        <button id="profile-wrapper"
+                        <div id="profile-wrapper"
                             class="add-avatar-btn d-flex justify-content-center align-items-center"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div id="profile-text">
                                 + Add Avatar
                             </div>
 
-                            <img id="profile-pic" class="avatar-img" style="display: none;" src="" alt="">
-                        </button>
+                            <img id="profile-pic" class="avatar-img" style="display: none;" alt="profile picture">
+                        </div>
                         <div class="player-coin">
                             <img src="src/coin.png" alt="img of coin">
                             <p id="coins" style=" vertical-align: middle;">5000
@@ -181,18 +181,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="avatar-img" style="margin-bottom: 50px; width: 100%;">
-                            <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-2.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/woman-3.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/woman-4.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-4.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/woman-5.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-5.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/woman-2.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-1.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-3.png" width="120px">
-                            <img class="choose-ava" src="src/Avatar-images/man-6.png" width="120px">
+                            <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-2.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/woman-3.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/woman-4.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-4.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/woman-5.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-5.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/woman-2.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-1.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-3.png" width="120">
+                            <img class="choose-ava" src="src/Avatar-images/man-6.png" width="120">
                         </div>
                         <form autocomplete="off">
                             <div class="mb-3">
@@ -213,6 +213,7 @@
                                     <label for="modal-birthday" class="form-label">Birthday</label>
                                     <input type="date" class="form-control" id="modal-birthday">
                                 </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
