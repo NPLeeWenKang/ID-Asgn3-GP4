@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
     <nav class="navbar navbar-light" style="background-color: white;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -75,12 +74,15 @@
     </div>
     <div class="scroll-div">
         <div>
+            <!--Container for url search input-->
             <div class="container">
                 <input id="link" type="text" placeholder="Enter URL of quiz" autocomplete="off">
                 <button id="link-btn"><i class="fa fa-search" id="search-btn"></i></button>
             </div>
 
+            <!--Section for quiz-cards-->
             <section class="main-section" id="quiz-area" style="display: none;">
+                <!--Individual quiz-cards for each category-->
                 <div id="9" class="card" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <img class="quiz-img" src="src/Category-Images/General-Knowledge.png" alt="general knowledge">
                     <div class="text-div">
@@ -90,7 +92,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div id="10" class="card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img class="quiz-img"
                         src="src/Category-Images/Books.jpg" alt="books image">
                     <div class="text-div">
@@ -316,7 +317,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal for when quiz-card is clicked on-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

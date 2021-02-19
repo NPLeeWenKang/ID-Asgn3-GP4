@@ -78,6 +78,7 @@
 
     <div class="scroll-wrapper">
         <div style="display: none;">
+            <!--Div to display user's current available coins-->
             <div class="user-coin">
                 <p style="margin-bottom: 0px;">
                     You currently have
@@ -87,8 +88,12 @@
                     <p id="user-coins" style=" vertical-align: middle;"></p>
                 </div>
             </div>
+
+            <!--Heading for badges section-->
             <h2>Badges</h2>
+            <!--Badges display wrapper-->
             <section class="badges-section">
+                <!--Individual badges card-->
                 <div class="card badges" id="src/Collectibles-img/Newbie.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     <img class="quiz-img" src="src/Collectibles-img/Newbie.png" alt="newbie badge">
@@ -170,8 +175,11 @@
                 </div>
             </section>
 
+            <!--Heading for collectibles section-->
             <h2 style="text-align: center; margin-top: 50px;">Collectibles</h2>
+            <!--Collectibles display wrapper-->
             <section class="collectibles-section">
+                <!--Individual collectibles card-->
                 <div class="card collectible" id="src/Collectibles-img/Notebook.png" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     <img class="quiz-img" src="src/Collectibles-img/Notebook.png" alt="notebook item">
@@ -234,7 +242,7 @@
 
     </div>
 
-
+    <!--Modal for when shop items are clicked on-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 650px; margin-top:140px;">
             <div class="modal-content">
@@ -244,7 +252,6 @@
                 <div class="modal-body">
                     <img id="shop-item" alt="img-of-collectible" width="150" style="margin:auto; display: block;">
                     <h3 id="modal-name" style="margin-top:40px;">Name of COLLECTIBLE</h3>
-                    <!--<p>add a description for each item if got time</p>-->
                     <p style="margin-top: 15px;">Are you sure you would like to purchase this collectible?</p>
 
                     <div class="modal-footer">

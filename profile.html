@@ -89,63 +89,71 @@
             <div class="main">
                 <div class="container">
                     <div class="avatar-wrapper">
+                        <!--Profile Wrapper in Profile div-->
                         <div id="profile-wrapper"
                             class="add-avatar-btn d-flex justify-content-center align-items-center"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <div id="profile-text">
                                 + Add Avatar
                             </div>
-
+                            <!--Adding the avatar img is the user has chosen one-->
                             <img id="profile-pic" class="avatar-img" style="display: none;" alt="profile picture">
                         </div>
+                        <!--div to display number of coins user has-->
                         <div class="player-coin">
                             <img src="src/coin.png" alt="img of coin">
                             <p id="coins" style=" vertical-align: middle;">5000
                             <p>
                         </div>
                     </div>
+                    <!--Profile content wrapper-->
                     <div class="text-container">
+                        <!--User Name heading-->
                         <h2 id="username" style="margin-bottom: 30px;">User Name</h2>
 
+                        <!--Split information div for profile content-->
                         <div class="split-information">
+                            <!--Email Div-->
                             <div style="margin-bottom: 10px;" class="email-div">
                                 <h3>Email</h3>
                                 <p id="email"></p>
-                                <!--<p>EMAIL SHOULD BE HERE<p>-->
                             </div>
-
+                            <!--Education Institute Div-->
                             <div class="edu-div">
                                 <h3>Education Institute</h3>
                                 <p id="edu-inst"></p>
-                                <!--<p>Education SHOULD BE HERE<p>-->
                             </div>
                         </div>
 
                         <div class="split-information">
+                            <!--Grade Div-->
                             <div style="margin-bottom: 10px;" class="grade-div">
                                 <h3>Grade</h3>
                                 <p id="grade"></p>
                             </div>
 
-                            <!--<p>Grade SHOULD BE HERE<p>-->
+                            <!--Birthday Div-->
                             <div class="bday-div">
                                 <h3>Birthday</h3>
                                 <p id="birthday"></p>
                             </div>
-
-                            <!--<p>Birthday SHOULD BE HERE<p>-->
                         </div>
+                        <!--Button to allow user to edit profile-->
                         <button id="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit
                             Profile</button>
                     </div>
                 </div>
             </div>
+
+            <!--Wrap Items in a div-->
             <div class="items-div" style="margin-top: 30px;">
+                <!--Headings for badges-->
                 <h3>Badges</h3>
                 <p style="font-style: italic; color:grey">Represent achievements and communicate your success with
                     badges as a Quizzler!</p>
                 <span></span>
-
+                
+                <!--Div to add in badges if user has-->
                 <div id="badges-div" class="badges-div">
                     <!-- <div id="img" class="item">
                         <img src="..." alt="item-img" class="item-img">
@@ -155,12 +163,14 @@
 
                 </div>
 
+                <!--Headings for collectibles-->
                 <h3>Collectibles</h3>
                 <p style="font-style: italic; color:grey">Purchase collectibles using coins acquired and show off your
                     knowledge to
                     fellow Quizzlers!</p>
                 <span></span>
 
+                <!--Div to add in collectibles if user has-->
                 <div id="collectibles-div" class="collectibles-div">
                     <!-- <div id="img" class="item">
                         <img src="..." alt="item-img" class="item-img">
@@ -172,7 +182,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal for when user clicks edit profile button-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="max-width: 950px;">
                 <div class="modal-content">
@@ -181,6 +191,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Div for avatar images in modal-->
                         <div class="avatar-img" style="margin-bottom: 50px; width: 100%;">
                             <img class="choose-ava" src="src/Avatar-images/woman-1.png" width="120">
                             <img class="choose-ava" src="src/Avatar-images/woman-6.png" width="120">
