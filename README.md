@@ -11,15 +11,19 @@ Throughout the whole assignment, the group has worked together to build up this 
 1. Research into API usage
 2. Design of Database structure
 2. Set up and management of Database
-3. Managed logic authentication
-4. Designed logic in create-quiz.js
-5. Designed logic in take-quiz.js
-6. Designed logic in profile.js
-7. Designed logic in view-quiz.js
-8. Designed logic in my-quiz.js
-9. Designed logic in shop.js
-10. Assisted in website mockup
-11. Helped in testing website
+3. Managed authentication logic
+4. Designed back-end logic in create-quiz.js
+5. Designed back-end logic in take-quiz.js
+6. Designed back-end logic in profile.js
+7. Designed back-end logic in view-quiz.js
+8. Designed back-end logic in my-quiz.js
+9. Designed back-end logic in shop.js
+10. Designed back-end logic in index.js
+11. Designed back-end logic in login.js
+12. Designed layout of create-quiz.html
+13. Designed layout of take-quiz.html
+14. Assisted in website mockup
+15. Helped in testing website
 
 ### Keerthana (Front-end)
 1. Researched on modern responsive web designs and curated ideas
